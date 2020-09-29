@@ -1,2 +1,8 @@
-# garroen
- A mod for BG1, SoD, BG2, ToB and EET adding a romance between Garrick and Imoen
+-------------------------------------------------
+---                 Garroen                   ---
+---                by Lauriel                 ---
+-------------------------------------------------
+
+This mod requires EET, BG1EE, SoD, or BG2EE.
+
+Adds a romance between Garrick and Imoen, making Garrick available as a joinable NPC whenever Imoen is in the group or in need of rescuing.

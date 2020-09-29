@@ -1,0 +1,15 @@
+///////////////////////////////////////////
+// Adds Garrick and Imoen romance to BG1 //
+///////////////////////////////////////////
+
+DEFINE_ACTION_FUNCTION garroen_bg1 BEGIN
+	// Garrick's Override Script
+	EXTEND_TOP ~%GARRICK_BCS%.BCS~ ~%mod_root%/scripts/garrick_override_bg1.baf~
+
+	// Imoen's Override Script
+	EXTEND_TOP ~%IMOEN_BCS%.BCS~ ~%mod_root%/scripts/imoen_override_bg1.baf~
+
+	// Need to give a commoner in the Fieldpost Inn a variable name so Imoen can take his seat
+	COPY_EXISTING ~MTOWBESC.cre~ ~override~
+	    WRITE_ASCII 0x280 ~GoodSeat~ #32 // set DV
+END

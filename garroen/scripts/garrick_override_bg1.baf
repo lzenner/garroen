@@ -1,0 +1,17 @@
+/////////////////////////////////////
+// Garrick override script for BG1 //
+/////////////////////////////////////
+
+IF
+	// If we've reached the end of the friendship portion of the infatuation
+	// or they've spent more than 5 days together at an inn
+	GlobalLT("P#GarrickFlirt","GLOBAL",99)
+	OR(2)
+		Global("P#GarrickFlirt","GLOBAL",44)
+		GlobalGT("#L_GIRomance","GLOBAL",5)
+THEN
+	RESPONSE #100
+		// Don't continue with the rest of the Garrick Flirt mod
+		SetGlobal("P#GarrickFlirt","GLOBAL",99)
+		Continue()
+END
