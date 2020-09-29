@@ -82,7 +82,8 @@ LAF garroen_bg1 END
 /////////////////
 // SoD CONTENT //
 /////////////////
-BEGIN @11    // MOD 0
+BEGIN @11    // MOD 10
+DESIGNATED 10
 LABEL "#L-GARROEN-SOD"
 REQUIRE_PREDICATE ((GAME_IS ~eet~) OR (GAME_INCLUDES ~sod~)) @3
 INCLUDE ~garroen/components/garroen_sod.tpa~
@@ -91,7 +92,8 @@ LAF garroen_sod END
 /////////////////
 // BG2 CONTENT //
 /////////////////
-BEGIN @12    // MOD 0
+BEGIN @12    // MOD 20
+DESIGNATED 20
 LABEL "#L-GARROEN-BG2"
 REQUIRE_PREDICATE (GAME_IS ~bg2ee eet~) @4
 INCLUDE ~garroen/components/garroen_bg2.tpa~
