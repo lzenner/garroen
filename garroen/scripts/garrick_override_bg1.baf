@@ -1,6 +1,6 @@
-/////////////////////////////////////
-// Garrick override script for BG1 //
-/////////////////////////////////////
+///////////////////////////////////////
+// Garrick's override script for BG1 //
+///////////////////////////////////////
 
 IF
 	// If we've reached the end of the friendship portion of the infatuation
@@ -13,5 +13,6 @@ THEN
 	RESPONSE #100
 		// Don't continue with the rest of the Garrick Flirt mod
 		SetGlobal("P#GarrickFlirt","GLOBAL",99)
+		SetGlobal("T1M2GarrickLetter","GLOBAL",99)
 		Continue()
 END

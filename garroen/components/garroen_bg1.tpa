@@ -3,13 +3,13 @@
 ///////////////////////////////////////////
 
 DEFINE_ACTION_FUNCTION garroen_bg1 BEGIN
-	// Garrick's Override Script
+	// Their override scripts so they know when to be sweet on each other
 	EXTEND_TOP ~%GARRICK_BCS%.BCS~ ~%mod_root%/scripts/garrick_override_bg1.baf~
-
-	// Imoen's Override Script
 	EXTEND_TOP ~%IMOEN_BCS%.BCS~ ~%mod_root%/scripts/imoen_override_bg1.baf~
 
-	// Need to give a commoner in the Fieldpost Inn a variable name so Imoen can take his seat
-	COPY_EXISTING ~MTOWBESC.cre~ ~override~
-	    WRITE_ASCII 0x280 ~GoodSeat~ #32 // set DV
+	// Keep track of how long they've been together in the Fieldpost Inn
+	EXTEND_TOP ~BALDUR.BCS~ ~%mod_root%/scripts/baldur_bg1.baf~
+
+	// Compile their dialogues
+	COMPILE EVALUATE_BUFFER ~%mod_root%/dialogues/dialogues_bg1.d~ USING ~%tra_loc%/%s/dialogues_bg1.tra~
 END
