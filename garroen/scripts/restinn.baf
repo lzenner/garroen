@@ -1,0 +1,17 @@
+///////////////////////////////////////////////////
+// Cut scenes for when they are resting in a inn //
+///////////////////////////////////////////////////
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",0)
+	GloballT("#L_GIRomance","GLOBAL",6)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		DisplayStringHead("%IMOEN_DV%",@2029) // ~While the group relaxes in the common room, Imoen takes a seat near Garrick.~
+		IncrementGlobal("#L_GIRomance","GLOBAL",1)
+		SetGlobalTimer("#L_GIRestTimer","GLOBAL",ONE_DAY)
+		Wait(5)
+		EndCutSceneMode()
+		RestParty()
+END

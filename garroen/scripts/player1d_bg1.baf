@@ -1,0 +1,66 @@
+////////////////////////////////////////////////
+// Interrupts the beginning of the rest cycle //
+// to do a quick scene                        //
+////////////////////////////////////////////////
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",0)
+	GlobalLT("#L_GIRomance","GLOBAL",150)
+	Global("EndOfBG1","GLOBAL",0)
+	GlobalTimerExpired("#L_GIRestTimer","GLOBAL")
+	IsValidForPartyDialogue("GARRICK")
+	IsValidForPartyDialogue("%IMOEN_DV%")
+	OR(19)
+		AreaCheck("%Nashkel_Inn%")
+		AreaCheck("%Beregost_RedSheaf_L1%")
+		AreaCheck("%Beregost_FeldepostsInn_L1%")
+		AreaCheck("%Beregost_BurningWizard_L1%")
+		AreaCheck("%Beregost_JovialJuggler_L1%")
+		AreaCheck("%Candlekeep_Inn_L1%")
+		AreaCheck("%FriendlyArmInn_L1%")
+		AreaCheck("%SEBaldursGate_Inn_L1%")
+		AreaCheck("%BaldursGateDocks_JopalinsTavern%")
+		AreaCheck("%EBaldursGate_Inn_L1%")
+		AreaCheck("%CentralBaldursGate_DrakonTavern%")
+		AreaCheck("%EBaldursGate_ElfsongTavern_L1%")
+		AreaCheck("%NWBaldursGate_Tavern_L1%")
+		AreaCheck("%EBaldursGate_KeexieTavern_L1%")
+		AreaCheck("%NBaldursGate_ThreeOldKegs_L1%")
+		AreaCheck("%NWBaldursGate_Helm&Cloak_L1%")
+		AreaCheck("%NEBaldursGate_BlushingMermaid_L1%")
+		AreaCheck("%SEBaldursGate_Blade&Stars_L1%")
+		AreaCheck("%NEBaldursGate_SplurgingSturgeon_L1%")
+THEN
+	RESPONSE #100
+		StartCutSceneMode()
+		StartCutSceneEx("restinn",TRUE)
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",0)
+	GlobalLT("#L_GIRomance","GLOBAL",150)
+	Global("EndOfBG1","GLOBAL",0)
+	GlobalTimerExpired("#L_GIRestTimer","GLOBAL")
+	IsValidForPartyDialogue("GARRICK")
+	IsValidForPartyDialogue("%IMOEN_DV%")
+	AreaType(DUNGEON)
+THEN
+	RESPONSE #100
+		StartCutSceneMode()
+		StartCutSceneEx("restdung",TRUE)
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",0)
+	GlobalLT("#L_GIRomance","GLOBAL",150)
+	Global("EndOfBG1","GLOBAL",0)
+	GlobalTimerExpired("#L_GIRestTimer","GLOBAL")
+	IsValidForPartyDialogue("GARRICK")
+	IsValidForPartyDialogue("%IMOEN_DV%")
+	AreaType(FOREST)
+THEN
+	RESPONSE #100
+		StartCutSceneMode()
+		StartCutSceneEx("restcamp",TRUE)
+END
+

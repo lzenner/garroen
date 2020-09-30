@@ -10,6 +10,12 @@ DEFINE_ACTION_FUNCTION garroen_bg1 BEGIN
 	// Keep track of how long they've been together in the Fieldpost Inn
 	EXTEND_TOP ~BALDUR.BCS~ ~%mod_root%/scripts/baldur_bg1.baf~
 
+	// Scenes that happen just before rest
+	EXTEND_BOTTOM ~PLAYER1D.BCS~ ~%mod_root%/scripts/player1d_bg1.baf~ EVAL
+	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/restcamp.baf~ USING ~%tra_loc%/%s/dialogues_bg1.tra~
+	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/restdung.baf~ USING ~%tra_loc%/%s/dialogues_bg1.tra~
+	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/restinn.baf~ USING ~%tra_loc%/%s/dialogues_bg1.tra~
+
 	// Compile their dialogues
 	COMPILE EVALUATE_BUFFER ~%mod_root%/dialogues/dialogues_bg1.d~ USING ~%tra_loc%/%s/dialogues_bg1.tra~
 END
