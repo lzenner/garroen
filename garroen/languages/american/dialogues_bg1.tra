@@ -39,7 +39,7 @@
 ////////////////////////
 // ROMANCE DAYS 21-35 //
 ////////////////////////
-@2040	= ~Her kisses taste like the finest wine!  Oh how I love that girl of mine!~
+@2040	= ~Sings, "Her kisses taste like the finest wine!  Oh how I love that girl of mine!"~
 @2041	= ~Imoen grins, blushes and can't stifle a giggle.~
 @2042	= ~You manage to pry Garrick and Imoen apart long enough for them to eat something before it's time to sleep.~
 @2043	= ~Garrick takes advantage of the short break to give Imoen a soft kiss.~
@@ -84,3 +84,8 @@
 // ROMANCE DAYS 176-200 //
 //////////////////////////
 @2110	= ~~
+
+//////////////////////////
+// ROMANCE DAYS 201-225 //
+//////////////////////////
+@2120	= ~~

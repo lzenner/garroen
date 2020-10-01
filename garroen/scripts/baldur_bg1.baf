@@ -68,8 +68,9 @@ IF
 	InPartyAllowDead("%IMOEN_DV%")
 	InPartyAllowDead("GARRICK")
 	Global("#L_GIRomance","GLOBAL",0)
-	OR(2)
+	OR(3)
 		Global("P#GarrickMatch","GLOBAL",0)	// Not loaded or not matched
+	    GlobalGT("P#GarrickStopFlirt","GLOBAL",9) // Flirt has been aborted
 		Global("P#GarrickFlirt","GLOBAL",99) // Reached the end of friendship portion
 THEN
 	RESPONSE #100
@@ -105,6 +106,7 @@ THEN
 	RESPONSE #100
 		SetGlobalTimer("#L_GIIdleTimer","GLOBAL",ONE_ROUND)
 		SetGlobal("#L_GIIdle","GLOBAL",1)
+		Continue()
 END
 
 // Check again
@@ -119,4 +121,19 @@ THEN
 	RESPONSE #100
 		StartCutSceneMode()
 		StartCutSceneEx("#LGIIdle",TRUE)
+END
+
+// Check failed
+IF
+	Global("#L_GIIdle","GLOBAL",1)
+	GlobalTimerExpired("#L_GIIdleTimer","GLOBAL")
+	OR(4)
+		!IsValidForPartyDialogue("%IMOEN_DV%")
+		!IsValidForPartyDialogue("GARRICK")
+		!TriggerOverride("%IMOEN_DV%",ActionListEmpty())
+		!TriggerOverride("GARRICK",ActionListEmpty())
+THEN
+	RESPONSE #100
+		SetGlobal("#L_GIIdle","GLOBAL",0) // Find another idle moment
+		Continue()
 END
