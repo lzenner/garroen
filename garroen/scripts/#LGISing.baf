@@ -1,0 +1,43 @@
+/////////////////////////////////////////////
+// Cut scenes for when they are at the inn //
+/////////////////////////////////////////////
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",0)
+	GlobalLT("#L_GIRomance","GLOBAL",6)
+	Dead("Silke")
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		DisplayStringHead("GARRICK",@2025) // ~My next song is about brave <CHARNAME>'s defeat of the evil Silke.~
+		Continue()
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",0)
+	GlobalLT("#L_GIRomance","GLOBAL",6)
+	!Dead("Silke")
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		DisplayStringHead("GARRICK",@2026) // ~My next song is about brave <CHARNAME>'s rescue of my former employer, Silke.~
+		Continue()
+END
+
+IF
+	Global("#L_ImoenFeldepost","GLOBAL",1)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		Wait(2)
+		StartCutSceneEx("#LGISigh",TRUE)
+END
+
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		EndCutSceneMode()
+END
+

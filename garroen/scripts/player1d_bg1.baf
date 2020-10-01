@@ -7,7 +7,9 @@ IF
 	GlobalGT("#L_GIRomance","GLOBAL",0)
 	GlobalLT("#L_GIRomance","GLOBAL",150)
 	Global("EndOfBG1","GLOBAL",0)
-	GlobalTimerExpired("#L_GIRestTimer","GLOBAL")
+	OR(2)
+		Global("#L_GIRestTimer","GLOBAL",0)
+		GlobalTimerExpired("#L_GIRestTimer","GLOBAL")
 	IsValidForPartyDialogue("GARRICK")
 	IsValidForPartyDialogue("%IMOEN_DV%")
 	OR(19)
@@ -33,34 +35,38 @@ IF
 THEN
 	RESPONSE #100
 		StartCutSceneMode()
-		StartCutSceneEx("restinn",TRUE)
+		StartCutSceneEx("#LGIInn",TRUE)
 END
 
 IF
 	GlobalGT("#L_GIRomance","GLOBAL",0)
 	GlobalLT("#L_GIRomance","GLOBAL",150)
 	Global("EndOfBG1","GLOBAL",0)
-	GlobalTimerExpired("#L_GIRestTimer","GLOBAL")
+	OR(2)
+		Global("#L_GIRestTimer","GLOBAL",0)
+		GlobalTimerExpired("#L_GIRestTimer","GLOBAL")
 	IsValidForPartyDialogue("GARRICK")
 	IsValidForPartyDialogue("%IMOEN_DV%")
 	AreaType(DUNGEON)
 THEN
 	RESPONSE #100
 		StartCutSceneMode()
-		StartCutSceneEx("restdung",TRUE)
+		StartCutSceneEx("#LGIDngn",TRUE)
 END
 
 IF
 	GlobalGT("#L_GIRomance","GLOBAL",0)
 	GlobalLT("#L_GIRomance","GLOBAL",150)
 	Global("EndOfBG1","GLOBAL",0)
-	GlobalTimerExpired("#L_GIRestTimer","GLOBAL")
+	OR(2)
+		Global("#L_GIRestTimer","GLOBAL",0)
+		GlobalTimerExpired("#L_GIRestTimer","GLOBAL")
 	IsValidForPartyDialogue("GARRICK")
 	IsValidForPartyDialogue("%IMOEN_DV%")
 	AreaType(FOREST)
 THEN
 	RESPONSE #100
 		StartCutSceneMode()
-		StartCutSceneEx("restcamp",TRUE)
+		StartCutSceneEx("#LGICamp",TRUE)
 END
 

@@ -3,18 +3,22 @@
 ///////////////////////////////////////////
 
 DEFINE_ACTION_FUNCTION garroen_bg1 BEGIN
-	// Their override scripts so they know when to be sweet on each other
-	EXTEND_TOP ~%GARRICK_BCS%.BCS~ ~%mod_root%/scripts/garrick_override_bg1.baf~
-	EXTEND_TOP ~%IMOEN_BCS%.BCS~ ~%mod_root%/scripts/imoen_override_bg1.baf~
+	// Globals, timers, and kicks off scenes when idle
+	EXTEND_TOP ~BALDUR.BCS~ ~%mod_root%/scripts/baldur_bg1.baf~ EVAL
 
-	// Keep track of how long they've been together in the Fieldpost Inn
-	EXTEND_TOP ~BALDUR.BCS~ ~%mod_root%/scripts/baldur_bg1.baf~
-
-	// Scenes that happen just before rest
+	// Kicks off scenes that happen just before rest
 	EXTEND_BOTTOM ~PLAYER1D.BCS~ ~%mod_root%/scripts/player1d_bg1.baf~ EVAL
-	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/restcamp.baf~ USING ~%tra_loc%/%s/dialogues_bg1.tra~
-	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/restdung.baf~ USING ~%tra_loc%/%s/dialogues_bg1.tra~
-	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/restinn.baf~ USING ~%tra_loc%/%s/dialogues_bg1.tra~
+
+	// Globals and kicks off scenes in Feldepost's Inn
+	EXTEND_TOP ~%Beregost_FeldepostsInn_L1%.BCS~ ~%mod_root%/scripts/feldeposts_inn_bg1.baf~ EVAL
+
+	// The scenes
+	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGIIdle.baf~ USING ~%tra_loc%/%s/dialogues_bg1.tra~
+	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGISing.baf~ USING ~%tra_loc%/%s/dialogues_bg1.tra~	
+	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGISigh.baf~ USING ~%tra_loc%/%s/dialogues_bg1.tra~	
+	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGICamp.baf~ USING ~%tra_loc%/%s/dialogues_bg1.tra~
+	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGIDngn.baf~ USING ~%tra_loc%/%s/dialogues_bg1.tra~
+	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGIInn.baf~ USING ~%tra_loc%/%s/dialogues_bg1.tra~
 
 	// Compile their dialogues
 	COMPILE EVALUATE_BUFFER ~%mod_root%/dialogues/dialogues_bg1.d~ USING ~%tra_loc%/%s/dialogues_bg1.tra~

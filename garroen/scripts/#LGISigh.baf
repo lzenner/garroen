@@ -1,0 +1,14 @@
+/////////////////////////////////////////////
+// Cut scenes for when they are at the inn //
+/////////////////////////////////////////////
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",0)
+	GlobalLT("#L_GIRomance","GLOBAL",6)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		DisplayStringHead("%IMOEN_DV%",@2027) // ~Listens intently, sighing softly~
+		EndCutSceneMode()
+END
+

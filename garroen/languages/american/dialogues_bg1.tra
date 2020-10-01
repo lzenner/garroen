@@ -2,12 +2,14 @@
 // GARRICK'S AND IMOEN'S POST DIALOGUE //
 /////////////////////////////////////////
 @2000	= ~I'll be at Feldepost's Inn in Beregost if you need me in the future.~
+@2001	= ~And this is as good a place as any to perform.~
+@2002	= ~I'll be right here if you need me in the future.~
 
 //////////////////////
 // ROMANCE DAYS 1-5 //
 //////////////////////
-@2025	= ~My next song is about brave <PROPER_SIRMAAM> <CHARNAME>'s defeat of the evil Silke.~
-@2026	= ~My next song is about brave <PROPER_SIRMAAM> <CHARNAME>'s rescue of my former employer, Silke.~
+@2025	= ~My next song is about brave <CHARNAME>'s defeat of the evil Silke.~
+@2026	= ~My next song is about brave <CHARNAME>'s rescue of my former employer, Silke.~
 @2027	= ~Listens intently, sighing softly~
 @2028	= ~Nonchalantly wanders over toward the fire and sits next to Garrick.~
 @2029	= ~While the group relaxes in the common room, Imoen takes a seat near Garrick.~

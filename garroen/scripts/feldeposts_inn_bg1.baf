@@ -1,0 +1,47 @@
+////////////////////////////////////////////////////////////
+// Kicks off Garrick's performances and Imoen's reactions //
+////////////////////////////////////////////////////////////
+
+// If Garrick or Imoen are asked to wait elsewhere...
+// I'm not able to circumvent this
+IF
+	Global("#L_GarrickFeldepost","GLOBAL",1)
+	OR(2)
+		!Exists("GARRICK")
+		InPartyAllowDead("GARRICK")
+THEN
+	RESPONSE #100
+		SetGlobal("#L_GarrickFeldepost","GLOBAL",0)
+END
+
+IF
+	Global("#L_ImoenFeldepost","GLOBAL",1)
+	OR(2)
+		!Exists("%IMOEN_DV%")
+		InPartyAllowDead("%IMOEN_DV%")
+THEN
+	RESPONSE #100
+		SetGlobal("#L_ImoenFeldepost","GLOBAL",0)
+		SetGlobal("#L_ImoenPositioned","MYAREA",0)
+END
+
+IF
+	Global("#L_ImoenFeldepost","GLOBAL",1)
+	Global("#L_ImoenPositioned","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("%IMOEN_DV%",Face(NE))
+		SetGlobal("#L_ImoenPositioned","MYAREA",1)
+END
+
+IF
+	Global("#L_GarrickFeldepost","GLOBAL",1)
+	OR(2)
+		Global("#L_GIPerformTimer","MYAREA",0)
+		GlobalTimerExpired("#L_GIPerformTimer","MYAREA")
+THEN
+	RESPONSE #100
+		StartCutSceneMode()
+		SetGlobalTimer("#L_GIPerformTimer","MYAREA",ONE_DAY)	// He performs at most once per day
+		StartCutSceneEx("#LGISing",TRUE)
+END

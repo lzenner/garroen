@@ -18,7 +18,7 @@ DESCRIPTION
 BG1EE Content
 ------------------------------------------------------------------------
 Requires BG1EE or EET
-The romance will begin if Garrick and Imoen are both in the group or are 'parked' in the same location.  If the Garrick's Infatuation mod is installed and both he and Imoen are in the group, the romance will begin after he declares you are his best friend.  Whatever remains of the infatuation will be skipped once their romance begins.
+The romance will begin if Garrick and Imoen are both in the group or are 'parked' in Feldepost's Inn.  If the Garrick's Infatuation mod is installed and both he and Imoen are in the group, the romance will begin after he declares you are his best friend and the rest of the infatuation will be skipped.  The infatuation will also end if they are parked together in Feldepost's Inn for more than 5 days. If you force them to part company, the romance will pause until they're either together again or SoD starts.
 
 ------------------------------------------------------------------------
 SoD Content
