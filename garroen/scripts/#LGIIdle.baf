@@ -65,7 +65,7 @@ THEN
 		SetGlobal("#L_GIIdle","GLOBAL",0)
 		SetGlobal("#L_GIHerb","GLOBAL",1)
 		SetGlobalTimer("#L_GIActionTimer","GLOBAL",THREE_DAYS)
-		DisplayStringHead("GARRICK",@2054) // ~You see Imoen and Jaheira scanning the local flora for what seems to be something very specific.~
+		DisplayStringHead("%IMOEN_DV%",@2054) // ~You see Imoen and Jaheira scanning the local flora for what seems to be something very specific.~
 		Wait(2)
 		EndCutSceneMode()
 END
@@ -82,7 +82,7 @@ THEN
 		SetGlobal("#L_GIIdle","GLOBAL",0)
 		SetGlobal("#L_GIHerb","GLOBAL",1)
 		SetGlobalTimer("#L_GIActionTimer","GLOBAL",THREE_DAYS)
-		DisplayStringHead("GARRICK",@2055) // ~You see Imoen and Faldorn scanning the local flora for what seems to be something very specific.~
+		DisplayStringHead("%IMOEN_DV%",@2055) // ~You see Imoen and Faldorn scanning the local flora for what seems to be something very specific.~
 		Wait(2)
 		EndCutSceneMode()
 END
