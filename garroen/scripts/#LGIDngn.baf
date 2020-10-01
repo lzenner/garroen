@@ -42,6 +42,19 @@ END
 
 IF
 	GlobalGT("#L_GIRomance","GLOBAL",20)
+	GlobalLT("#L_GIRomance","GLOBAL",36)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		SetGlobalTimer("#L_GIRestTimer","GLOBAL",THREE_DAYS)
+		DisplayStringHead("GARRICK",@2042) // ~You manage to pry Garrick and Imoen apart long enough for them to eat something before it's time to sleep.~
+		Wait(5)
+		EndCutSceneMode()
+		RestParty()
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",35)
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
@@ -49,3 +62,4 @@ THEN
 		EndCutSceneMode()
 		RestParty()
 END
+

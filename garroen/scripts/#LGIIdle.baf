@@ -43,6 +43,19 @@ END
 
 IF
 	GlobalGT("#L_GIRomance","GLOBAL",20)
+	GlobalLT("#L_GIRomance","GLOBAL",36)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		SetGlobal("#L_GIIdle","GLOBAL",0)
+		SetGlobalTimer("#L_GIActionTimer","GLOBAL",THREE_DAYS)
+		DisplayStringHead("GARRICK",@2043) // ~Garrick takes advantage of the short break to give Imoen a soft kiss.
+		Wait(2)
+		EndCutSceneMode()
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",35)
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)

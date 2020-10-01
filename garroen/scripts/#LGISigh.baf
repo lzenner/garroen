@@ -36,6 +36,17 @@ END
 
 IF
 	GlobalGT("#L_GIRomance","GLOBAL",20)
+	GlobalLT("#L_GIRomance","GLOBAL",36)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		Wait(2)
+		DisplayStringHead("%IMOEN_DV%",@2041) // ~Imoen grins, blushes and can't stifle a giggle.~
+		EndCutSceneMode()
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",35)
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)

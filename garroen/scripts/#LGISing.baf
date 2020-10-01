@@ -43,6 +43,16 @@ THEN
 END
 
 IF
+	GlobalGT("#L_GIRomance","GLOBAL",20)
+	GlobalLT("#L_GIRomance","GLOBAL",36)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		DisplayStringHead("GARRICK",@2040) // ~Her kisses taste like the finest wine!  Oh how I love that girl of mine!~
+		Continue()
+END
+
+IF
 	Global("#L_ImoenFeldepost","GLOBAL",1)
 THEN
 	RESPONSE #100
@@ -51,7 +61,7 @@ THEN
 END
 
 IF
-	GlobalGT("#L_GIRomance","GLOBAL",20)
+	GlobalGT("#L_GIRomance","GLOBAL",35)
 	!Global("#L_ImoenFeldepost","GLOBAL",1)
 THEN
 	RESPONSE #100
