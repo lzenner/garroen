@@ -33,6 +33,16 @@ THEN
 END
 
 IF
+	GlobalGT("#L_GIRomance","GLOBAL",10)
+	GlobalLT("#L_GIRomance","GLOBAL",21)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		DisplayStringHead("GARRICK",@2030) // ~I just wrote this.  It's about the girl who holds my heart.~
+		Continue()
+END
+
+IF
 	Global("#L_ImoenFeldepost","GLOBAL",1)
 THEN
 	RESPONSE #100
@@ -41,7 +51,7 @@ THEN
 END
 
 IF
-	GlobalGT("#L_GIRomance","GLOBAL",10)
+	GlobalGT("#L_GIRomance","GLOBAL",20)
 	!Global("#L_ImoenFeldepost","GLOBAL",1)
 THEN
 	RESPONSE #100

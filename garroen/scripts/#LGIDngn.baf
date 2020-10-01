@@ -29,6 +29,19 @@ END
 
 IF
 	GlobalGT("#L_GIRomance","GLOBAL",10)
+	GlobalLT("#L_GIRomance","GLOBAL",21)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		SetGlobalTimer("#L_GIRestTimer","GLOBAL",TWO_DAYS)
+		DisplayStringHead("GARRICK",@2034) // ~Garrick put his arm protectively around Imoen as she leans her head upon his shoulder.~
+		Wait(5)
+		EndCutSceneMode()
+		RestParty()
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",20)
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)

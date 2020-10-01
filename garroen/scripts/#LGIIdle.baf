@@ -23,13 +23,26 @@ THEN
 		CutSceneId(Player1)
 		SetGlobal("#L_GIIdle","GLOBAL",0)
 		SetGlobalTimer("#L_GIActionTimer","GLOBAL",ONE_DAY)
-		DisplayStringHead("%IMOEN_DV%",@2025) // ~During the lull in activity, Garrick and Imoen glance at each other and smile.~
+		DisplayStringHead("GARRICK",@2025) // ~During the lull in activity, Garrick and Imoen glance at each other and smile.~
 		Wait(2)
 		EndCutSceneMode()
 END
 
 IF
 	GlobalGT("#L_GIRomance","GLOBAL",10)
+	GlobalLT("#L_GIRomance","GLOBAL",21)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		SetGlobal("#L_GIIdle","GLOBAL",0)
+		SetGlobalTimer("#L_GIActionTimer","GLOBAL",TWO_DAYS)
+		DisplayStringHead("GARRICK",@2035) // ~Garrick and Imoen walk along together hand-in-hand.
+		Wait(2)
+		EndCutSceneMode()
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",20)
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)

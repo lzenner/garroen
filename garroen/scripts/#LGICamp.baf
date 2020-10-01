@@ -29,6 +29,19 @@ END
 
 IF
 	GlobalGT("#L_GIRomance","GLOBAL",10)
+	GlobalLT("#L_GIRomance","GLOBAL",21)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		SetGlobalTimer("#L_GIRestTimer","GLOBAL",TWO_DAYS)
+		DisplayStringHead("GARRICK",@2032) // ~Garrick and Imoen walk out of sight together.  You just about go out looking for them when they finally return with arm loads of firewood and grins on their faces.~
+		Wait(5)
+		EndCutSceneMode()
+		RestParty()
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",20)
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
