@@ -47,6 +47,17 @@ END
 
 IF
 	GlobalGT("#L_GIRomance","GLOBAL",35)
+	GlobalLT("#L_GIRomance","GLOBAL",51)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		Wait(2)
+		DisplayStringHead("%IMOEN_DV%",@2051) // ~Imoen beams at Garrick, enraptured with his every word.~
+		EndCutSceneMode()
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",50)
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)

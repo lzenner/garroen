@@ -47,7 +47,13 @@
 ////////////////////////
 // ROMANCE DAYS 36-50 //
 ////////////////////////
-@2050	= ~~
+@2050	= ~This next song is for the girl who drives me crazy.  She stole my heart, that rogue of mine!~
+@2051	= ~Imoen beams at Garrick, enraptured with his every word.~
+@2052	= ~You catch a glimpse of Garrick sneaking into Imoen's room.~
+@2053	= ~Garrick and Imoen position their bedrolls next to each other to spend the night in each other's arms.~
+@2054	= ~You see Imoen and Jaheira scanning the local flora for what seems to be something very specific.~
+@2055	= ~You see Imoen and Faldorn scanning the local flora for what seems to be something very specific.~
+@2056	= ~Imoen uncharacteristically busies herself brewing some sort of herbal tea.~
 
 ////////////////////////
 // ROMANCE DAYS 51-75 //
@@ -65,6 +71,16 @@
 @2080	= ~~
 
 //////////////////////////
-// ROMANCE DAYS 125-150 //
+// ROMANCE DAYS 126-150 //
 //////////////////////////
 @2090	= ~~
+
+//////////////////////////
+// ROMANCE DAYS 151-175 //
+//////////////////////////
+@2100	= ~~
+
+//////////////////////////
+// ROMANCE DAYS 176-200 //
+//////////////////////////
+@2110	= ~~

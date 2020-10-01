@@ -55,6 +55,19 @@ END
 
 IF
 	GlobalGT("#L_GIRomance","GLOBAL",35)
+	GlobalLT("#L_GIRomance","GLOBAL",51)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		SetGlobalTimer("#L_GIRestTimer","GLOBAL",THREE_DAYS)
+		DisplayStringHead("GARRICK",@2053) // ~Garrick and Imoen position their bedrolls next to each other to spend the night in each other's arms.~
+		Wait(5)
+		EndCutSceneMode()
+		RestParty()
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",50)
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)

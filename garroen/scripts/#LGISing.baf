@@ -53,6 +53,16 @@ THEN
 END
 
 IF
+	GlobalGT("#L_GIRomance","GLOBAL",35)
+	GlobalLT("#L_GIRomance","GLOBAL",51)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		DisplayStringHead("GARRICK",@2050) // ~This next song is for the girl who drives me crazy.  She stole my heart, that rogue of mine!~
+		Continue()
+END
+
+IF
 	Global("#L_ImoenFeldepost","GLOBAL",1)
 THEN
 	RESPONSE #100
@@ -61,7 +71,7 @@ THEN
 END
 
 IF
-	GlobalGT("#L_GIRomance","GLOBAL",35)
+	GlobalGT("#L_GIRomance","GLOBAL",50)
 	!Global("#L_ImoenFeldepost","GLOBAL",1)
 THEN
 	RESPONSE #100
