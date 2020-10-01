@@ -107,7 +107,12 @@ THEN
 		SetGlobal("#L_GIIdle","GLOBAL",1)
 END
 
+// Check again
 IF
+	IsValidForPartyDialogue("%IMOEN_DV%")
+	IsValidForPartyDialogue("GARRICK")
+	TriggerOverride("%IMOEN_DV%",ActionListEmpty())
+	TriggerOverride("GARRICK",ActionListEmpty())
 	Global("#L_GIIdle","GLOBAL",1)
 	GlobalTimerExpired("#L_GIIdleTimer","GLOBAL")
 THEN

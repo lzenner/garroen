@@ -3,14 +3,36 @@
 ///////////////////////////////////////////////////
 
 IF
-	GlobalGT("#L_GIRomance","GLOBAL",0)
-	GloballT("#L_GIRomance","GLOBAL",6)
+	GlobalLT("#L_GIRomance","GLOBAL",6)
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
 		SetGlobalTimer("#L_GIRestTimer","GLOBAL",ONE_DAY)
-		DisplayStringHead("%IMOEN_DV%",@2029) // ~While the group relaxes in the common room, Imoen takes a seat near Garrick.~
+		DisplayStringHead("%IMOEN_DV%",@2014) // ~While the group relaxes in the common room, Imoen takes a seat near Garrick.~
 		Wait(5)
+		EndCutSceneMode()
+		RestParty()
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",5)
+	GlobalLT("#L_GIRomance","GLOBAL",11)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		SetGlobalTimer("#L_GIRestTimer","GLOBAL",ONE_DAY)
+		DisplayStringHead("%IMOEN_DV%",@2023) // ~While the group relaxes in the common room, Garrick takes a seat near Imoen.~
+		Wait(5)
+		EndCutSceneMode()
+		RestParty()
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",10)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		SetGlobalTimer("#L_GIRestTimer","GLOBAL",FIFTY_DAYS)
 		EndCutSceneMode()
 		RestParty()
 END

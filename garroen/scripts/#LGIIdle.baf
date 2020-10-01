@@ -4,26 +4,36 @@
 
 
 IF
-	OR(4)
-		!IsValidForPartyDialogue("%IMOEN_DV%")
-		!IsValidForPartyDialogue("GARRICK")
-		!TriggerOverride("%IMOEN_DV%",ActionListEmpty())
-		!TriggerOverride("GARRICK",ActionListEmpty())
-THEN
-	RESPONSE #100
-		CutSceneId(Player1)
-		SetGlobal("#L_GIIdle","GLOBAL",0)
-		EndCutSceneMode()
-END
-
-IF
 	GlobalLT("#L_GIRomance","GLOBAL",6)
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
 		SetGlobal("#L_GIIdle","GLOBAL",0)
 		SetGlobalTimer("#L_GIActionTimer","GLOBAL",ONE_DAY)
-		DisplayStringHead("%IMOEN_DV%",@2031) // ~During the lull in activity, Imoen glances over toward Garrick and smiles.~
+		DisplayStringHead("%IMOEN_DV%",@2016) // ~During the lull in activity, Imoen glances over toward Garrick and smiles.~
 		Wait(2)
+		EndCutSceneMode()
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",5)
+	GlobalLT("#L_GIRomance","GLOBAL",11)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		SetGlobal("#L_GIIdle","GLOBAL",0)
+		SetGlobalTimer("#L_GIActionTimer","GLOBAL",ONE_DAY)
+		DisplayStringHead("%IMOEN_DV%",@2025) // ~During the lull in activity, Garrick and Imoen glance at each other and smile.~
+		Wait(2)
+		EndCutSceneMode()
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",10)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		SetGlobal("#L_GIIdle","GLOBAL",0)
+		SetGlobalTimer("#L_GIActionTimer","GLOBAL",FIFTY_DAYS)
 		EndCutSceneMode()
 END

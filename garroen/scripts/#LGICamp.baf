@@ -3,14 +3,37 @@
 //////////////////////////////////////////
 
 IF
-	GlobalGT("#L_GIRomance","GLOBAL",0)
-	GloballT("#L_GIRomance","GLOBAL",6)
+	GlobalLT("#L_GIRomance","GLOBAL",6)
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
 		SetGlobalTimer("#L_GIRestTimer","GLOBAL",ONE_DAY)
-		DisplayStringHead("%IMOEN_DV%",@2028) // ~Nonchalantly wanders over toward the fire and sits next to Garrick.~
+		DisplayStringHead("%IMOEN_DV%",@2013) // ~Nonchalantly wanders over toward the fire and sits next to Garrick.~
 		Wait(5)
 		EndCutSceneMode()
 		RestParty()
 END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",5)
+	GlobalLT("#L_GIRomance","GLOBAL",11)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		SetGlobalTimer("#L_GIRestTimer","GLOBAL",ONE_DAY)
+		DisplayStringHead("GARRICK",@2022) // ~Nonchalantly wanders over toward the fire and sits next to Imoen.~
+		Wait(5)
+		EndCutSceneMode()
+		RestParty()
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",10)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		SetGlobalTimer("#L_GIRestTimer","GLOBAL",FIFTY_DAYS)
+		EndCutSceneMode()
+		RestParty()
+END
+

@@ -3,24 +3,32 @@
 /////////////////////////////////////////////
 
 IF
-	GlobalGT("#L_GIRomance","GLOBAL",0)
 	GlobalLT("#L_GIRomance","GLOBAL",6)
 	Dead("Silke")
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
-		DisplayStringHead("GARRICK",@2025) // ~My next song is about brave <CHARNAME>'s defeat of the evil Silke.~
+		DisplayStringHead("GARRICK",@2010) // ~My next song is about brave <CHARNAME>'s defeat of the evil Silke.~
 		Continue()
 END
 
 IF
-	GlobalGT("#L_GIRomance","GLOBAL",0)
 	GlobalLT("#L_GIRomance","GLOBAL",6)
 	!Dead("Silke")
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
-		DisplayStringHead("GARRICK",@2026) // ~My next song is about brave <CHARNAME>'s rescue of my former employer, Silke.~
+		DisplayStringHead("GARRICK",@2011) // ~My next song is about brave <CHARNAME>'s rescue of my former employer, Silke.~
+		Continue()
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",5)
+	GlobalLT("#L_GIRomance","GLOBAL",11)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		DisplayStringHead("GARRICK",@2020) // ~Here's a song for a lovely girl I know.~
 		Continue()
 END
 
@@ -29,12 +37,12 @@ IF
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
-		Wait(2)
 		StartCutSceneEx("#LGISigh",TRUE)
 END
 
 IF
-	True()
+	GlobalGT("#L_GIRomance","GLOBAL",10)
+	!Global("#L_ImoenFeldepost","GLOBAL",1)
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)

@@ -8,50 +8,55 @@
 //////////////////////
 // ROMANCE DAYS 1-5 //
 //////////////////////
-@2025	= ~My next song is about brave <CHARNAME>'s defeat of the evil Silke.~
-@2026	= ~My next song is about brave <CHARNAME>'s rescue of my former employer, Silke.~
-@2027	= ~Listens intently, sighing softly~
-@2028	= ~Nonchalantly wanders over toward the fire and sits next to Garrick.~
-@2029	= ~While the group relaxes in the common room, Imoen takes a seat near Garrick.~
-@2030	= ~While the group prepares to rest, Imoen nonchalantly wanders over toward Garrick to offer her help.~
-@2031	= ~During the lull in activity, Imoen glances over toward Garrick and smiles.~
+@2010	= ~My next song is about brave <CHARNAME>'s defeat of the evil Silke.~
+@2011	= ~My next song is about brave <CHARNAME>'s rescue of my former employer, Silke.~
+@2012	= ~Imoen listens intently, sighing softly~
+@2013	= ~Imoen nonchalantly wanders over toward the fire and sits next to Garrick.~
+@2014	= ~While the group relaxes in the common room, Imoen takes a seat near Garrick.~
+@2015	= ~While the group prepares to rest, Imoen nonchalantly wanders over toward Garrick to offer her help.~
+@2016	= ~During the lull in activity, Imoen glances over toward Garrick and smiles.~
 
 ///////////////////////
 // ROMANCE DAYS 6-10 //
 ///////////////////////
-@2050	= ~~
+@2020	= ~Here's a song for a lovely girl I know.~
+@2021	= ~Imoen smiles broadly, obviously enjoying the attention.~
+@2022	= ~Garrick nonchalantly wanders over toward the fire and sits next to Imoen.~
+@2023	= ~While the group relaxes in the common room, Garrick takes a seat near Imoen.~
+@2024	= ~While the group prepares to rest, Garrick nonchalantly wanders over toward Imoen to offer his help.~
+@2025	= ~During the lull in activity, Garrick and Imoen glance at each other and smile.~
 
 ////////////////////////
 // ROMANCE DAYS 11-20 //
 ////////////////////////
-@2075	= ~~
+@2030	= ~~
 
 ////////////////////////
 // ROMANCE DAYS 21-35 //
 ////////////////////////
-@2100	= ~~
+@2040	= ~~
 
 ////////////////////////
 // ROMANCE DAYS 36-50 //
 ////////////////////////
-@2125	= ~~
+@2050	= ~~
 
 ////////////////////////
 // ROMANCE DAYS 51-75 //
 ////////////////////////
-@2150	= ~~
+@2060	= ~~
 
 /////////////////////////
 // ROMANCE DAYS 76-100 //
 /////////////////////////
-@2175	= ~~
+@2070	= ~~
 
 //////////////////////////
 // ROMANCE DAYS 101-125 //
 //////////////////////////
-@2200	= ~~
+@2080	= ~~
 
 //////////////////////////
 // ROMANCE DAYS 125-150 //
 //////////////////////////
-@2225	= ~~
+@2090	= ~~
