@@ -24,8 +24,8 @@ END
 // Every in-game day the romance will advance 
 // when the two are parked in the same spot
 IF
-	Global("#L_GarrickFieldpost","GLOBAL",1)
-	Global("#L_ImoenFieldpost","GLOBAL",1)
+	Global("#L_GarrickFeldepost","GLOBAL",1)
+	Global("#L_ImoenFeldepost","GLOBAL",1)
 	OR(2)
 		Global("#L_GIParkedDay","GLOBAL",0)
 		GlobalTimerExpired("#L_GIParkedDay","GLOBAL")
