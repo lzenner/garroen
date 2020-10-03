@@ -51,7 +51,7 @@ ALTER_TRANS %GARRICK_POST%
 
 APPEND %GARRICK_POST%
 	// Replacement for state #2
-	IF ~!HappinessLT(Myself,UNHAPPY_ANGRY_BOUNDARY) Global("KickedOut","LOCALS",1)~ THEN BEGIN NEW_STATE_2
+	IF ~!HappinessLT(Myself,UNHAPPY_ANGRY_BOUNDARY) Global("KickedOut","LOCALS",1)~ THEN BEGIN NEW_GARRICK_2
 		SAY #215778 /* ~You're back! And just in time, too. I need material for a few more verses of my tribute to our friendship.~ */
 		IF ~~ THEN REPLY #215781 /* ~It would be a pleasure to have your company again. A good bard is always a welcome companion.~ */ GOTO 3
 		IF ~~ THEN REPLY #215782 /* ~Sorry, but I really don't want you back just yet.~ */ GOTO 0
@@ -74,7 +74,18 @@ EXTEND_BOTTOM %IMOEN_POST% 0 1
 	IF ~AreaCheck("%Beregost_FeldepostsInn_L1%")~ GOTO IMOEN_AT_FELDEPOST
 END
 
+// Shake off all the mods trying to send Imoen to other areas
+REPLACE_STATE_TRIGGER %IMOEN_POST% 2 ~False()~
+
 APPEND %IMOEN_POST%
+	// Replacement for state #2
+	IF ~!HappinessLT(Myself,UNHAPPY_ANGRY_BOUNDARY) Global("KickedOut","LOCALS",1)~ THEN BEGIN NEW_IMOEN_2
+		SAY #216412 /* ~You old rumjake fool! I knew you'd be back! Let's get back to traveling the good road, eh?~ */
+		IF ~~ THEN REPLY #216413 /* ~Sorry, kiddo, but I don't need your company just yet.~ */ GOTO 3
+		IF ~~ THEN REPLY #216414 /* ~Sorry to have kept you waiting. Let's get going.~ */ GOTO 4
+		%TRANSITIONS_IMOEN_TRAIN%
+	END
+
 	IF ~~ BEGIN IMOEN_TO_FELDEPOST
 		SAY @2000 /* ~I'll be at the Feldepost Inn in Beregost if you need me in the future.~ */
 		IF ~~ DO ~SetGlobal("#L_ImoenFeldepost","GLOBAL",1) SetGlobal("KickedOut","LOCALS",1) ChangeAIScript("",DEFAULT) EscapeAreaMove("%Beregost_FeldepostsInn_L1%",780,580,NE)~ EXIT

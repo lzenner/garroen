@@ -20,6 +20,23 @@ DEFINE_ACTION_FUNCTION garroen_bg1 BEGIN
 	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGIDngn.baf~ USING ~%tra_loc%/%s/dialogues_bg1.tra~
 	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGIInn.baf~ USING ~%tra_loc%/%s/dialogues_bg1.tra~
 
+	// Get a couple strrefs from Transitions 
+	// so we can recreate portion of the dialogue I needed to sidestep
+	// Luckily it should be installed first
+	ACTION_IF (MOD_IS_INSTALLED transitions.tp2 0) BEGIN
+		WITH_TRA ~weidu_external/workspace/transitions/languages/%s/dialogues.tra~ BEGIN
+			OUTER_SET TRANS_WONT_NEED_YOU = RESOLVE_STR_REF (@2322)
+		END
+		OUTER_SET TRANS_GOTO = STATE_WHICH_SAYS 2121 IN ~weidu_external/workspace/transitions/languages/%s/dialogues.tra~ FROM ~%IMOEN_POST%~
+		ACTION_IF TRANS_GOTO > ~-1~ BEGIN
+			OUTER_SPRINT TRANSITIONS_IMOEN_TRAIN ~~~~~IF ~GlobalGT("#L_ImTrainRsp","GLOBAL",0)~ THEN REPLY #%TRANS_WONT_NEED_YOU% GOTO %TRANS_GOTO%~~~~~
+		END ELSE BEGIN
+			OUTER_SPRINT TRANSITIONS_IMOEN_TRAIN ~~
+		END
+	END ELSE BEGIN
+		OUTER_SPRINT TRANSITIONS_IMOEN_TRAIN ~~
+	END
+
 	// Compile their dialogues
 	COMPILE EVALUATE_BUFFER ~%mod_root%/dialogues/dialogues_bg1.d~ USING ~%tra_loc%/%s/dialogues_bg1.tra~
 END
