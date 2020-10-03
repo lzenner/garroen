@@ -20,11 +20,38 @@ THEN
 		Continue()
 END
 
+// If Transitions is loaded and Imoen in training
+IF
+	Global("#L_ImoenInPalace","GLOBAL",1)
+	!InPartyAllowDead("GARRICK")
+THEN
+	RESPONSE #100
+		// Move Garrick to Three Old Kegs so he can be close
+		SetGlobal("#L_GarrickFeldepost","GLOBAL",0)
+		SetGlobal("#L_GarrickTOK","GLOBAL",1)
+		MoveGlobal("%NBaldursGate_ThreeOldKegs_L1%","GARRICK",[350.140])
+END
+
 // Every in-game day the romance will advance 
 // when the two are parked in the same spot
 IF
 	Global("#L_GarrickFeldepost","GLOBAL",1)
 	Global("#L_ImoenFeldepost","GLOBAL",1)
+	OR(2)
+		Global("#L_GIParkedDay","GLOBAL",0)
+		GlobalTimerExpired("#L_GIParkedDay","GLOBAL")
+THEN
+	RESPONSE #100
+		IncrementGlobal("#L_GIRomance","GLOBAL",1)
+		SetGlobalTimer("#L_GIParkedDay","GLOBAL",ONE_DAY)
+		Continue()
+END
+
+// Every in-game day the romance will advance 
+// when the Imoen is in traning and Garrick is at Three Old Kegs
+IF
+	Global("#L_GarrickTOK","GLOBAL",1)
+	Global("#L_ImoenInPalace","GLOBAL",1)
 	OR(2)
 		Global("#L_GIParkedDay","GLOBAL",0)
 		GlobalTimerExpired("#L_GIParkedDay","GLOBAL")
