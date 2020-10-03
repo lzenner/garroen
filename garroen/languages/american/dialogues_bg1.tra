@@ -8,17 +8,20 @@
 //////////////////////
 // ROMANCE DAYS 1-5 //
 //////////////////////
+// Imoen has a crush on Garrick but he hasn't really noticed yet
 @2010	= ~My next song is about brave <CHARNAME>'s defeat of the evil Silke.~
-@2011	= ~My next song is about brave <CHARNAME>'s rescue of my former employer, Silke.~
+@2011	= ~My next song is about <CHARNAME>'s rescue of my former employer, Silke.~
 @2012	= ~Imoen listens intently, sighing softly~
 @2013	= ~Imoen nonchalantly wanders over toward the fire and sits next to Garrick.~
 @2014	= ~While the group relaxes in the common room, Imoen takes a seat near Garrick.~
 @2015	= ~While the group prepares to rest, Imoen nonchalantly wanders over toward Garrick to offer her help.~
 @2016	= ~During the lull in activity, Imoen glances over toward Garrick and smiles.~
+@2017	= ~My next song is about the bitter pain of unrequited love.~
 
 ///////////////////////
 // ROMANCE DAYS 6-10 //
 ///////////////////////
+// Garrick starts to return Imoen's interest
 @2020	= ~Here's a song for a lovely girl I know.~
 @2021	= ~Imoen smiles broadly, obviously enjoying the attention.~
 @2022	= ~Garrick nonchalantly wanders over toward the fire and sits next to Imoen.~
@@ -29,6 +32,7 @@
 ////////////////////////
 // ROMANCE DAYS 11-20 //
 ////////////////////////
+// The hand-holding stage
 @2030	= ~I just wrote this.  It's about the girl who holds my heart.~
 @2031	= ~Imoen smiles dreamily and sighs.~
 @2032	= ~Garrick and Imoen walk out of sight together.  You just about go out looking for them when they finally return with arm loads of firewood and grins on their faces.~
@@ -39,16 +43,18 @@
 ////////////////////////
 // ROMANCE DAYS 21-35 //
 ////////////////////////
+// The kissing stage
 @2040	= ~Sings, "Her kisses taste like the finest wine!  Oh how I love that girl of mine!"~
-@2041	= ~Imoen grins, blushes and can't stifle a giggle.~
+@2041	= ~Imoen grins, blushes and tries in vain to stifle a giggle.~
 @2042	= ~You manage to pry Garrick and Imoen apart long enough for them to eat something before it's time to sleep.~
 @2043	= ~Garrick takes advantage of the short break to give Imoen a soft kiss.~
 
 ////////////////////////
 // ROMANCE DAYS 36-50 //
 ////////////////////////
+// The initial intimacy stage
 @2050	= ~This next song is for the girl who drives me crazy.  She stole my heart, that rogue of mine!~
-@2051	= ~Imoen beams at Garrick, enraptured with his every word.~
+@2051	= ~Imoen beams at Garrick, enraptured by his every word.~
 @2052	= ~You catch a glimpse of Garrick sneaking into Imoen's room.~
 @2053	= ~Imoen uncharacteristically busies herself brewing some sort of herbal tea.~
 @2054	= ~You see Imoen and Jaheira scanning the local flora for what seems to be something very specific.~
@@ -58,34 +64,27 @@
 ////////////////////////
 // ROMANCE DAYS 51-75 //
 ////////////////////////
+// The no-more-sneaking stage
 @2060	= ~~
 
 /////////////////////////
 // ROMANCE DAYS 76-100 //
 /////////////////////////
+// They become engaged
+// If they are in the BG1 group - this is as far as it goes
 @2070	= ~~
 
 //////////////////////////
 // ROMANCE DAYS 101-125 //
 //////////////////////////
+// They are newly weds
+// If they are parked longer than 25 days- they can proceed with the wedding in BG1
 @2080	= ~~
 
 //////////////////////////
-// ROMANCE DAYS 126-150 //
+// ROMANCE DAYS 126->   //
 //////////////////////////
+// They are a more settled wedded couple
+// Only will reach here in BG1 if parked together for at least 50 days
 @2090	= ~~
 
-//////////////////////////
-// ROMANCE DAYS 151-175 //
-//////////////////////////
-@2100	= ~~
-
-//////////////////////////
-// ROMANCE DAYS 176-200 //
-//////////////////////////
-@2110	= ~~
-
-//////////////////////////
-// ROMANCE DAYS 201-225 //
-//////////////////////////
-@2120	= ~~

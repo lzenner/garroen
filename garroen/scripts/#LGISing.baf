@@ -4,6 +4,17 @@
 
 IF
 	GlobalLT("#L_GIRomance","GLOBAL",6)
+	Global("SilkeFightOver","GLOBAL",0)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		DisplayStringHead("GARRICK",@2017) // ~My next song is about the bitter pain of unrequited love.~
+		Continue()
+END
+
+IF
+	GlobalLT("#L_GIRomance","GLOBAL",6)
+	Global("SilkeFightOver","GLOBAL",1)
 	Dead("Silke")
 THEN
 	RESPONSE #100
@@ -14,6 +25,7 @@ END
 
 IF
 	GlobalLT("#L_GIRomance","GLOBAL",6)
+	Global("SilkeFightOver","GLOBAL",1)
 	!Dead("Silke")
 THEN
 	RESPONSE #100
@@ -71,8 +83,9 @@ THEN
 END
 
 IF
-	GlobalGT("#L_GIRomance","GLOBAL",50)
-	!Global("#L_ImoenFeldepost","GLOBAL",1)
+	OR(2)
+		GlobalGT("#L_GIRomance","GLOBAL",50)
+		!Global("#L_ImoenFeldepost","GLOBAL",1)
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)

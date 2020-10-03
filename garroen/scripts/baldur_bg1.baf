@@ -12,7 +12,6 @@ THEN
 END
 
 // Stop BG1NPC from skipping Garrick's going to Feldepost
-// I set the timer for the follow-up dialogue for them so it isn't skipped
 IF
 	Global("T1M2GarrLetter","GLOBAL",0)
 THEN

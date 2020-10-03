@@ -2,8 +2,7 @@
 // Kicks off Garrick's performances and Imoen's reactions //
 ////////////////////////////////////////////////////////////
 
-// If Garrick or Imoen are asked to wait elsewhere...
-// I'm not able to circumvent this
+// Failsafe for when other mods mess with their parking spots
 IF
 	Global("#L_GarrickFeldepost","GLOBAL",1)
 	OR(2)
@@ -12,6 +11,7 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("#L_GarrickFeldepost","GLOBAL",0)
+		SetGlobal("#L_GarrickPositioned","MYAREA",0)
 END
 
 IF
@@ -23,6 +23,15 @@ THEN
 	RESPONSE #100
 		SetGlobal("#L_ImoenFeldepost","GLOBAL",0)
 		SetGlobal("#L_ImoenPositioned","MYAREA",0)
+END
+
+IF
+	Global("#L_GarrickFeldepost","GLOBAL",1)
+	Global("#L_GarrickPositioned","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("GARRICK",Face(SW))
+		SetGlobal("#L_GarrickPositioned","MYAREA",1)
 END
 
 IF

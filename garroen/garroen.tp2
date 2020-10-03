@@ -1,6 +1,6 @@
 BACKUP ~weidu_external/backup/garroen~
 SUPPORT ~For help troubleshooting installation problems, go to the Garroen forum at forums.gibberlings3.net~
-VERSION ~v0.5.0~
+VERSION ~v0.1~
 
 README ~garroen/readme.garroen.%LANGUAGE%.txt~ ~garroen/readme.garroen.english.txt~
 
