@@ -68,10 +68,71 @@ END
 
 IF
 	GlobalGT("#L_GIRomance","GLOBAL",50)
+	GlobalLT("#L_GIRomance","GLOBAL",76)
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
-		SetGlobalTimer("#L_GIRestTimer","GLOBAL",FIFTY_DAYS)
+		SetGlobal("#L_GITent","GLOBAL",1)
+		SetGlobalTimer("#L_GIRestTimer","GLOBAL",FIVE_DAYS)
+		DisplayStringHead("%IMOEN_DV%",@2062) // ~Garrick makes a point to ensure that he and Imoen are in the same room.~
+		Wait(5)
 		EndCutSceneMode()
 		RestParty()
 END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",75)
+	GlobalLT("#L_GIRomance","GLOBAL",101)
+	Global("#L_GIEngaged","GLOBAL",0)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		SetGlobal("#L_GIEngaged","GLOBAL",1)
+		SetGlobalTimer("#L_GIRestTimer","GLOBAL",FIVE_DAYS)
+		DisplayStringHead("%IMOEN_DV%",@2072) // ~A shriek from Imoen brings everyone to attention and reaching for their weapons, until they notice Garrick down on one knee.~
+		Wait(5)
+		EndCutSceneMode()
+		RestParty()
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",75)
+	GlobalLT("#L_GIRomance","GLOBAL",101)
+	Global("#L_GIEngaged","GLOBAL",1)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		SetGlobal("#L_GIEngaged","GLOBAL",2)
+		SetGlobalTimer("#L_GIRestTimer","GLOBAL",FIVE_DAYS)
+		DisplayStringHead("%IMOEN_DV%",@2073) // ~Through dinner, Imoen shows off her wedding ring to whomever happens to be near while the men give Garrick a congratulatory slap on the back.~
+		Wait(5)
+		EndCutSceneMode()
+		RestParty()
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",75)
+	GlobalLT("#L_GIRomance","GLOBAL",101)
+	Global("#L_GIEngaged","GLOBAL",2)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		SetGlobalTimer("#L_GIRestTimer","GLOBAL",FIVE_DAYS)
+		DisplayStringHead("%IMOEN_DV%",@2074) // ~Garrick and Imoen chatter excitedly through dinner, sharing their wedding plans with the group.~
+		Wait(5)
+		EndCutSceneMode()
+		RestParty()
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",100)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		SetGlobalTimer("#L_GIRestTimer","GLOBAL",TEN_DAYS)
+		DisplayStringHead("%IMOEN_DV%",@2062) // ~Garrick makes a point to ensure that he and Imoen are in the same room.~
+		Wait(5)
+		EndCutSceneMode()
+		RestParty()
+END
+

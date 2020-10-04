@@ -103,25 +103,73 @@ THEN
 END
 
 IF
-	GlobalGT("#L_GIRomance","GLOBAL",35)
-	GlobalLT("#L_GIRomance","GLOBAL",51)
-	Global("#L_GIHerb","GLOBAL",1)
+	GlobalGT("#L_GIRomance","GLOBAL",50)
+	GlobalLT("#L_GIRomance","GLOBAL",76)
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
 		SetGlobal("#L_GIIdle","GLOBAL",0)
-		SetGlobalTimer("#L_GIActionTimer","GLOBAL",THREE_DAYS)
-		DisplayStringHead("GARRICK",@2056) // ~Garrick brushes a stray strand of hair from Imoen's forehead giving her a loving kiss.~
+		SetGlobalTimer("#L_GIActionTimer","GLOBAL",FIVE_DAYS)
+		DisplayStringHead("GARRICK",@2066) // ~Even during the briefest of pauses, Garrick and Imoen are soon locked in a loving embrace.~
 		Wait(2)
 		EndCutSceneMode()
 END
 
 IF
-	GlobalGT("#L_GIRomance","GLOBAL",50)
+	GlobalGT("#L_GIRomance","GLOBAL",75)
+	GlobalLT("#L_GIRomance","GLOBAL",101)
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
 		SetGlobal("#L_GIIdle","GLOBAL",0)
-		SetGlobalTimer("#L_GIActionTimer","GLOBAL",FIFTY_DAYS)
+		SetGlobalTimer("#L_GIActionTimer","GLOBAL",FIVE_DAYS)
+		DisplayStringHead("GARRICK",@2075) // ~Imoen jumps up and throws her arms around Garrick's neck.  He quite deftly braces himself while supporting her weight as he gives her a grin and a kiss.~
+		Wait(2)
+		EndCutSceneMode()
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",100)
+	Switch("#L_GIIdleToEnd","GLOBAL")
+THEN
+	RESPONSE #0
+		CutSceneId(Player1)
+		IncrementGlobal("#L_GIIdleToEnd","GLOBAL",1)
+		SetGlobal("#L_GIIdle","GLOBAL",0)
+		DisplayStringHead("GARRICK",@2035) // ~Garrick and Imoen walk along together hand-in-hand.
+		SetGlobalTimer("#L_GIActionTimer","GLOBAL",TEN_DAYS)
+		Wait(2)
+		EndCutSceneMode()
+	RESPONSE #1
+		CutSceneId(Player1)
+		IncrementGlobal("#L_GIIdleToEnd","GLOBAL",1)
+		SetGlobal("#L_GIIdle","GLOBAL",0)
+		DisplayStringHead("GARRICK",@2043) // ~Garrick takes advantage of the short break to give Imoen a soft kiss.
+		SetGlobalTimer("#L_GIActionTimer","GLOBAL",TEN_DAYS)
+		Wait(2)
+		EndCutSceneMode()
+	RESPONSE #2
+		CutSceneId(Player1)
+		IncrementGlobal("#L_GIIdleToEnd","GLOBAL",1)
+		SetGlobal("#L_GIIdle","GLOBAL",0)
+		DisplayStringHead("GARRICK",@2056) // ~Garrick brushes a stray strand of hair from Imoen's forehead giving her a loving kiss.~
+		SetGlobalTimer("#L_GIActionTimer","GLOBAL",TEN_DAYS)
+		Wait(2)
+		EndCutSceneMode()
+	RESPONSE #3
+		CutSceneId(Player1)
+		IncrementGlobal("#L_GIIdleToEnd","GLOBAL",1)
+		SetGlobal("#L_GIIdle","GLOBAL",0)
+		DisplayStringHead("GARRICK",@2066) // ~Even during the briefest of pauses, Garrick and Imoen are soon locked in a loving embrace.~
+		SetGlobalTimer("#L_GIActionTimer","GLOBAL",TEN_DAYS)
+		Wait(2)
+		EndCutSceneMode()
+	RESPONSE #4
+		CutSceneId(Player1)
+		SetGlobal("#L_GIIdleToEnd","GLOBAL",0)
+		SetGlobal("#L_GIIdle","GLOBAL",0)
+		DisplayStringHead("GARRICK",@2075) // ~Imoen jumps up and throws her arms around Garrick's neck.  He quite deftly braces himself while supporting her weight as he gives her a grin and a kiss.~
+		SetGlobalTimer("#L_GIActionTimer","GLOBAL",TEN_DAYS)
+		Wait(2)
 		EndCutSceneMode()
 END

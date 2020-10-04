@@ -75,20 +75,72 @@ THEN
 END
 
 IF
+	GlobalGT("#L_GIRomance","GLOBAL",50)
+	GlobalLT("#L_GIRomance","GLOBAL",76)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		DisplayStringHead("GARRICK",@2060) // ~This song is for the one who takes my breath away.  I've forgotten how to live without you.~
+		Continue()
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",75)
+	GlobalLT("#L_GIRomance","GLOBAL",101)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		DisplayStringHead("GARRICK",@2070) // ~Sings, "Oh say you'll be mine! Please say you'll be mine! Be mine, be mine for rest of time!"~
+		Continue()
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",100)
+	GlobalLT("#L_GIRomance","GLOBAL",126)
+	Global("#L_GIMarried","GLOBAL",0)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		DisplayStringHead("GARRICK",@2080) // ~That's all for tonight folks.  My bride-to-be and I are on the way to the temple.  Then it's off to our honeymoon!~
+		Continue()
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",100)
+	GlobalLT("#L_GIRomance","GLOBAL",126)
+	Global("#L_GIMarried","GLOBAL",1)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		DisplayStringHead("GARRICK",@2081) // ~Sings, "Married life is a merry life with a merry wife indeed!~
+		Continue()
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",125)
+	Global("#L_GIBride","MYAREA",0)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		SetGlobal("#L_GIBride","MYAREA",1)
+		DisplayStringHead("GARRICK",@2090) // ~Here's a song for my lovely bride.  She completes me.~
+		Continue()
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",125)
+	Global("#L_GIBride","MYAREA",1)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		DisplayStringHead("GARRICK",@2091) // ~This song is for my beautiful wife, without whom life would hold no meaning.~
+		Continue()
+END
+
+IF
 	Global("#L_ImoenFeldepost","GLOBAL",1)
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
 		StartCutSceneEx("#LGISigh",TRUE)
 END
-
-IF
-	OR(2)
-		GlobalGT("#L_GIRomance","GLOBAL",50)
-		!Global("#L_ImoenFeldepost","GLOBAL",1)
-THEN
-	RESPONSE #100
-		CutSceneId(Player1)
-		EndCutSceneMode()
-END
-

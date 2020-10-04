@@ -58,8 +58,56 @@ END
 
 IF
 	GlobalGT("#L_GIRomance","GLOBAL",50)
+	GlobalLT("#L_GIRomance","GLOBAL",76)
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
+		Wait(2)
+		DisplayStringHead("%IMOEN_DV%",@2061) // ~Imoen glows with joy while blowing Garrick a kiss.~
+		EndCutSceneMode()
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",75)
+	GlobalLT("#L_GIRomance","GLOBAL",101)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		Wait(2)
+		DisplayStringHead("%IMOEN_DV%",@2071) // ~Imoen beams at Garrick and gives him a wink.~
+		EndCutSceneMode()
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",100)
+	GlobalLT("#L_GIRomance","GLOBAL",126)
+	Global("#L_GIMarried","GLOBAL",0)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		Wait(2)
+		DisplayStringHead("%IMOEN_DV%",@2082) // ~Imoen blushes and beams with joy.~
+		EndCutSceneMode()
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",100)
+	GlobalLT("#L_GIRomance","GLOBAL",126)
+	Global("#L_GIMarried","GLOBAL",1)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		Wait(2)
+		DisplayStringHead("%IMOEN_DV%",@2083) // ~Imoen giggles and sings along.~
+		EndCutSceneMode()
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",125)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		Wait(2)
+		DisplayStringHead("%IMOEN_DV%",@2092) // ~Imoen brushes away a tear of joy.~
 		EndCutSceneMode()
 END
