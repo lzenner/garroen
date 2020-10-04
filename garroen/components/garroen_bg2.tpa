@@ -3,4 +3,9 @@
 ///////////////////////////////////////////
 
 DEFINE_ACTION_FUNCTION garroen_bg2 BEGIN
+	// Globals, timers, and kicks off scenes when idle
+	ACTION_IF NOT (MOD_IS_INSTALLED ~garroen.tp2~ (ID_OF_LABEL "garroen.tp2" "#L-GARROEN-BG1") OR MOD_IS_INSTALLED ~garroen.tp2~ (ID_OF_LABEL "garroen.tp2" "#L-GARROEN-SOD")) BEGIN
+		EXTEND_TOP ~BALDUR.BCS~ ~%mod_root%/scripts/baldur_common.baf~ EVAL
+	END
+	EXTEND_TOP ~BALDUR.BCS~ ~%mod_root%/scripts/baldur_bg2.baf~ EVAL
 END

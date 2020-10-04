@@ -4,6 +4,7 @@
 
 DEFINE_ACTION_FUNCTION garroen_bg1 BEGIN
 	// Globals, timers, and kicks off scenes when idle
+	EXTEND_TOP ~BALDUR.BCS~ ~%mod_root%/scripts/baldur_common.baf~ EVAL
 	EXTEND_TOP ~BALDUR.BCS~ ~%mod_root%/scripts/baldur_bg1.baf~ EVAL
 
 	// Kicks off scenes that happen just before rest
@@ -13,18 +14,18 @@ DEFINE_ACTION_FUNCTION garroen_bg1 BEGIN
 	EXTEND_TOP ~%Beregost_FeldepostsInn_L1%.BCS~ ~%mod_root%/scripts/feldeposts_inn_bg1.baf~ EVAL
 
 	// The scenes
-	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGIIdle.baf~ USING ~%tra_loc%/%s/dialogues_bg1.tra~
-	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGISing.baf~ USING ~%tra_loc%/%s/dialogues_bg1.tra~	
-	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGISigh.baf~ USING ~%tra_loc%/%s/dialogues_bg1.tra~	
-	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGICamp.baf~ USING ~%tra_loc%/%s/dialogues_bg1.tra~
-	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGIDngn.baf~ USING ~%tra_loc%/%s/dialogues_bg1.tra~
-	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGIInn.baf~ USING ~%tra_loc%/%s/dialogues_bg1.tra~
+	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGIIdle.baf~ USING ~%tra_loc%/%s/dialogues.tra~
+	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGISing.baf~ USING ~%tra_loc%/%s/dialogues.tra~	
+	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGISigh.baf~ USING ~%tra_loc%/%s/dialogues.tra~	
+	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGICamp.baf~ USING ~%tra_loc%/%s/dialogues.tra~
+	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGIDngn.baf~ USING ~%tra_loc%/%s/dialogues.tra~
+	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGIInn.baf~ USING ~%tra_loc%/%s/dialogues.tra~
 
 	// Get a couple strrefs from Transitions 
 	// so we can recreate portion of the dialogue I needed to sidestep
 	// Luckily it should be installed first
 	OUTER_SPRINT TRANSITIONS_IMOEN_TRAIN ~~
-	ACTION_IF (MOD_IS_INSTALLED transitions.tp2 0) BEGIN
+	ACTION_IF (MOD_IS_INSTALLED ~transitions.tp2~ (ID_OF_LABEL "transitions.tp2" "#L-TRANSITIONS-MAIN")) BEGIN
 		OUTER_SET TRANS_GO_TRAIN = STATE_WHICH_SAYS 2121 IN ~weidu_external/workspace/transitions/languages/%s/dialogues.tra~ FROM ~%IMOEN_POST%~
 		ACTION_IF TRANS_GO_TRAIN > ~-1~ BEGIN
 			WITH_TRA ~weidu_external/workspace/transitions/languages/%s/dialogues.tra~ BEGIN
@@ -35,5 +36,5 @@ DEFINE_ACTION_FUNCTION garroen_bg1 BEGIN
 	END
 
 	// Compile their dialogues
-	COMPILE EVALUATE_BUFFER ~%mod_root%/dialogues/dialogues_bg1.d~ USING ~%tra_loc%/%s/dialogues_bg1.tra~
+	COMPILE EVALUATE_BUFFER ~%mod_root%/dialogues/dialogues.d~ USING ~%tra_loc%/%s/dialogues.tra~
 END

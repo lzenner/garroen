@@ -4,32 +4,11 @@
 
 // Set global letting other mods know this one is installed
 IF
-	Global("#L_Garroen","GLOBAL",0)
+	Global("#L_GarroenBG1","GLOBAL",0)
 THEN
 	RESPONSE #100
-		SetGlobal("#L_Garroen","GLOBAL",1)
+		SetGlobal("#L_GarroenBG1","GLOBAL",1)
 		Continue()
-END
-
-// Stop BG1NPC from skipping Garrick's going to Feldepost
-IF
-	Global("T1M2GarrLetter","GLOBAL",0)
-THEN
-	RESPONSE #100
-		SetGlobal("T1M2GarrLetter","GLOBAL",1)
-		Continue()
-END
-
-// If Transitions is loaded and Imoen in training
-IF
-	Global("#L_ImoenInPalace","GLOBAL",1)
-	!InPartyAllowDead("GARRICK")
-THEN
-	RESPONSE #100
-		// Move Garrick to Three Old Kegs so he can be close
-		SetGlobal("#L_GarrickFeldepost","GLOBAL",0)
-		SetGlobal("#L_GarrickTOK","GLOBAL",1)
-		MoveGlobal("%NBaldursGate_ThreeOldKegs_L1%","GARRICK",[350.140])
 END
 
 // Every in-game day the romance will advance 
@@ -47,119 +26,3 @@ THEN
 		Continue()
 END
 
-// Every in-game day the romance will advance 
-// when the Imoen is in traning and Garrick is at Three Old Kegs
-IF
-	Global("#L_GarrickTOK","GLOBAL",1)
-	Global("#L_ImoenInPalace","GLOBAL",1)
-	OR(2)
-		Global("#L_GIParkedDay","GLOBAL",0)
-		GlobalTimerExpired("#L_GIParkedDay","GLOBAL")
-THEN
-	RESPONSE #100
-		IncrementGlobal("#L_GIRomance","GLOBAL",1)
-		SetGlobalTimer("#L_GIParkedDay","GLOBAL",ONE_DAY)
-		Continue()
-END
-
-IF
-	// If we've reached the end of the friendship portion of the infatuation
-	// and Imoen is in the group
-	InPartyAllowDead("%IMOEN_DV%")
-	GlobalLT("P#GarrickFlirt","GLOBAL",99)
-	GlobalGT("P#GarrickFlirt","GLOBAL",43)
-THEN
-	RESPONSE #100
-		// Don't continue with the rest of the Garrick Flirt mod
-		SetGlobal("P#GarrickFlirt","GLOBAL",99)
-		Continue()
-END
-
-IF
-	// If they've spent more than 5 days together at an inn
-	GlobalLT("P#GarrickFlirt","GLOBAL",99)
-	GlobalGT("#L_GIRomance","GLOBAL",5)
-	Global("P#GarrickMatch","GLOBAL",1)
-THEN
-	RESPONSE #100
-		// Don't continue with the rest of the Garrick Flirt mod
-		SetGlobal("P#GarrickFlirt","GLOBAL",99)
-		Continue()
-END
-
-IF
-	// If they're in the group together
-	// and the flirt isn't going to continue
-	// and the romance hasn't started yet
-	InPartyAllowDead("%IMOEN_DV%")
-	InPartyAllowDead("GARRICK")
-	Global("#L_GIRomance","GLOBAL",0)
-	OR(3)
-		Global("P#GarrickMatch","GLOBAL",0)	// Not loaded or not matched
-	    GlobalGT("P#GarrickStopFlirt","GLOBAL",9) // Flirt has been aborted
-		Global("P#GarrickFlirt","GLOBAL",99) // Reached the end of friendship portion
-THEN
-	RESPONSE #100
-		// Start the romance
-		SetGlobal("#L_GIRomance","GLOBAL",1)
-		SetGlobalTimer("#L_GIPartyDay","GLOBAL",ONE_DAY)
-		Continue()
-END
-
-IF
-	InPartyAllowDead("%IMOEN_DV%")
-	InPartyAllowDead("GARRICK")
-	GlobalGT("#L_GIRomance","GLOBAL",0)
-	GlobalTimerExpired("#L_GIPartyDay","GLOBAL")
-THEN
-	RESPONSE #100
-		IncrementGlobal("#L_GIRomance","GLOBAL",1)
-		SetGlobalTimer("#L_GIPartyDay","GLOBAL",ONE_DAY)
-		Continue()
-END
-
-IF
-	IsValidForPartyDialogue("%IMOEN_DV%")
-	IsValidForPartyDialogue("GARRICK")
-	GlobalGT("#L_GIRomance","GLOBAL",0)
-	OR(2)
-		Global("#L_GIActionTimer","GLOBAL",0)
-		GlobalTimerExpired("#L_GIActionTimer","GLOBAL")
-	TriggerOverride("%IMOEN_DV%",ActionListEmpty())
-	TriggerOverride("GARRICK",ActionListEmpty())
-	Global("#L_GIIdle","GLOBAL",0)
-THEN
-	RESPONSE #100
-		SetGlobalTimer("#L_GIIdleTimer","GLOBAL",ONE_ROUND)
-		SetGlobal("#L_GIIdle","GLOBAL",1)
-		Continue()
-END
-
-// Check again
-IF
-	IsValidForPartyDialogue("%IMOEN_DV%")
-	IsValidForPartyDialogue("GARRICK")
-	TriggerOverride("%IMOEN_DV%",ActionListEmpty())
-	TriggerOverride("GARRICK",ActionListEmpty())
-	Global("#L_GIIdle","GLOBAL",1)
-	GlobalTimerExpired("#L_GIIdleTimer","GLOBAL")
-THEN
-	RESPONSE #100
-		StartCutSceneMode()
-		StartCutSceneEx("#LGIIdle",TRUE)
-END
-
-// Check failed
-IF
-	Global("#L_GIIdle","GLOBAL",1)
-	GlobalTimerExpired("#L_GIIdleTimer","GLOBAL")
-	OR(4)
-		!IsValidForPartyDialogue("%IMOEN_DV%")
-		!IsValidForPartyDialogue("GARRICK")
-		!TriggerOverride("%IMOEN_DV%",ActionListEmpty())
-		!TriggerOverride("GARRICK",ActionListEmpty())
-THEN
-	RESPONSE #100
-		SetGlobal("#L_GIIdle","GLOBAL",0) // Find another idle moment
-		Continue()
-END
