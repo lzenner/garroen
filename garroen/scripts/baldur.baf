@@ -11,6 +11,15 @@ THEN
 		Continue()
 END
 
+// Allow Garrick to be in any area at any time
+IF
+	Global("#L_GarrickOkInBG1Areas","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("#L_GarrickOkInBG1Areas","GLOBAL",1)
+		Continue()
+END
+
 // Every in-game day the romance will advance 
 // when the two are parked in the same spot
 IF
@@ -45,7 +54,7 @@ END
 
 IF
 	// If they've spent more than 5 days together at an inn
-	// Or we're not longer in BG1
+	// Or we're no longer in BG1
 	GlobalLT("P#GarrickFlirt","GLOBAL",99)
 	Global("P#GarrickMatch","GLOBAL",1)
 	OR(2)
