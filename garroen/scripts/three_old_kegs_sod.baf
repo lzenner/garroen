@@ -4,18 +4,18 @@
 
 // Failsafe for when other mods mess with parking spots
 IF
-	Global("#L_GarrickTOK_BG1","GLOBAL",1)
+	Global("#L_GarrickTOK_SoD","GLOBAL",1)
 	OR(2)
 		!Exists("GARRICK")
 		InPartyAllowDead("GARRICK")
 THEN
 	RESPONSE #100
-		SetGlobal("#L_GarrickTOK_BG1","GLOBAL",0)
+		SetGlobal("#L_GarrickTOK_SoD","GLOBAL",0)
 		SetGlobal("#L_GarrickPositioned","MYAREA",0)
 END
 
 IF
-	Global("#L_GarrickTOK_BG1","GLOBAL",1)
+	Global("#L_GarrickTOK_SoD","GLOBAL",1)
 	Global("#L_GarrickPositioned","MYAREA",0)
 THEN
 	RESPONSE #100
@@ -24,7 +24,7 @@ THEN
 END
 
 IF
-	Global("#L_GarrickTOK_BG1","GLOBAL",1)
+	Global("#L_GarrickTOK_SoD","GLOBAL",1)
 	OR(2)
 		Global("#L_GIPerformTimer","MYAREA",0)
 		GlobalTimerExpired("#L_GIPerformTimer","MYAREA")

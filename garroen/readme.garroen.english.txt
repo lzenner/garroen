@@ -24,7 +24,7 @@ The romance will begin if Garrick and Imoen are both in the group or are 'parked
 SoD Content
 ------------------------------------------------------------------------
 Requires SoD or EET
-The romance will continue from BG1EE if installed or will commence when Garrick is attempting to perform at the Elfsong Tavern.  Garrick will join Imoen as a recruitable NPC if the SoD portion of the Imoen Forever mod is installed.
+The romance will continue from BG1EE (if EET, Transitions, or Ever BG1 are installed) or will commence with the start of SoD.  In SoD, he'll be found in Three Old Kegs instead of Elfsong Tavern.  Garrick will join Imoen as a recruitable NPC if the SoD portion of the Imoen Forever mod is installed.  Otherwise, the romance counter will simply continue to tick and they'll be a committed couple by the end of SoD.
 
 ------------------------------------------------------------------------
 BG2EE Content

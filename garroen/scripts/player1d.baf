@@ -6,7 +6,6 @@
 IF
 	GlobalGT("#L_GIRomance","GLOBAL",0)
 	GlobalLT("#L_GIRomance","GLOBAL",150)
-	Global("EndOfBG1","GLOBAL",0)
 	OR(2)
 		Global("#L_GIRestTimer","GLOBAL",0)
 		GlobalTimerExpired("#L_GIRestTimer","GLOBAL")

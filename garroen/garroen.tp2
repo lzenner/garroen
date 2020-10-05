@@ -70,32 +70,11 @@ LANGUAGE ~American English~ ~american~
    ~garroen/languages/american/cases.tra~
    ~weidu_external/workspace/garroen/languages/american/cases.tra~
 
-/////////////////
-// BG1 CONTENT //
-/////////////////
+///////////////////////////////////////////////////////////////
+// WILL INSTALL ALL CONTENT APPROPRIATE FOR THE CURRENT GAME //
+///////////////////////////////////////////////////////////////
 BEGIN @10    // MOD 0
-LABEL "#L-GARROEN-BG1"
-REQUIRE_PREDICATE (GAME_IS ~bgee eet~) @2
-INCLUDE ~garroen/components/garroen_bg1.tpa~
-LAF garroen_bg1 END
-
-/////////////////
-// SoD CONTENT //
-/////////////////
-BEGIN @11    // MOD 10
-DESIGNATED 10
-LABEL "#L-GARROEN-SOD"
-REQUIRE_PREDICATE ((GAME_IS ~eet~) OR (GAME_INCLUDES ~sod~)) @3
-INCLUDE ~garroen/components/garroen_sod.tpa~
-LAF garroen_sod END
-
-/////////////////
-// BG2 CONTENT //
-/////////////////
-BEGIN @12    // MOD 20
-DESIGNATED 20
-LABEL "#L-GARROEN-BG2"
-REQUIRE_PREDICATE (GAME_IS ~bg2ee eet~) @4
-INCLUDE ~garroen/components/garroen_bg2.tpa~
-LAF garroen_bg2 END
+LABEL "#L-GARROEN"
+INCLUDE ~garroen/components/garroen.tpa~
+LAF garroen END
 

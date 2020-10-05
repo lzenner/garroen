@@ -3,14 +3,8 @@
 ////////////////////////////////
 @0 		= ~Garroen~
 @1		= ~This mod is only compatible with BG1EE, SoD, BG2EE and EET~
-@2		= ~Requires BG1EE or EET~
-@3		= ~Requires SoD or EET~
-@4		= ~Requires BG2EE or EET~
-@5		= ~Requires EET~
 
-@10		= ~BG1EE Content~
-@11		= ~SoD Content~
-@12		= ~BG2EE Content~
+@10		= ~Install Garroen~
 
 
 

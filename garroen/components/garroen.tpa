@@ -1,0 +1,82 @@
+////////////////////////////////////
+// Adds Garrick and Imoen romance //
+////////////////////////////////////
+
+DEFINE_ACTION_FUNCTION garroen BEGIN
+	// Set up code for moving Garrick based on installed game
+	OUTER_SPRINT MOVE_GARRICK_TOK_BG1 ~~
+	ACTION_IF GAME_IS ~bgee eet~ BEGIN
+		OUTER_SPRINT MOVE_GARRICK_TOK_BG1 ~~~~~IF
+	Global("#L_ImoenInPalace","GLOBAL",1)
+	!InPartyAllowDead("GARRICK")
+	Global("EndOfBG1","GLOBAL",0)
+	Global("#L_MovedGarrickTOK_BG1","GLOBAL",0)
+	Global("#L_GarrickTOK_BG1","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("#L_MovedGarrickTOK_BG1","GLOBAL",1)
+		SetGlobal("#L_GarrickFeldepost","GLOBAL",0)
+		SetGlobal("#L_GarrickTOK_BG1","GLOBAL",1)
+		MoveGlobal("%NBaldursGate_ThreeOldKegs_L1%","GARRICK",[350.140])
+END~~~~~
+	END
+
+	OUTER_SPRINT MOVE_GARRICK_TOK_SOD ~~
+	ACTION_IF GAME_INCLUDES ~sod~ BEGIN
+		OUTER_SPRINT MOVE_GARRICK_TOK_SOD ~~~~~IF
+	!InPartyAllowDead("GARRICK")
+	Global("EndOfBG1","GLOBAL",1)
+	Global("#L_MovedGarrickTOK_SoD","GLOBAL",0)
+	Global("#L_GarrickTOK_SoD","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("#L_MovedGarrickTOK_SoD","GLOBAL",1)
+		SetGlobal("#L_GarrickFeldepost","GLOBAL",0)
+		SetGlobal("#L_GarrickTOK_BG1","GLOBAL",0)
+		SetGlobal("#L_GarrickTOK_SoD","GLOBAL",1)
+		MoveGlobal("BD0106","GARRICK",[350.140])
+END~~~~~
+	END
+
+	// Globals, timers, kicks off scenes when idle, and moves Garrick to Three Old Kegs
+	EXTEND_TOP ~BALDUR.BCS~ ~%mod_root%/scripts/baldur.baf~ EVAL
+
+	// Kicks off scenes that happen just before rest
+	EXTEND_BOTTOM ~PLAYER1D.BCS~ ~%mod_root%/scripts/player1d.baf~ EVAL
+
+	// Globals and kicks off scenes in the inns
+	ACTION_IF GAME_IS ~bgee eet~ BEGIN
+		EXTEND_TOP ~%Beregost_FeldepostsInn_L1%.BCS~ ~%mod_root%/scripts/feldeposts_inn_bg1.baf~ EVAL
+		EXTEND_TOP ~%NBaldursGate_ThreeOldKegs_L1%.BCS~ ~%mod_root%/scripts/three_old_kegs_bg1.baf~ EVAL
+	END
+	ACTION_IF GAME_INCLUDES ~sod~ BEGIN
+		EXTEND_TOP ~BD0106.BCS~ ~%mod_root%/scripts/three_old_kegs_sod.baf~ EVAL
+	END
+
+	// The scenes
+	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGIIdle.baf~ USING ~%tra_loc%/%s/dialogues.tra~
+	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGISing.baf~ USING ~%tra_loc%/%s/dialogues.tra~	
+	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGISigh.baf~ USING ~%tra_loc%/%s/dialogues.tra~	
+	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGICamp.baf~ USING ~%tra_loc%/%s/dialogues.tra~
+	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGIDngn.baf~ USING ~%tra_loc%/%s/dialogues.tra~
+	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGIInn.baf~ USING ~%tra_loc%/%s/dialogues.tra~
+
+	// Get a couple strrefs from Transitions 
+	// so we can recreate portion of the dialogue I needed to sidestep
+	// Luckily it should be installed first
+	OUTER_SPRINT TRANSITIONS_IMOEN_TRAIN ~~
+	ACTION_IF (MOD_IS_INSTALLED ~transitions.tp2~ (ID_OF_LABEL "transitions.tp2" "#L-TRANSITIONS-MAIN")) BEGIN
+		OUTER_SET TRANS_GO_TRAIN = STATE_WHICH_SAYS 2121 IN ~weidu_external/workspace/transitions/languages/%s/dialogues.tra~ FROM ~%IMOEN_POST%~
+		ACTION_IF TRANS_GO_TRAIN > ~-1~ BEGIN
+			WITH_TRA ~weidu_external/workspace/transitions/languages/%s/dialogues.tra~ BEGIN
+				OUTER_SET TRANS_WONT_NEED_YOU = RESOLVE_STR_REF (@2322)
+			END
+			OUTER_SPRINT TRANSITIONS_IMOEN_TRAIN ~~~~~IF ~GlobalGT("#L_ImTrainRsp","GLOBAL",0)~ THEN REPLY #%TRANS_WONT_NEED_YOU% GOTO %TRANS_GO_TRAIN%~~~~~
+		END
+	END
+
+	// Compile their dialogues
+	ACTION_IF GAME_IS ~bgee eet~ BEGIN
+		COMPILE EVALUATE_BUFFER ~%mod_root%/dialogues/dialogues_bg1.d~ USING ~%tra_loc%/%s/dialogues.tra~
+	END
+END
