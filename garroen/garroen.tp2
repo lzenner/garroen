@@ -78,3 +78,10 @@ LABEL "#L-GARROEN"
 INCLUDE ~garroen/components/garroen.tpa~
 LAF garroen END
 
+///////////////////////
+// GIVE AID TO IMOEN //
+///////////////////////
+BEGIN @20   // MOD 10
+LABEL "#L-SODOFF-AID_IMOEN"
+INCLUDE ~garroen/components/aid_imoen.tpa~
+LAF aid_imoen END

@@ -1,0 +1,14 @@
+////////////////////////////////////////////////////////////////
+// Allows PC to render aid to Imoen after Caelar Elite attack //
+////////////////////////////////////////////////////////////////
+
+DEFINE_ACTION_FUNCTION aid_imoen BEGIN
+	// Modified sleep spell that makes it so they don't stand up when you run into them
+	COPY ~%mod_root%/objects/#LSleep.SPL~ ~override~
+
+	COPY_EXISTING ~BD0103.BCS~ ~override~
+		DECOMPILE_AND_PATCH BEGIN
+			REPLACE_TEXTUALLY ~XEquipItem("NOCIRCLE","IMOEN2",SLOT_RING_LEFT,EQUIP)~ ~~
+			REPLACE_TEXTUALLY ~ReallyForceSpellRES("bdgassa1","IMOEN2")~ ~ReallyForceSpellRES("#LSleep","IMOEN2") ActionOverride("IMOEN2",SetSequence(SEQ_SLEEP)) Kill("CUTSPY") ActionOverride("cutspy",DestroySelf())~
+		END
+END
