@@ -20,11 +20,14 @@ IF
 THEN
 	RESPONSE #100
 		ActionOverride("GARRICK",Face(SE))
+		SetGlobal("BD_No_Boot_Dialog","MYAREA",1)
+		ActionOverride("GARRICK",SaveObjectLocation("LOCALS","BD_Default_Loc",Myself))
 		SetGlobal("#L_GarrickPositioned","MYAREA",1)
 END
 
 IF
 	Global("#L_GarrickTOK_SoD","GLOBAL",1)
+	TriggerOverride("GARRICK",LOS(Player1,30))
 	OR(2)
 		Global("#L_GIPerformTimer","MYAREA",0)
 		GlobalTimerExpired("#L_GIPerformTimer","MYAREA")

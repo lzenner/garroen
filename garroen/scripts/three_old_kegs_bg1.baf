@@ -25,6 +25,7 @@ END
 
 IF
 	Global("#L_GarrickTOK_BG1","GLOBAL",1)
+	TriggerOverride("GARRICK",LOS(Player1,30))
 	OR(2)
 		Global("#L_GIPerformTimer","MYAREA",0)
 		GlobalTimerExpired("#L_GIPerformTimer","MYAREA")

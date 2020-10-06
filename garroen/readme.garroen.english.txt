@@ -35,7 +35,8 @@ For EET, the romance will only continue if it was started in the previous campai
 ------------------------------------------------------------------------
 PLANNED FUTURE ENHANCEMENTS
 ------------------------------------------------------------------------
-* None at this time
+* Jaheirafan Today at 11:54 AM
+* - you could, like, suggest a certain homeliness, think about it: the PC, ever lonely traveling forward, but in the certainty that he has an extended family meaning Garrick and Immy, waiting for him
 
 ------------------------------------------------------------------------
 COMPATIBILITY NOTES
