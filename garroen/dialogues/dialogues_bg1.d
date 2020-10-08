@@ -53,7 +53,7 @@ APPEND GARRIC
 
 	IF ~~ BEGIN GARRIC_TO_TOK
 		SAY	@2003 // ~I'll be at Three Old Keg's in North Baldur's Gate if you need me in the future.~
-		IF ~~ DO ~SetGlobal("#L_GarrickTOK","GLOBAL",1) SetGlobal("KickedOut","LOCALS",1) ChangeAIScript("",DEFAULT) EscapeAreaMove("%NBaldursGate_ThreeOldKegs_L1%",350,140,SE)~ EXIT
+		IF ~~ DO ~SetGlobal("#L_GarrickTOK","GLOBAL",1) SetGlobal("KickedOut","LOCALS",1) ChangeAIScript("",DEFAULT) EscapeAreaMove("%NBaldursGate_ThreeOldKegs_L1%",360,140,SE)~ EXIT
 	END
 END
 
@@ -95,12 +95,12 @@ APPEND %GARRICK_POST%
 
 	IF ~~ BEGIN GARRICK_TO_TOK
 		SAY	@2003 // ~I'll be at Three Old Keg's in North Baldur's Gate if you need me in the future.~
-		IF ~~ DO ~SetGlobal("#L_GarrickTOK","GLOBAL",1) SetGlobal("KickedOut","LOCALS",1) ChangeAIScript("",DEFAULT) EscapeAreaMove("%NBaldursGate_ThreeOldKegs_L1%",350,140,SE)~ EXIT
+		IF ~~ DO ~SetGlobal("#L_GarrickTOK","GLOBAL",1) SetGlobal("KickedOut","LOCALS",1) ChangeAIScript("",DEFAULT) EscapeAreaMove("%NBaldursGate_ThreeOldKegs_L1%",360,140,SE)~ EXIT
 	END
 
 	IF ~~ BEGIN GARRICK_AT_TOK
 		SAY @2001 /* ~And this is as good a place as any to perform.~ */
-		IF ~~ DO ~SetGlobal("#L_GarrickTOK","GLOBAL",1) SetGlobal("KickedOut","LOCALS",1) ChangeAIScript("",DEFAULT) MoveToPoint([350.140]) Face(SE)~ EXIT
+		IF ~~ DO ~SetGlobal("#L_GarrickTOK","GLOBAL",1) SetGlobal("KickedOut","LOCALS",1) ChangeAIScript("",DEFAULT) MoveToPoint([360.140]) Face(SE)~ EXIT
 		IF ~Global("KickedOut","LOCALS",1)~ EXIT
 	END
 END
