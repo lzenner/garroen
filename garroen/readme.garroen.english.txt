@@ -17,26 +17,27 @@ DESCRIPTION
 ------------------------------------------------------------------------
 BG1EE Content
 ------------------------------------------------------------------------
-Requires BG1EE or EET
 The romance will begin if Garrick and Imoen are both in the group or are 'parked' in Feldepost's Inn.  If the Garrick's Infatuation mod is installed and both he and Imoen are in the group, the romance will begin after he declares you are his best friend and the rest of the infatuation will be skipped.  The infatuation will also end if they are parked together in Feldepost's Inn for more than 5 days. If you force them to part company, the romance will pause until they're either together again or SoD starts.
 
 ------------------------------------------------------------------------
 SoD Content
 ------------------------------------------------------------------------
-Requires SoD or EET
 The romance will continue from BG1EE (if EET, Transitions, or Ever BG1 are installed) or will commence with the start of SoD.  In SoD, he'll be found in Three Old Kegs instead of Elfsong Tavern.  Garrick will join Imoen as a recruitable NPC if the SoD portion of the Imoen Forever mod is installed.  Otherwise, the romance counter will simply continue to tick and they'll be a committed couple by the end of SoD.
 
 ------------------------------------------------------------------------
 BG2EE Content
 ------------------------------------------------------------------------
-Requires BG2EE or EET
 For EET, the romance will only continue if it was started in the previous campaigns.  For a non-EET installation, it is assumed the relationship proceeded to the point to where Garrick will come looking for Imoen. 
 
 ------------------------------------------------------------------------
 PLANNED FUTURE ENHANCEMENTS
 ------------------------------------------------------------------------
-* Jaheirafan Today at 11:54 AM
-* - you could, like, suggest a certain homeliness, think about it: the PC, ever lonely traveling forward, but in the certainty that he has an extended family meaning Garrick and Immy, waiting for him
+* Change Imoen's position in the inns if Garrick isn't parked there
+* Add BG1 situational dialogue  
+	- Either of them are badly injured or die
+	- Imoen asks/hints about Garrick if he's not in the group
+* Jaheirafan Today at 11:54 AM 
+	- you could, like, suggest a certain homeliness, think about it: the PC, ever lonely traveling forward, but in the certainty that he has an extended family meaning Garrick and Immy, waiting for him
 
 ------------------------------------------------------------------------
 COMPATIBILITY NOTES

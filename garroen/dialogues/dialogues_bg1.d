@@ -129,7 +129,7 @@ APPEND %IMOEN_POST%
 
 	IF ~~ BEGIN IMOEN_AT_FELDEPOST
 		SAY @2002 /* ~I'll be right here if you need me in the future.~ */
-		IF ~~ DO ~SetGlobal("#L_ImoenFeldepost","GLOBAL",1) SetGlobal("KickedOut","LOCALS",1) ChangeAIScript("",DEFAULT) MoveToPoint([900.510]) Face(NE)~ EXIT
+		IF ~~ DO ~SetGlobal("#L_ImoenFeldepost","GLOBAL",1) SetGlobal("KickedOut","LOCALS",1) ChangeAIScript("",DEFAULT) MoveToPoint([780.580]) Face(NE)~ EXIT
 		IF ~Global("KickedOut","LOCALS",1)~ EXIT
 	END
 END

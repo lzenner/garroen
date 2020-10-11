@@ -81,7 +81,7 @@
 // If they are in the BG1 group - this is as far as it goes
 @2070	= ~Sings, "Oh say you'll be mine! Please say you'll be mine! Be mine, be mine for rest of time!"~
 @2071	= ~Imoen beams at Garrick and gives him a wink.~
-@2072	= ~A shriek from Imoen brings everyone to attention and reaching for their weapons, until they notice Garrick down on one knee.~
+@2072	= ~A shriek from Imoen brings everyone to high alert and reaching for their weapons, until they notice Garrick down on one knee.~
 @2073	= ~Through dinner, Imoen shows off her wedding ring to whomever happens to be near while the men give Garrick a congratulatory slap on the back.~
 @2074	= ~Garrick and Imoen chatter excitedly through dinner, sharing their wedding plans with the group.~
 @2075	= ~Imoen jumps up and throws her arms around Garrick's neck.  He quite deftly braces himself while supporting her weight as he gives her a grin and a kiss.~
@@ -91,7 +91,7 @@
 //////////////////////////
 // They are newly weds
 // If they are parked longer than 25 days- they can proceed with the wedding in BG1
-@2080	= ~That's all for tonight folks.  My bride-to-be and I are on the way to the temple.  Then it's off to our honeymoon!~
+@2080	= ~That's all for tonight folks.  My bride-to-be and I are on the way to the temple to be married!~
 @2081	= ~Sings, "Married life is a merry life with a merry wife indeed!~
 @2082	= ~Imoen blushes and beams with joy.~
 @2083	= ~Imoen giggles and sings along.~
@@ -100,8 +100,32 @@
 // ROMANCE DAYS 126->   //
 //////////////////////////
 // They are a more settled wedded couple
-// Only will reach here in BG1 if parked together for at least 50 days
+// Only will reach here in BG1 if parked together for at least 50 days (25 days after wedding)
 @2090	= ~Here's a song for my lovely bride.  She completes me.~
 @2091	= ~This song is for my beautiful wife, without whom life would hold no meaning.~
 @2092	= ~Imoen brushes away a tear of joy.~
 
+///////////////////////////
+// ADDITIONS WHEN IMOEN  //
+// IS IN TRAINING IN BG1 //
+///////////////////////////
+// This will only be seen when Transitions is installed
+@2100	= ~Imoen!  There you are, child!  It's time for your training.  Come along!~
+@2101	= ~Imoen!  I thought I'd find you here.  It's time for your training.  Come along now!~
+@2102	= ~Imoen!  There you are, child!  You need your rest if you're going to be able to learn anything in the morning.  Come along!~
+@2103	= ~Imoen!  You're still awake?!  You need your rest.  Come along now!~
+@2104	= ~Aww, do I have to?  Five more minutes?~
+@2105	= ~Now Imoen.~
+@2106	= ~*sigh* Ok.~
+@2107	= ~Imoen looks over at Garrick, pouts and blows him a kiss.~ 
+
+/////////////////////////////
+// ADDITIONS FOR BEGINNING //
+// OF SOD - BEFORE CAMPS   //
+/////////////////////////////
+@2110	= ~Greetings <CHARNAME>.  How are you this fine <DAYNIGHT>?~
+@2111	= ~I could be better.  Imoen and I were attacked.  She lies comatose in the palace as we speak.~
+@2112	= ~Imoen is hurt?!  NO!!  Imoen!  I'm coming!~
+@2113	= ~There's a pair of ne'er-do-wells named Safana and Coran. They're at the Elfsong Tavern.~ */
+@2114	= ~Garrick. He performs on a regular basis at the Three Old Kegs tavern.~
+@2115	= ~Ok, well, let's keep moving.~

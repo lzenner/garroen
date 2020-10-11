@@ -25,13 +25,38 @@ END
 
 IF
 	Global("#L_GarrickTOK_BG1","GLOBAL",1)
-	TriggerOverride("GARRICK",LOS(Player1,30))
+	Global("#L_ImoenInPalace","GLOBAL",1)
+	Global("#L_ImoenSet","MYAREA",0)
 	OR(2)
 		Global("#L_GIPerformTimer","MYAREA",0)
 		GlobalTimerExpired("#L_GIPerformTimer","MYAREA")
+THEN
+	RESPONSE #100
+		// Make sure Imoen is in the house listening
+		CreateCreature("IMOEN",[365.215],N)
+		ActionOverride("%IMOEN_DV%",Face(N))
+		SetGlobal("#L_ImoenSet","MYAREA",1)
+		ActionOverride("%IMOEN_DV%",SetDialog(""))
+		ActionOverride("%IMOEN_DV%",ChangeAIScript("",OVERRIDE))
+		ActionOverride("%IMOEN_DV%",ChangeAIScript("DEFAULT",CLASS))
+		ActionOverride("%IMOEN_DV%",ChangeAIScript("",RACE))
+		ActionOverride("%IMOEN_DV%",ChangeAIScript("",GENERAL))
+		ActionOverride("%IMOEN_DV%",ChangeAIScript("",DEFAULT))
+		// Shut Shep up for a moment
+		ActionOverride("SHEP",ChangeAIScript("",CLASS))
+		Continue()
+END
+
+IF
+	Global("#L_GarrickTOK_BG1","GLOBAL",1)
+	OR(2)
+		Global("#L_GIPerformTimer","MYAREA",0)
+		GlobalTimerExpired("#L_GIPerformTimer","MYAREA")
+	TriggerOverride("GARRICK",LOS(Player1,30))
 THEN
 	RESPONSE #100
 		StartCutSceneMode()
 		SetGlobalTimer("#L_GIPerformTimer","MYAREA",ONE_DAY)	// He performs at most once per day
 		StartCutSceneEx("#LGISing",TRUE)
 END
+

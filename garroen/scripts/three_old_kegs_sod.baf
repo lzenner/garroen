@@ -27,13 +27,24 @@ END
 
 IF
 	Global("#L_GarrickTOK_SoD","GLOBAL",1)
-	TriggerOverride("GARRICK",LOS(Player1,30))
 	OR(2)
 		Global("#L_GIPerformTimer","MYAREA",0)
 		GlobalTimerExpired("#L_GIPerformTimer","MYAREA")
+	TriggerOverride("GARRICK",LOS(Player1,30))
 THEN
 	RESPONSE #100
 		StartCutSceneMode()
 		SetGlobalTimer("#L_GIPerformTimer","MYAREA",ONE_DAY)	// He performs at most once per day
 		StartCutSceneEx("#LGISing",TRUE)
 END
+
+IF
+	GlobalLT("bd_visited_three_npcs","global",3)
+	Global("bd_stop_npc_increment","MYAREA",0)
+	GlobalGT("BD_Spoken_Garrick","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("bd_stop_npc_increment","MYAREA",1)
+		IncrementGlobal("bd_visited_three_npcs","global",1)
+END
+

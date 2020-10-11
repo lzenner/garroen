@@ -1,0 +1,106 @@
+////////////////////////////////////////////////////////////////////
+// Extra cut scenes in BG1 Three Old Kegs while Imoen in Training //
+// Only will be seen when Transitions is installed                //
+////////////////////////////////////////////////////////////////////
+
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		SetGlobal("#L_ImoenFound","MYAREA",1)
+		CreateCreatureEffect("LIIA","DDOORH",[345.195],N)
+		SmallWait(5)
+		ActionOverride("LIIA",FaceObject("%IMOEN_DV%"))
+		Continue()
+END
+
+IF
+	Global("#L_ImoenFound","MYAREA",0)
+	OR(2)
+		TimeOfDay(MORNING)
+		TimeOfDay(DAY)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		DisplayStringHead("LIIA",@2100) // ~Imoen! There you are! It's time for your training.  Come along!~
+		Wait(2)
+		Continue()
+END
+	
+IF
+	Global("#L_ImoenFound","MYAREA",1)
+	OR(2)
+		TimeOfDay(MORNING)
+		TimeOfDay(DAY)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		DisplayStringHead("LIIA",@2101) // ~Imoen!  I thought I'd find you here.  It's time for your training.
+		Wait(2)
+		Continue()
+END
+	
+IF
+	Global("#L_ImoenFound","MYAREA",0)
+	!TimeOfDay(MORNING)
+	!TimeOfDay(DAY)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		DisplayStringHead("LIIA",@2102) // ~Imoen!  There you are, child!  You need your rest 
+		Wait(2)
+		Continue()
+END
+	
+IF
+	Global("#L_ImoenFound","MYAREA",1)
+	!TimeOfDay(MORNING)
+	!TimeOfDay(DAY)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		DisplayStringHead("LIIA",@2103) // ~Imoen!  You're still awake?!  You need your rest.  Come along now!~
+		Wait(2)
+		Continue()
+END
+
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		DisplayStringHead("%IMOEN_DV%",@2104) // ~Aww, do I have to?  Five more minutes?~
+		Wait(2)
+		DisplayStringHead("LIIA",@2105) // ~Now Imoen.~
+		Wait(2)
+		DisplayStringHead("%IMOEN_DV%",@2106) // ~*sigh* Ok.~
+		Wait(2)
+		Continue()
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",10)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		DisplayStringHead("%IMOEN_DV%",@2107) // ~Imoen looks over at Garrick, pouts and blows him a kiss.~
+		Wait(2)
+		Continue()
+END
+
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		ActionOverride("LIIA",ForceSpell("%IMOEN_DV%",DRYAD_TELEPORT))
+		ActionOverride("LIIA",ForceSpell("LIIA",DRYAD_TELEPORT))
+		Wait(2)
+		ActionOverride("%IMOEN_DV%",DestroySelf())
+		ActionOverride("LIIA",DestroySelf())
+		SetGlobal("#L_ImoenSet","MYAREA",0)
+		// Let Shep be an ass now
+		ActionOverride("SHEP",ChangeAIScript("INITDLG",CLASS))
+		EndCutSceneMode()
+END

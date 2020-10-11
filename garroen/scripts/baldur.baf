@@ -85,6 +85,23 @@ END
 %MOVE_GARRICK_TOK_SOD%
 
 IF
+	Global("#L_GIMarried","GLOBAL",0)
+	Global("#L_ImoenInPalace","GLOBAL",0)
+	Global("EndOfBG1","GLOBAL",0)
+	GlobalTimerExpired("#L_GIAwayForWedding","GLOBAL")
+THEN
+	RESPONSE #100
+		SetGlobal("#L_GIMarried","GLOBAL",1)
+		SetGlobal("#L_GarrickPositioned","%Beregost_FeldepostsInn_L1%",0)
+		SetGlobal("#L_ImoenPositioned","%Beregost_FeldepostsInn_L1%",0)
+		SetGlobal("#L_GarrickFeldepost","GLOBAL",1)
+		SetGlobal("#L_ImoenFeldepost","GLOBAL",1)
+		MoveGlobal("%Beregost_FeldepostsInn_L1%","GARRICK",[900.510])
+		MoveGlobal("%Beregost_FeldepostsInn_L1%","%IMOEN_DV%",[780.580])
+		Continue()
+END
+
+IF
 	// If they're in the group together
 	// and the flirt isn't going to continue
 	// and the romance hasn't started yet
