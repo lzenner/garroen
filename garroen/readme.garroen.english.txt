@@ -8,7 +8,7 @@ GENERAL
 ------------------------------------------------------------------------
 This mod requires EET, BG1EE, SoD, or BG2EE.
 
-Adds a romance between Garrick and Imoen, making Garrick available as a joinable NPC whenever Imoen is in the group or in need of rescuing.
+Adds a romance between Garrick and Imoen, making Garrick available as a joinable NPC whenever Imoen is joinable or in need of rescuing.
 
 ------------------------------------------------------------------------
 DESCRIPTION
@@ -17,7 +17,7 @@ DESCRIPTION
 ------------------------------------------------------------------------
 BG1EE Content
 ------------------------------------------------------------------------
-The romance will begin if Garrick and Imoen are both in the group or are 'parked' in Feldepost's Inn.  If the Garrick's Infatuation mod is installed and both he and Imoen are in the group, the romance will begin after he declares you are his best friend and the rest of the infatuation will be skipped.  The infatuation will also end if they are parked together in Feldepost's Inn for more than 5 days. If you force them to part company, the romance will pause until they're either together again or SoD starts.
+The romance will begin if Garrick and Imoen are both in the group or are both 'parked' in Feldepost's Inn.  If the Garrick's Infatuation mod is installed and both he and Imoen are in the group, the romance will begin after he declares you are his best friend and the rest of the infatuation will be skipped.  The infatuation will also end if they are parked together in Feldepost's Inn for more than 5 days. If you force them to part company, the romance will pause until they're either together again or SoD starts.
 
 ------------------------------------------------------------------------
 SoD Content
@@ -38,7 +38,7 @@ PLANNED FUTURE ENHANCEMENTS
 * Make sure they've been married for 25 days prior to moving to 'settled' scenes
 * Add BG1 situational dialogue  
 	- Either of them are badly injured or die
-	- Imoen asks/hints about Garrick if he's not in the group
+	- Imoen asks/hints about Garrick if he's not in the group (if they've met)
 * Jaheirafan Today at 11:54 AM 
 	- you could, like, suggest a certain homeliness, think about it: the PC, ever lonely traveling forward, but in the certainty that he has an extended family meaning Garrick and Immy, waiting for him
 
@@ -58,7 +58,7 @@ NOTE: If you've previously installed the mod, remove it before extracting a new 
 
 When installing or uninstalling, do not close the DOS window by clicking on the X button! Instead, press the Enter key when instructed to do so.
 
-IMPORTANT: EET_End will need to be reinstalled after installing this mod.
+IMPORTANT FOR EET INSTALLATIONS: EET_End will need to be reinstalled after installing this mod.
  
 General (Windows, Mac OS X, and Linux)
 
@@ -86,7 +86,6 @@ CREDITS
 * Gwendolyne: for the very handy clone regions tool in GW_Cartes.tpa
 * G3 guest Gob Oafenplug: for the new code for change_door_name.tpa 
 * Grammarsalad, subtledoctor, grodrigues, Mike1072, and jastey: for the ideas, guidance and help on the tool that provides proper and upper case player1 pronouns (cases.tpa)
-* Tantalus: BAMs of Sarevok unique items. The BAMs where taken out of Tantalus' Mod "Sarevok Recovery Mod", licensed under "Creative Commons" von Nicolas Peters. Lizenz: CC BY-NC-SA 3.0 ( https://creativecommons.org/licenses/by-nc-sa/3.0/ )
 * jastey: For being a mentor and friend and for your awesome NPC SoD tutorial!
 * Bubb and CamDawg for LOVE YOU FOREVER!!! Thought I'd forget, didn't ya.
 * The folks at The Gibberlings Three forums: for never failing to answer my many many questions
@@ -94,7 +93,7 @@ CREDITS
 ------------------------------------------------------------------------
 USED TOOLS AND RESSOURCES
 ------------------------------------------------------------------------
-The Transitions Mod was created using the resources provided by the IESDP (https://gibberlings3.github.io/iesdp/index.htm) and with the following software:
+The Garroen Mod was created using the resources provided by the IESDP (https://gibberlings3.github.io/iesdp/index.htm) and with the following software:
 
 * Near Infinity			https://github.com/Argent77/NearInfinity/releases/latest
 * WeiDU					http://www.weidu.org

@@ -1,0 +1,16 @@
+/////////////////////////////////////////////////////
+// Triggers for Garrick's scene by Imoen's bedside //
+/////////////////////////////////////////////////////
+IF
+	GlobalGT("BD_Spoken_Garrick","GLOBAL",0)
+	Global("#L_GIBedside","MYAREA",0)
+	TriggerOverride("GARRICK",LOS(Player1,30))
+THEN
+	RESPONSE #100
+		StartCutSceneMode()
+		SetGlobal("#L_GIBedside","MYAREA",1)
+		DisplayStringHead("GARRICK",@2113) // ~Garrick gently strokes Imoen's hand while quietly encouraging her to get better.~
+		Wait(3)
+		EndCutSceneMode()
+		Continue()
+END

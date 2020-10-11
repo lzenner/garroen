@@ -130,25 +130,33 @@
 @2110	= ~Greetings <CHARNAME>.  How are you this fine <DAYNIGHT>?~
 @2111	= ~I could be better.  Imoen and I were attacked.  She lies comatose in the palace as we speak.~
 @2112	= ~Imoen is hurt?!  NO!!  Imoen!  I'm coming!~
+@2113	= ~Garrick gently strokes Imoen's hand while quietly encouraging her to get better.~
+@2114	= ~I hear you probably saved her life.  I can't begin to thank you.~
+@2115	= ~Fenster is doing all he can do, but she's still out.~
+@2116	= ~She looks so much better.  I'm sure she'll be up and around in now time.~
+@2117	= ~I won't leave her side until she is.~
+@2118	= ~Garrick goes back to focusing on Imoen, caressing her hand and whispering encouragement.~
+@2119	= ~Oh, hello again <CHARNAME>.~
+@2120	= ~I really can't talk now.  I'm sorry.~
 
 ///////////////////////
 // TOUR-GUIDE CORWIN //
 ///////////////////////
-@2120	= ~There's a pair of ne'er-do-wells named Safana and Coran. They're at the Elfsong Tavern.~
-@2121	= ~Garrick. He performs on a regular basis at the Three Old Kegs tavern.~
-@2122	= ~Ok, well, let's keep moving.~
-@2123	= ~The Three Old Kegs isn't far from here. There's a bard and a pair of Rashemi travelers staying there. Duke Eltan thought you might speak with them.~
-@2124	= ~The Grand Dukes thought you might want to talk with a bard named Garrick, a ranger named Minsc or a magician named Dynaheir. They're in the Three Old Kegs.~
-@2125	= ~A bard named Garrick and a pair of Rashemi adventurers named Minsc and Dynaheir. They're staying at the Three Old Kegs, over on the west side of the street.~
-@2126	= ~We aren't far from the Elfsong Tavern. A couple people you might want to speak with—Safana and Coran—have been seen there recently. Or if you'd like to get some supplies for the journey to Dragonspear, we can go to Sorcerous Sundries.~
-@2127	= ~If you need gear, I should be able to get us into Sorcerous Sundries ahead of the rest of the line. You can also visit the Elfsong Tavern. A couple adventurers who might prove useful are staying there.~
-@2128	= ~The ne'er-do-wells Safana and Coran. Waste of time, if you ask me. I wouldn't trust either one of them with half a rusted copper, much less my life. Let's go.~
-@2129	= ~You mentioned something about a bard at the Three Old Kegs tavern, didn't you?~
-@2130	= ~You tell me. We are to acquire equipment and allies for the trip north. There's a bard and a couple of Rashemi adventurers we can talk to at the Three Old Kegs, the thieves at the Elfsong Tavern, or a monk at the Iron Throne Building. Or we could just return to the palace.~
-@2131	= ~Safana and Coran, a pair of unsavory characters staying upstairs Belt thinks might be of use. Why he'd think that, I don't know, but it's not my place to argue with a Grand Duke.~
-@2132	= ~I believe so. Coran was unable to join me. I spoke to Safana upstairs.~
-@2133	= ~The bard Garrick, the witch Dynaheir and her bodyguard Minsc are staying at the Three Old Kegs...~
-@2134	= ~You tell me. We are to acquire equipment and allies for the trip north. There's a bard and a couple of Rashemi adventurers we can talk to at the Three Old Kegs, the thieves at the Elfsong Tavern. Or we could just return to the palace.~
-@2135	= ~You tell me. We are to acquire equipment and allies for the trip north. There's the thieves at the Elfsong Tavern, or a monk at the Iron Throne Building. Or we could just return to the palace.~
-@2136	= ~You tell me. We are to acquire equipment and allies for the trip north. There's the thieves at the Elfsong Tavern. Or we could just return to the palace.~
+@2130	= ~There's a pair of ne'er-do-wells named Safana and Coran. They're at the Elfsong Tavern.~
+@2131	= ~Garrick. He performs on a regular basis at the Three Old Kegs tavern.~
+@2132	= ~Ok, well, let's keep moving.~
+@2133	= ~The Three Old Kegs isn't far from here. There's a bard and a pair of Rashemi travelers staying there. Duke Eltan thought you might speak with them.~
+@2134	= ~The Grand Dukes thought you might want to talk with a bard named Garrick, a ranger named Minsc or a magician named Dynaheir. They're in the Three Old Kegs.~
+@2135	= ~A bard named Garrick and a pair of Rashemi adventurers named Minsc and Dynaheir. They're staying at the Three Old Kegs, over on the west side of the street.~
+@2136	= ~We aren't far from the Elfsong Tavern. A couple people you might want to speak with—Safana and Coran—have been seen there recently. Or if you'd like to get some supplies for the journey to Dragonspear, we can go to Sorcerous Sundries.~
+@2137	= ~If you need gear, I should be able to get us into Sorcerous Sundries ahead of the rest of the line. You can also visit the Elfsong Tavern. A couple adventurers who might prove useful are staying there.~
+@2138	= ~The ne'er-do-wells Safana and Coran. Waste of time, if you ask me. I wouldn't trust either one of them with half a rusted copper, much less my life. Let's go.~
+@2139	= ~You mentioned something about a bard at the Three Old Kegs tavern, didn't you?~
+@2140	= ~You tell me. We are to acquire equipment and allies for the trip north. There's a bard and a couple of Rashemi adventurers we can talk to at the Three Old Kegs, the thieves at the Elfsong Tavern, or a monk at the Iron Throne Building. Or we could just return to the palace.~
+@2141	= ~Safana and Coran, a pair of unsavory characters staying upstairs Belt thinks might be of use. Why he'd think that, I don't know, but it's not my place to argue with a Grand Duke.~
+@2142	= ~I believe so. Coran was unable to join me. I spoke to Safana upstairs.~
+@2143	= ~The bard Garrick, the witch Dynaheir and her bodyguard Minsc are staying at the Three Old Kegs...~
+@2144	= ~You tell me. We are to acquire equipment and allies for the trip north. There's a bard and a couple of Rashemi adventurers we can talk to at the Three Old Kegs, the thieves at the Elfsong Tavern. Or we could just return to the palace.~
+@2145	= ~You tell me. We are to acquire equipment and allies for the trip north. There's the thieves at the Elfsong Tavern, or a monk at the Iron Throne Building. Or we could just return to the palace.~
+@2146	= ~You tell me. We are to acquire equipment and allies for the trip north. There's the thieves at the Elfsong Tavern. Or we could just return to the palace.~
 

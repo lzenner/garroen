@@ -143,6 +143,9 @@ END~~~~~
         		REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~ActionOverride("BDGARRIC",DialogueInterrupt(FALSE))~ ~ActionOverride("BDGARRIC",DestroySelf()) RemoveMapNote([806.325],%STRREF_GARRICK%)~
 			END
 
+		// Start scenes in palace (3rd floor)
+		EXTEND_TOP ~BD0103.BCS~ ~%mod_root%/scripts/palace_3rd_floor_sod.baf~ USING ~%tra_loc%/%s/dialogues.tra~
+
 		// Compile the dialogues
 		COMPILE EVALUATE_BUFFER ~%mod_root%/dialogues/dialogues_sod.d~ USING ~%tra_loc%/%s/dialogues.tra~
 	END
