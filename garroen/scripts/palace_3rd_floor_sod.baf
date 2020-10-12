@@ -2,7 +2,8 @@
 // Triggers for Garrick's scene by Imoen's bedside //
 /////////////////////////////////////////////////////
 IF
-	GlobalGT("BD_Spoken_Garrick","GLOBAL",0)
+	Global("BD_Spoken_Garrick","GLOBAL",1)
+	GlobalLT("BD_Plot","GLOBAL",54)
 	Global("#L_GIBedside","MYAREA",0)
 	TriggerOverride("GARRICK",LOS(Player1,30))
 THEN
