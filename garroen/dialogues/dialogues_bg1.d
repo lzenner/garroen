@@ -123,7 +123,7 @@ APPEND %IMOEN_POST%
 	END
 
 	IF ~~ BEGIN IMOEN_TO_FELDEPOST
-		SAY @2000 /* ~I'll be at the Feldepost Inn in Beregost if you need me in the future.~ */
+		SAY @2000 /* ~I'll be at Feldepost's Inn in Beregost if you need me in the future.~ */
 		IF ~~ DO ~SetGlobal("#L_ImoenFeldepost","GLOBAL",1) SetGlobal("KickedOut","LOCALS",1) ChangeAIScript("",DEFAULT) EscapeAreaMove("%Beregost_FeldepostsInn_L1%",780,580,NE)~ EXIT
 	END
 
