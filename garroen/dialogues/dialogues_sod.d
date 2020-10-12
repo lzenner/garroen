@@ -156,7 +156,41 @@ ALTER_TRANS BDSCHAEL
 /////////////////////////////////////////////////
 %JOIN_WITH_IMOEN%
 
+//////////////////////////////////////
+// Garrick's SoD post dialogue file //
+//////////////////////////////////////
+REPLACE_STATE_TRIGGER BDGARRIC 6 ~False()~
+REPLACE_STATE_TRIGGER BDGARRIC 11 ~False()~
+REPLACE_STATE_TRIGGER BDGARRIC 36 ~False()~
+REPLACE_STATE_TRIGGER BDGARRIC 44 ~False()~
+APPEND BDGARRIC
+	IF ~True()~ THEN BEGIN GARRICK_JOIN_1
+		SAY @2150 /* ~Hello again, <CHARNAME>!  How may I be of service?~ */
+		++ @2151 /* ~I'd like you to join me.~ */ GOTO GARRICK_JOIN_1.2A
+		+ ~InParty("IMOEN2")~ + @2153 /* ~I'm just seeing how you're getting along.  Do you have everything you need?~ */ + GARRICK_JOIN_1.2B
+		+ ~!InParty("IMOEN2")~ + @2153 /* ~I'm just seeing how you're getting along.  Do you have everything you need?~ */ + GARRICK_JOIN_1.2C
+	END
+
+	IF ~~ THEN BEGIN GARRICK_JOIN_1.2A
+		SAY @2152 /* ~Excellent!~ */
+		IF ~~ THEN DO ~SetDialogue("BDGARRIJ") JoinParty()~ EXIT
+	END
+
+	IF ~~ THEN BEGIN GARRICK_JOIN_1.2B
+		SAY @2155 /* ~I miss my lovely Immy, but besides that, I have everything I need.~ */
+		++ @2156 /* ~Awww, ok, come along.~ */ + GARRICK_JOIN_1.2A
+		++ @2157 /* ~I'm sorry, maybe later.~ */ EXIT
+	END
+
+	IF ~~ THEN BEGIN GARRICK_JOIN_1.2C
+		SAY @2154 /* ~I have my lovely Immy, so I have everything I need.~ */
+		IF ~~ THEN EXIT
+	END
+END
+
 ////////////////////////////////////////
 // Garricks's SoD party dialogue file //
 ////////////////////////////////////////
-BEGIN ~#LGar15J~
+APPEND BDGARRIJ
+END
+

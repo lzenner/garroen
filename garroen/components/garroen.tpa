@@ -65,6 +65,8 @@ THEN
 		SetGlobal("#L_GarrickTOK_SoD","GLOBAL",1)
 		SetGlobal("#L_GarrickModded","GLOBAL",1)
 		SetGlobal("#L_GarrickOKInBG1Areas","GLOBAL",1)
+		ActionOverride("GARRICK",SetGlobal("BD_Joined","LOCALS",0))
+	    ActionOverride("GARRICK",SetGlobal("BD_Retreat","locals",0))
 		IncrementGlobal("#L_GIRomance","GLOBAL",14)
 	    ApplySpellRES("bdrejuve","GARRICK")
 	    ChangeEnemyAlly("GARRICK",NEUTRAL)
@@ -137,21 +139,24 @@ END~~~~~
 			COPY_EXISTING ~c#imback.bcs~ ~override~
 				DECOMPILE_AND_PATCH BEGIN
 					REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~ActionOverride(Player1,CreateVisualEffect("SPDIMNDR",[1268.3238]))~ ~ActionOverride(Player1,CreateVisualEffect("SPDIMNDR",[1268.3238])) ActionOverride(Player1,CreateVisualEffect("SPDIMNDR",[1310.3230]))~
-					REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~MoveGlobal("bd1000","IMOEN2",[1268.3238])~ ~MoveGlobal("bd1000","IMOEN2",[1268.3238]) MoveGlobal("bd1000","GARRICK",[1310.3230])~
-					REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~FaceObject(Player1)~ ~FaceObject(Player1) ActionOverride("GARRICK",FaceObject("IMOEN2")) SetGlobal("#L_GarrickMoved","MYAREA",1)~
+					REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~MoveGlobal("bd1000","IMOEN2",[1268.3238])~ ~MoveGlobal("bd1000","IMOEN2",[1268.3238]) MoveGlobal("BD1000","GARRICK",[1310.3230]) ActionOverride("GARRICK",ChangeAIScript("#LGar15O",OVERRIDE)) ActionOverride("GARRICK",ChangeAIScript("BDGARRCC",CLASS)) ActionOverride("GARRICK",ChangeAIScript("",RACE)) ActionOverride("GARRICK",ChangeAIScript("",GENERAL)) ActionOverride("GARRICK",ChangeAIScript("BDPARTY",DEFAULT)) ActionOverride("GARRICK",SetDialogue("BDGARRIC"))~
+					REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~FaceObject(Player1)~ ~FaceObject(Player1) ActionOverride("GARRICK",FaceObject("IMOEN2")) SetGlobal("#L_GarrickMoved","BD1000",1) SetGlobal("#L_FollowingImoen","BD1000",1) ActionOverride("GARRICK",MoveToObjectFollow("IMOEN2"))~
 				END
 			// Have Garrick join the group when Imoen does
 			OUTER_SPRINT JOIN_WITH_IMOEN ~~~~~ALTER_TRANS BDIMOENS
 	BEGIN 7 END
 	BEGIN 0 END
 	BEGIN
-		"ACTION" ~SetGlobal("C#IM_ImoenRejoinsbd1000","GLOBAL",5) ActionOverride("GARRICK",JoinParty()) ActionOverride("GARRICK",SetDialogue("#LGar15J")) SetDialogue("BDIMOENJ") JoinParty()~
+		"ACTION" ~SetGlobal("C#IM_ImoenRejoinsbd1000","GLOBAL",5) SetGlobal("#L_GarrickJoined","GLOBAL",1) SetGlobal("#L_FollowingImoen","MYAREA",0) ActionOverride("GARRICK",JoinParty()) ActionOverride("GARRICK",SetDialogue("BDGARRIJ")) SetDialogue("BDIMOENJ") JoinParty()~
 	END~~~~~
 		END ELSE BEGIN
 			// Move Garrick to the first camp based on I4E Globals
 			// in case I4E is installed later
 			EXTEND_TOP ~BD1000.BCS~ ~%mod_root%/scripts/first_camp_sod.baf~
 		END
+
+		// Garrick's new override script
+//		COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGar15O.baf~
 
 		// Compile the dialogues
 		COMPILE EVALUATE_BUFFER ~%mod_root%/dialogues/dialogues_sod.d~ USING ~%tra_loc%/%s/dialogues.tra~

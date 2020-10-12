@@ -12,10 +12,16 @@ IF
 THEN
 	RESPONSE #100
 		StartCutSceneMode()
-		SetGlobal("#L_GarrickMoved","MYAREA",1)
+		SetGlobal("#L_GarrickMoved","MYAREA",2)
 		ActionOverride(Player1,CreateVisualEffect("SPDIMNDR",[1310.3230]))
 		Wait(2)
 		MoveGlobal("bd1000","GARRICK",[1310.3230])
+		ActionOverride("GARRICK",ChangeAIScript("#LGar15O",OVERRIDE))
+		ActionOverride("GARRICK",ChangeAIScript("BDGARRCC",CLASS))
+		ActionOverride("GARRICK",ChangeAIScript("",RACE))
+		ActionOverride("GARRICK",ChangeAIScript("",GENERAL))
+		ActionOverride("GARRICK",ChangeAIScript("BDPARTY",DEFAULT))
+		ActionOverride("GARRICK",SetDialogue("BDGARRIC"))
 		SmallWait(2)
 		FaceObject(Player1)
 		EndCutSceneMode()
@@ -24,21 +30,35 @@ END
 
 IF
 	Exists("IMOEN2")
-	Global("#L_GarrickMoved","MYAREA",1)
+	Global("#L_GarrickMoved","MYAREA",2)
 	Global("#L_GarrickFaceImoen","MYAREA",0)
 THEN
 	RESPONSE #100
-		FaceObject("IMOEN2")
 		SetGlobal("#L_GarrickFaceImoen","MYAREA",1)
+		SetGlobal("#L_FollowingImoen","MYAREA",1)
+		FaceObject("IMOEN2")
+		MoveToObjectFollow("IMOEN2")
+		Continue()
 END
 
 IF
 	InParty("IMOEN2")
-	Global("#L_GarrickMoved","MYAREA",1)
 	Global("#L_GarrickJoined","MYAREA",0)
 THEN
 	RESPONSE #100
-		ActionOverride("GARRICK",SetDialogue("#LGar15J"))
-		ActionOverride("GARRICK",JoinParty())
 		SetGlobal("#L_GarrickJoined","MYAREA",1)
+		SetGlobal("#L_FollowingImoen","MYAREA",0)
+		ActionOverride("GARRICK",SetDialogue("BDGARRIJ"))
+		ActionOverride("GARRICK",JoinParty())
+		Continue()
 END
+
+IF
+	Global("#L_FollowingImoen","MYAREA",1)
+	TriggerOverride("IMOEN2",Range("BDRAYPHU",30))
+THEN
+	RESPONSE #100
+		SetGlobal("#L_FollowingImoen","MYAREA",0)
+		ActionOverride("GARRICK",MoveToPoint([530.3760]))
+END
+

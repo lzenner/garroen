@@ -21,11 +21,9 @@ THEN
 	RESPONSE #100
 		ActionOverride("GARRICK",Face(SE))
 		SetGlobal("BD_No_Boot_Dialog","MYAREA",1)
-		ActionOverride("GARRICK",SetGlobal("BD_Joined","LOCALS",0))
-	    ActionOverride("GARRICK",SetGlobal("BD_Retreat","locals",0))
 		ActionOverride("GARRICK",SetDialog("#LGar15S"))
 		ActionOverride("GARRICK",ChangeAIScript("",OVERRIDE))
-		ActionOverride("GARRICK",ChangeAIScript("DEFAULT",CLASS))
+		ActionOverride("GARRICK",ChangeAIScript("",CLASS))
 		ActionOverride("GARRICK",ChangeAIScript("",RACE))
 		ActionOverride("GARRICK",ChangeAIScript("",GENERAL))
 		ActionOverride("GARRICK",ChangeAIScript("",DEFAULT))
