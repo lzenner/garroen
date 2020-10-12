@@ -3,7 +3,7 @@
 // The 15 stands for BG1.5 i.e., SoD          //
 ////////////////////////////////////////////////
 BEGIN ~#LGar15S~
-	IF ~Global("BD_Spoken_Garrick","GLOBAL",0)~ BEGIN GARRICK_3KEG_1
+	IF ~Global("BD_Spoken_Garrick","GLOBAL",0) AreaCheck("BD0106") GlobalLT("BD_Plot","GLOBAL",54)~ BEGIN GARRICK_3KEG_1
 		SAY @2110 /* ~Greetings <CHARNAME>.  How are you this fine <DAYNIGHT>?~ */
 		++ @2111 /* ~I could be better.  Imoen and I were attacked.  She lies comatose in the palace as we speak.~ */ GOTO GARRICK_3KEG_2
 	END
@@ -13,7 +13,7 @@ BEGIN ~#LGar15S~
 		IF ~~ DO ~SetGlobal("BD_Spoken_Garrick","GLOBAL",1) EscapeAreaObjectMove("BD0103","TranBD0040",167,417,E)~ EXIT
 	END
 
-	IF ~GlobalGT("BD_Spoken_Garrick","GLOBAL",0) AreaCheck("BD0103") Global("#L_GIBedside","MYAREA",1)~ BEGIN GARRICK_BEDSIDE_1
+	IF ~AreaCheck("BD0103") Global("#L_GIBedside","MYAREA",1)~ BEGIN GARRICK_BEDSIDE_1
 		SAY @2119 /* ~Oh, hello again <CHARNAME>.~ */
 		IF ~OR(2) Global("#L_AICastHeal","GLOBAL",1) Global("#L_AICastSlowPoison","GLOBAL",1)~ GOTO GARRICK_BEDSIDE_1.2A
 		IF ~Global("#L_AICastHeal","GLOBAL",0) Global("#L_AICastSlowPoison","GLOBAL",0)~ GOTO GARRICK_BEDSIDE_1.2B
@@ -35,7 +35,7 @@ BEGIN ~#LGar15S~
 		// @2118 = ~Garrick goes back to focusing on Imoen, caressing her hand and whispering encouragement.~
 	END
 
-	IF ~GlobalGT("BD_Spoken_Garrick","GLOBAL",0) AreaCheck("BD0103") Global("#L_GIBedside","MYAREA",2)~ BEGIN GARRICK_BEDSIDE_2
+	IF ~AreaCheck("BD0103") Global("#L_GIBedside","MYAREA",2)~ BEGIN GARRICK_BEDSIDE_2
 		SAY @2119 /* ~Oh, hello again <CHARNAME>.~ */
 		IF ~~ GOTO GARRICK_BEDSIDE_2.2
 	END
@@ -45,9 +45,26 @@ BEGIN ~#LGar15S~
 		IF ~~ THEN DO ~StartCutSceneMode() SetGlobal("#L_GIBedside","MYAREA",2) Face(E) SmallWait(5) DisplayStringHead("GARRICK",@2118) Wait(3) EndCutSceneMode()~ EXIT
 		// @2118 = ~Garrick goes back to focusing on Imoen, caressing her hand and whispering encouragement.~
 	END
-		
 
+	IF ~AreaCheck("BD0106") Global("BD_Plot","GLOBAL",54) Global("#L_GarrickRecuit","MYAREA",0)~ BEGIN GARRICK_RECRUIT_1
+		SAY @2121 /* ~Did you hear the news, <CHARNAME>?  Imoen is up and doing SO much better!~ */
+		++ @2122 /* ~I did hear.  And that's why I'm back to talk to you.  I want you to join me in bringing Caelar to justice for what she has done.  Will you join me against the crusade?~ */ + GARRICK_RECRUIT_1.2
+	END
 
+	IF ~~ BEGIN GARRICK_RECRUIT_1.2
+		SAY @2123 /* ~I'd love to, <CHARNAME>, but Imoen needs me.  I just can't bring myself to leave her at this time.~ */
+		++ @2124 /* ~I can't get you to change your mind?~ */ + GARRICK_RECRUIT_1.3
+	END
+
+	IF ~~ BEGIN GARRICK_RECRUIT_1.3
+		SAY @2125 /* ~I'm afraid not.  I'd not even be here at the Three Old Kegs if she hadn't insisted.  But this is as far from her side as I'll go.~ */
+		IF ~~ THEN DO ~SetGlobal("#L_GarrickRecuit","MYAREA",1)~ EXIT
+	END
+
+	IF ~AreaCheck("BD0106") Global("BD_Plot","GLOBAL",54) Global("#L_GarrickRecuit","MYAREA",1)~ BEGIN GARRICK_RECRUIT_2
+		SAY @2119 /* ~Oh, hello again <CHARNAME>.~ */
+		++ @2124 /* ~I can't get you to change your mind?~ */ + GARRICK_RECRUIT_1.3
+	END
 // End of new #LGar15S
 
 ///////////////////////////////////////////////////////////
@@ -132,3 +149,14 @@ ALTER_TRANS BDSCHAEL
 	BEGIN
 		"TRIGGER" ~False()~
 	END
+
+/////////////////////////////////////////////////
+// Have Garrick join the group when Imoen does //
+// If Imoen Forever was installed first        //
+/////////////////////////////////////////////////
+%JOIN_WITH_IMOEN%
+
+////////////////////////////////////////
+// Garricks's SoD party dialogue file //
+////////////////////////////////////////
+BEGIN ~#LGar15J~

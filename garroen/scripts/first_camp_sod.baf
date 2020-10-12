@@ -1,0 +1,44 @@
+//////////////////////////////////////////////////////////
+// Move Garrick to the first SoD area if Imoen is there //
+//////////////////////////////////////////////////////////
+
+IF
+	Global("C#IM_ImoenComesBackSoD","GLOBAL",1)
+	Global("#L_GarrickMoved","MYAREA",0)
+	OR(3)
+		TriggerOverride(Player1,See("IMOEN2"))
+		TriggerOverride("BDPRIN",LOS(Player1,30))
+		TriggerOverride("BDFIST21",LOS(Player1,30))
+THEN
+	RESPONSE #100
+		StartCutSceneMode()
+		SetGlobal("#L_GarrickMoved","MYAREA",1)
+		ActionOverride(Player1,CreateVisualEffect("SPDIMNDR",[1310.3230]))
+		Wait(2)
+		MoveGlobal("bd1000","GARRICK",[1310.3230])
+		SmallWait(2)
+		FaceObject(Player1)
+		EndCutSceneMode()
+		Continue()
+END
+
+IF
+	Exists("IMOEN2")
+	Global("#L_GarrickMoved","MYAREA",1)
+	Global("#L_GarrickFaceImoen","MYAREA",0)
+THEN
+	RESPONSE #100
+		FaceObject("IMOEN2")
+		SetGlobal("#L_GarrickFaceImoen","MYAREA",1)
+END
+
+IF
+	InParty("IMOEN2")
+	Global("#L_GarrickMoved","MYAREA",1)
+	Global("#L_GarrickJoined","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("GARRICK",SetDialogue("#LGar15J"))
+		ActionOverride("GARRICK",JoinParty())
+		SetGlobal("#L_GarrickJoined","MYAREA",1)
+END

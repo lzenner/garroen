@@ -138,6 +138,11 @@
 @2118	= ~Garrick goes back to focusing on Imoen, caressing her hand and whispering encouragement.~
 @2119	= ~Oh, hello again <CHARNAME>.~
 @2120	= ~I really can't talk now.  I'm sorry.~
+@2121	= ~Did you hear the news, <CHARNAME>?  Imoen is up and doing SO much better!~
+@2122	= ~I did hear.  And that's why I'm back to talk to you.  I want you to join me in bringing Caelar to justice for what she has done.  Will you join me against the crusade?~
+@2123	= ~I'd love to, <CHARNAME>, but Imoen needs me.  I just can't bring myself to leave her at this time.~
+@2124	= ~I can't get you to change your mind?~
+@2125	= ~I'm afraid not.  I'd not even be here at the Three Old Kegs if she hadn't insisted.  But this is as far from her side as I'll go.~
 
 ///////////////////////
 // TOUR-GUIDE CORWIN //

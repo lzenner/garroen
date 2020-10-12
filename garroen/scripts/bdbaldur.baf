@@ -1,0 +1,127 @@
+/////////////////////////////////////////////////////
+// Globals, timers, and "idle" cut scene kick-offs //
+/////////////////////////////////////////////////////
+
+// Set global letting other mods know this one is installed
+IF
+	Global("#L_Garroen","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("#L_Garroen","GLOBAL",1)
+		Continue()
+END
+
+// Every in-game day the romance will advance 
+// when the Imoen is in training (Garrick will be at Three Old Kegs)
+IF
+	Global("#L_ImoenInPalace","GLOBAL",1)
+	OR(2)
+		Global("#L_GIParkedDay","GLOBAL",0)
+		GlobalTimerExpired("#L_GIParkedDay","GLOBAL")
+THEN
+	RESPONSE #100
+		IncrementGlobal("#L_GIRomance","GLOBAL",1)
+		SetGlobalTimer("#L_GIParkedDay","GLOBAL",ONE_DAY)
+		Continue()
+END
+
+IF
+	// If we're no longer in BG1
+	GlobalLT("P#GarrickFlirt","GLOBAL",99)
+THEN
+	RESPONSE #100
+		// Don't continue with the rest of the Garrick Flirt mod
+		SetGlobal("P#GarrickFlirt","GLOBAL",99)
+		Continue()
+END
+
+IF
+	Global("#L_MovedGarrickTOK_SoD2","GLOBAL",0)
+	Global("BD_Plot","GLOBAL",54)
+THEN
+	RESPONSE #100
+		SetGlobal("#L_MovedGarrickTOK_SoD2","GLOBAL",1)
+		SetGlobal("#L_GarrickTOK_SoD","GLOBAL",1)
+		SetGlobal("#L_GarrickPositioned","BD0106",0)
+		MoveGlobal("BD0106","GARRICK",[360.140])
+		Continue()
+END
+
+IF
+	Global("#L_GIMarried","GLOBAL",0)
+	Global("#L_ImoenInPalace","GLOBAL",1)
+	Global("EndOfBG1","GLOBAL",1)
+	GlobalTimerExpired("#L_GIAwayForWedding","GLOBAL")
+THEN
+	RESPONSE #100
+		SetGlobal("#L_GIMarried","GLOBAL",1)
+		SetGlobal("#L_ImoenSet","BD0106",0)
+		SetGlobal("#L_GarrickPositioned","BD0106",0)
+		SetGlobal("#L_GarrickFeldepost","GLOBAL",0)
+		SetGlobal("#L_ImoenFeldepost","GLOBAL",0)
+		SetGlobal("#L_GarrickTOK_BG1","GLOBAL",0)
+		SetGlobal("#L_GarrickTOK_SoD","GLOBAL",1)
+		MoveGlobal("BD0106","GARRICK",[360.140])
+		Continue()
+END
+
+// Increment the romance every day they're in the group together
+IF
+	InPartyAllowDead("%IMOEN_DV%")
+	InPartyAllowDead("GARRICK")
+	OR(2)
+		Global("#L_GIPartyDay","GLOBAL",0)
+		GlobalTimerExpired("#L_GIPartyDay","GLOBAL")
+THEN
+	RESPONSE #100
+		IncrementGlobal("#L_GIRomance","GLOBAL",1)
+		SetGlobalTimer("#L_GIPartyDay","GLOBAL",ONE_DAY)
+		Continue()
+END
+
+// Check to see if we're ready for an "idle" scene
+IF
+	IsValidForPartyDialogue("%IMOEN_DV%")
+	IsValidForPartyDialogue("GARRICK")
+	GlobalGT("#L_GIRomance","GLOBAL",0)
+	OR(2)
+		Global("#L_GIActionTimer","GLOBAL",0)
+		GlobalTimerExpired("#L_GIActionTimer","GLOBAL")
+	TriggerOverride("%IMOEN_DV%",ActionListEmpty())
+	TriggerOverride("GARRICK",ActionListEmpty())
+	Global("#L_GIIdle","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobalTimer("#L_GIIdleTimer","GLOBAL",ONE_ROUND)
+		SetGlobal("#L_GIIdle","GLOBAL",1)
+		Continue()
+END
+
+// Check again
+IF
+	IsValidForPartyDialogue("%IMOEN_DV%")
+	IsValidForPartyDialogue("GARRICK")
+	TriggerOverride("%IMOEN_DV%",ActionListEmpty())
+	TriggerOverride("GARRICK",ActionListEmpty())
+	Global("#L_GIIdle","GLOBAL",1)
+	GlobalTimerExpired("#L_GIIdleTimer","GLOBAL")
+THEN
+	RESPONSE #100
+		StartCutSceneMode()
+		StartCutSceneEx("#LGIIdle",TRUE)
+END
+
+// Check failed
+IF
+	Global("#L_GIIdle","GLOBAL",1)
+	GlobalTimerExpired("#L_GIIdleTimer","GLOBAL")
+	OR(4)
+		!IsValidForPartyDialogue("%IMOEN_DV%")
+		!IsValidForPartyDialogue("GARRICK")
+		!TriggerOverride("%IMOEN_DV%",ActionListEmpty())
+		!TriggerOverride("GARRICK",ActionListEmpty())
+THEN
+	RESPONSE #100
+		SetGlobal("#L_GIIdle","GLOBAL",0) // Find another idle moment
+		Continue()
+END

@@ -71,24 +71,6 @@ THEN
     	ChangeSpecifics("GARRICK",ALLIES)
 		MoveGlobal("BD0106","GARRICK",[360.140])
 		Continue()
-END
-
-IF
-	Global("#L_GIMarried","GLOBAL",0)
-	Global("#L_ImoenInPalace","GLOBAL",1)
-	Global("EndOfBG1","GLOBAL",1)
-	GlobalTimerExpired("#L_GIAwayForWedding","GLOBAL")
-THEN
-	RESPONSE #100
-		SetGlobal("#L_GIMarried","GLOBAL",1)
-		SetGlobal("#L_ImoenSet","BD0106",0)
-		SetGlobal("#L_GarrickPositioned","BD0106",0)
-		SetGlobal("#L_GarrickFeldepost","GLOBAL",0)
-		SetGlobal("#L_ImoenFeldepost","GLOBAL",0)
-		SetGlobal("#L_GarrickTOK_BG1","GLOBAL",0)
-		SetGlobal("#L_GarrickTOK_SoD","GLOBAL",1)
-		MoveGlobal("BD0106","GARRICK",[360.140])
-		Continue()
 END~~~~~
 	END  // end of game includes sod
 
@@ -137,6 +119,9 @@ END~~~~~
 	END
 
 	ACTION_IF GAME_INCLUDES ~sod~ BEGIN
+		// Set globals, timers, idle scenes etc
+		EXTEND_TOP ~BDBALDUR.BCS~ ~%mod_root%/scripts/bdbaldur.baf~ EVAL
+
 		// Get rid of cameo Garrick in Elfsong Tavern
 		COPY_EXISTING ~BD0109.BCS~ ~override~
 			DECOMPILE_AND_PATCH BEGIN
@@ -146,7 +131,29 @@ END~~~~~
 		// Start scenes in palace (3rd floor)
 		EXTEND_TOP ~BD0103.BCS~ ~%mod_root%/scripts/palace_3rd_floor_sod.baf~ USING ~%tra_loc%/%s/dialogues.tra~
 
+		OUTER_SPRINT JOIN_WITH_IMOEN ~~
+		ACTION_IF FILE_EXISTS ~override/c#imback.bcs~ BEGIN
+			// Move Garrick to first camp along with Imoen
+			COPY_EXISTING ~c#imback.bcs~ ~override~
+				DECOMPILE_AND_PATCH BEGIN
+					REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~ActionOverride(Player1,CreateVisualEffect("SPDIMNDR",[1268.3238]))~ ~ActionOverride(Player1,CreateVisualEffect("SPDIMNDR",[1268.3238])) ActionOverride(Player1,CreateVisualEffect("SPDIMNDR",[1310.3230]))~
+					REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~MoveGlobal("bd1000","IMOEN2",[1268.3238])~ ~MoveGlobal("bd1000","IMOEN2",[1268.3238]) MoveGlobal("bd1000","GARRICK",[1310.3230])~
+					REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~FaceObject(Player1)~ ~FaceObject(Player1) ActionOverride("GARRICK",FaceObject("IMOEN2")) SetGlobal("#L_GarrickMoved","MYAREA",1)~
+				END
+			// Have Garrick join the group when Imoen does
+			OUTER_SPRINT JOIN_WITH_IMOEN ~~~~~ALTER_TRANS BDIMOENS
+	BEGIN 7 END
+	BEGIN 0 END
+	BEGIN
+		"ACTION" ~SetGlobal("C#IM_ImoenRejoinsbd1000","GLOBAL",5) ActionOverride("GARRICK",JoinParty()) ActionOverride("GARRICK",SetDialogue("#LGar15J")) SetDialogue("BDIMOENJ") JoinParty()~
+	END~~~~~
+		END ELSE BEGIN
+			// Move Garrick to the first camp based on I4E Globals
+			// in case I4E is installed later
+			EXTEND_TOP ~BD1000.BCS~ ~%mod_root%/scripts/first_camp_sod.baf~
+		END
+
 		// Compile the dialogues
 		COMPILE EVALUATE_BUFFER ~%mod_root%/dialogues/dialogues_sod.d~ USING ~%tra_loc%/%s/dialogues.tra~
-	END
+	END // end of game is sod
 END
