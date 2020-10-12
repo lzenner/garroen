@@ -50,7 +50,7 @@ There are no known compatibility issues at this time
 ------------------------------------------------------------------------
 INSTALLATION
 ------------------------------------------------------------------------
-If installing Endless BG1 (https://www.gibberlings3.net/forums/forum/217-endless-bg1/), or Transitions (https://github.com/lzenner/transitions/releases/latest), do so before install this mod.  
+If installing Endless BG1 (https://www.gibberlings3.net/forums/forum/217-endless-bg1/), Transitions (https://github.com/lzenner/transitions/releases/latest), or Imoen Forever (https://www.gibberlings3.net/mods/other/imoen4ever/), do so before install this mod.  
 
 Installation using Project Infinity (https://forums.beamdog.com/discussion/comment/1145416/#Comment_1145416) will ensure this and other mods are installed in the correct order.
 
