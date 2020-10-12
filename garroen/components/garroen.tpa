@@ -156,9 +156,21 @@ END~~~~~
 		END
 
 		// Garrick's new override script
-//		COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGar15O.baf~
+		COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGar15O.baf~
 
 		// Compile the dialogues
 		COMPILE EVALUATE_BUFFER ~%mod_root%/dialogues/dialogues_sod.d~ USING ~%tra_loc%/%s/dialogues.tra~
+
+		// Give Rayphus nice things to say to Garrick
+		// when they're in camp together
+		// The file may be empty...
+		LAF UPDATE_BCS
+			STR_VAR
+				baf_location = EVAL ~%mod_root%/scripts/~		// like ~mymod/bafs/~
+				baf_name = "bdrayphu"			// like my_new_BG0146
+				bcs_name = "BDRAYPHU"			// like BG0146
+				using_tra = EVAL ~%tra_loc%/%s/dialogues.tra~
+		END
+
 	END // end of game is sod
 END

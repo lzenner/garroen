@@ -3,11 +3,11 @@
 ////////////////////////////////////////////
 
 IF
-	AreaCheck("BD1000")
-	Global("#L_FollowingImoen","MYAREA",1)
-	Range("BDRAYPHU",30)
+	Global("#L_GarrickSetPosition","MYAREA",1)
+	LOS("IMOEN2",30)
 THEN
 	RESPONSE #100
-		SetGlobal("#L_FollowingImoen","MYAREA",0)
-		MoveToPoint([530.3760])
+		SetGlobal("#L_GarrickSetPosition","MYAREA",0)
+		FaceObject("IMOEN2")
+		ActionOverride("IMOEN2",FaceObject("GARRICK"))
 END

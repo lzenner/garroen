@@ -43,6 +43,7 @@ END
 
 IF
 	InParty("IMOEN2")
+	Global("#L_GarrickMoved","MYAREA",2)
 	Global("#L_GarrickJoined","MYAREA",0)
 THEN
 	RESPONSE #100
@@ -51,14 +52,5 @@ THEN
 		ActionOverride("GARRICK",SetDialogue("BDGARRIJ"))
 		ActionOverride("GARRICK",JoinParty())
 		Continue()
-END
-
-IF
-	Global("#L_FollowingImoen","MYAREA",1)
-	TriggerOverride("IMOEN2",Range("BDRAYPHU",30))
-THEN
-	RESPONSE #100
-		SetGlobal("#L_FollowingImoen","MYAREA",0)
-		ActionOverride("GARRICK",MoveToPoint([530.3760]))
 END
 

@@ -164,6 +164,10 @@
 @2145	= ~You tell me. We are to acquire equipment and allies for the trip north. There's the thieves at the Elfsong Tavern, or a monk at the Iron Throne Building. Or we could just return to the palace.~
 @2146	= ~You tell me. We are to acquire equipment and allies for the trip north. There's the thieves at the Elfsong Tavern. Or we could just return to the palace.~
 
+//////////////////////////////////////////
+// SOD FLAMING FIST BASE CAMP DIALOGUES //
+//////////////////////////////////////////
+
 //////////////////////////////////
 // GARRICK'S POST DIALOGUE FILE //
 //////////////////////////////////
@@ -175,3 +179,8 @@
 @2155	= ~I miss my lovely Immy, but besides that, I have everything I need.~
 @2156	= ~Awww, ok, come along.~
 @2157	= ~I'm sorry, maybe later.~
+
+/////////////////////////////////
+// RAYPHUS AND GARRICK CHATTER //
+/////////////////////////////////
+@2170	= ~Right this way, Sir Garrick!  What a pleasure it will be to have you in camp.~

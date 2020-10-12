@@ -1,0 +1,31 @@
+////////////////////////////////////////
+// Override Script for Rayphus        //
+// So he and Garrick can share scenes //
+////////////////////////////////////////
+
+IF
+	AreaCheck("BD1000")
+	Global("#L_FollowingImoen","MYAREA",1)
+	LOS("GARRICK",30)
+	LOS(Player1,30)
+THEN
+	RESPONSE #100
+		StartCutSceneMode()
+		FaceObject("GARRICK")
+		DisplayStringHead("BDRAYPHU",@2170) // ~Right this way, Sir Garrick!  What a pleasure it will be to have you in camp.~
+		Wait(2)
+		EndCutSceneMode()
+		Continue()
+END
+
+IF
+	AreaCheck("BD1000")
+	Global("#L_FollowingImoen","MYAREA",1)
+	LOS("GARRICK",30)
+THEN
+	RESPONSE #100
+		SetGlobal("#L_FollowingImoen","MYAREA",0)
+		SetGlobal("#L_GarrickSetPosition","MYAREA",1)
+		ActionOverride("GARRICK",MoveToPoint([530.3760]))
+END
+
