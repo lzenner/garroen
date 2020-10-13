@@ -36,9 +36,13 @@ PLANNED FUTURE ENHANCEMENTS
 * Add sailing days to romance days
 * Make sure they've been out of the group for 25 days prior to wedding
 * Make sure they've been married for 25 days prior to moving to 'settled' scenes
+* Add wedding scene and invite the PC
 * Add BG1 situational dialogue  
 	- Either of them are badly injured or die
 	- Imoen asks/hints about Garrick if he's not in the group (if they've met)
+	- Ask to camp at particularly lovely spots
+	- During the Succubus event on the coast whether she latches onto Garrick or not
+	- If either of them get charmed, or if either of them resist getting charmed
 * Jaheirafan Today at 11:54 AM 
 	- you could, like, suggest a certain homeliness, think about it: the PC, ever lonely traveling forward, but in the certainty that he has an extended family meaning Garrick and Immy, waiting for him
 
