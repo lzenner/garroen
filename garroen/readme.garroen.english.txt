@@ -32,6 +32,7 @@ For EET, the romance will only continue if it was started in the previous campai
 ------------------------------------------------------------------------
 PLANNED FUTURE ENHANCEMENTS
 ------------------------------------------------------------------------
+* Research all the 'AdvanceTime' usages
 * Change Imoen's position in the inns if Garrick isn't parked there
 * Add sailing days to romance days
 * Make sure they've been out of the group for 25 days prior to wedding

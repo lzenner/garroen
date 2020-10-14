@@ -11,20 +11,6 @@ THEN
 		Continue()
 END
 
-// Every in-game day the romance will advance 
-// when the Imoen is in training (Garrick will be at Three Old Kegs)
-IF
-	Global("#L_ImoenInPalace","GLOBAL",1)
-	OR(2)
-		Global("#L_GIParkedDay","GLOBAL",0)
-		GlobalTimerExpired("#L_GIParkedDay","GLOBAL")
-THEN
-	RESPONSE #100
-		IncrementGlobal("#L_GIRomance","GLOBAL",1)
-		SetGlobalTimer("#L_GIParkedDay","GLOBAL",ONE_DAY)
-		Continue()
-END
-
 IF
 	// If we're no longer in BG1
 	GlobalLT("P#GarrickFlirt","GLOBAL",99)
@@ -49,7 +35,6 @@ END
 
 IF
 	Global("#L_GIMarried","GLOBAL",0)
-	Global("#L_ImoenInPalace","GLOBAL",1)
 	Global("EndOfBG1","GLOBAL",1)
 	GlobalTimerExpired("#L_GIAwayForWedding","GLOBAL")
 THEN
@@ -76,6 +61,21 @@ THEN
 	RESPONSE #100
 		IncrementGlobal("#L_GIRomance","GLOBAL",1)
 		SetGlobalTimer("#L_GIPartyDay","GLOBAL",ONE_DAY)
+		Continue()
+END
+
+// Increment the romance every day they're both not in the group
+// They'll be parked at the camp together
+IF
+	!InPartyAllowDead("%IMOEN_DV%")
+	!InPartyAllowDead("GARRICK")
+	OR(2)
+		Global("#L_GIParkedDay","GLOBAL",0)
+		GlobalTimerExpired("#L_GIParkedDay","GLOBAL")
+THEN
+	RESPONSE #100
+		IncrementGlobal("#L_GIRomance","GLOBAL",1)
+		SetGlobalTimer("#L_GIParkedDay","GLOBAL",ONE_DAY)
 		Continue()
 END
 
