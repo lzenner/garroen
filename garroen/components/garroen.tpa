@@ -139,7 +139,7 @@ END~~~~~
 			COPY_EXISTING ~c#imback.bcs~ ~override~
 				DECOMPILE_AND_PATCH BEGIN
 					REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~ActionOverride(Player1,CreateVisualEffect("SPDIMNDR",[1268.3238]))~ ~ActionOverride(Player1,CreateVisualEffect("SPDIMNDR",[1268.3238])) ActionOverride(Player1,CreateVisualEffect("SPDIMNDR",[1310.3230]))~
-					REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~MoveGlobal("bd1000","IMOEN2",[1268.3238])~ ~MoveGlobal("bd1000","IMOEN2",[1268.3238]) MoveGlobal("BD1000","GARRICK",[1310.3230]) ActionOverride("GARRICK",ChangeAIScript("#LGar15O",OVERRIDE)) ActionOverride("GARRICK",ChangeAIScript("BDGARRCC",CLASS)) ActionOverride("GARRICK",ChangeAIScript("",RACE)) ActionOverride("GARRICK",ChangeAIScript("",GENERAL)) ActionOverride("GARRICK",ChangeAIScript("BDPARTY",DEFAULT)) ActionOverride("GARRICK",SetDialogue("BDGARRIC"))~
+					REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~MoveGlobal("bd1000","IMOEN2",[1268.3238])~ ~MoveGlobal("bd1000","IMOEN2",[1268.3238]) MoveGlobal("BD1000","GARRICK",[1310.3230]) ActionOverride("GARRICK",ChangeAIScript("#LGar15O",OVERRIDE)) ActionOverride("GARRICK",ChangeAIScript("BDGARRCC",CLASS)) ActionOverride("GARRICK",ChangeAIScript("",RACE)) ActionOverride("GARRICK",ChangeAIScript("",GENERAL)) ActionOverride("GARRICK",ChangeAIScript("",DEFAULT)) ActionOverride("GARRICK",SetDialogue("BDGARRIC"))~
 					REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~FaceObject(Player1)~ ~FaceObject(Player1) ActionOverride("GARRICK",FaceObject("IMOEN2")) SetGlobal("#L_GarrickMoved","BD1000",1) SetGlobal("#L_FollowingImoen","BD1000",1) ActionOverride("GARRICK",MoveToObjectFollow("IMOEN2"))~
 				END
 			// Have Garrick join the group when Imoen does

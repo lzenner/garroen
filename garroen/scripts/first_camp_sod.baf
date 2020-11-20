@@ -20,7 +20,8 @@ THEN
 		ActionOverride("GARRICK",ChangeAIScript("BDGARRCC",CLASS))
 		ActionOverride("GARRICK",ChangeAIScript("",RACE))
 		ActionOverride("GARRICK",ChangeAIScript("",GENERAL))
-		ActionOverride("GARRICK",ChangeAIScript("BDPARTY",DEFAULT))
+//		ActionOverride("GARRICK",ChangeAIScript("BDPARTY",DEFAULT)) Maybe after he's joined the party?
+		ActionOverride("GARRICK",ChangeAIScript("",DEFAULT))
 		ActionOverride("GARRICK",SetDialogue("BDGARRIC"))
 		SmallWait(2)
 		FaceObject(Player1)
