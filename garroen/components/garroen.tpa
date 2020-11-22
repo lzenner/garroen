@@ -171,6 +171,9 @@ END~~~~~
 				bcs_name = "BDRAYPHU"			// like BG0146
 				using_tra = EVAL ~%tra_loc%/%s/dialogues.tra~
 		END
+		
+		// Don't allow camping inside the FF camp or else there's no way to determine if they're using Thaird or not
+		EXTEND_TOP ~BD1000.BCS~ ~%mod_root%/scripts/bd1000.baf~
 
 	END // end of game is sod
 END

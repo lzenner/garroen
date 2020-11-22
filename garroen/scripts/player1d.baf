@@ -11,7 +11,7 @@ IF
 		GlobalTimerExpired("#L_GIRestTimer","GLOBAL")
 	IsValidForPartyDialogue("GARRICK")
 	IsValidForPartyDialogue("%IMOEN_DV%")
-	OR(19)
+	OR(20)
 		AreaCheck("%Nashkel_Inn%")
 		AreaCheck("%Beregost_RedSheaf_L1%")
 		AreaCheck("%Beregost_FeldepostsInn_L1%")
@@ -31,6 +31,7 @@ IF
 		AreaCheck("%NEBaldursGate_BlushingMermaid_L1%")
 		AreaCheck("%SEBaldursGate_Blade&Stars_L1%")
 		AreaCheck("%NEBaldursGate_SplurgingSturgeon_L1%")
+		TriggerOverride("FF_Camp",IsOverMe(Player1))
 THEN
 	RESPONSE #100
 		StartCutSceneMode()
@@ -40,7 +41,6 @@ END
 IF
 	GlobalGT("#L_GIRomance","GLOBAL",0)
 	GlobalLT("#L_GIRomance","GLOBAL",150)
-	Global("EndOfBG1","GLOBAL",0)
 	OR(2)
 		Global("#L_GIRestTimer","GLOBAL",0)
 		GlobalTimerExpired("#L_GIRestTimer","GLOBAL")
@@ -56,7 +56,6 @@ END
 IF
 	GlobalGT("#L_GIRomance","GLOBAL",0)
 	GlobalLT("#L_GIRomance","GLOBAL",150)
-	Global("EndOfBG1","GLOBAL",0)
 	OR(2)
 		Global("#L_GIRestTimer","GLOBAL",0)
 		GlobalTimerExpired("#L_GIRestTimer","GLOBAL")

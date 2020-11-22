@@ -194,3 +194,14 @@ END
 APPEND BDGARRIJ
 END
 
+///////////////////////////////////////////////////////////////////
+// Have Thaird set the area flag indicating it's ok to rest here //
+// It's how I'll be able to tell that we're at 'an inn'          //
+///////////////////////////////////////////////////////////////////
+ALTER_TRANS BDTHAIRD
+	BEGIN 2 END
+	BEGIN 0 END
+	BEGIN
+		"ACTION" ~RemoveAreaFlag(NOREST) SetGlobalTimer("#L_GIAtInn","MYAREA",ONE_HOUR) StartStore("bdthaird",LastTalkedToBy(Myself))~
+	END
+

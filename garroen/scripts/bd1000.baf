@@ -1,0 +1,19 @@
+// Don't allow camping inside the FF Camp
+// Or else it's not possible to know what sort of scene to play
+
+IF
+	TriggerOverride("FF_Camp",IsOverMe(Player1))
+	OR(2)
+		Global("#L_GIAtInn","MYAREA",0)
+		GlobalTimerExpired("#L_GIAtInn","MYAREA")
+THEN
+	RESPONSE #100
+		AddAreaFlag(NOREST)
+END
+
+IF
+	!TriggerOverride("FF_Camp",IsOverMe(Player1))
+THEN
+	RESPONSE #100
+		RemoveAreaFlag(NOREST)
+END
