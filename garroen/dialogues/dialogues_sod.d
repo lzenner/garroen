@@ -205,3 +205,16 @@ ALTER_TRANS BDTHAIRD
 		"ACTION" ~RemoveAreaFlag(NOREST) SetGlobalTimer("#L_GIAtInn","MYAREA",ONE_HOUR) StartStore("bdthaird",LastTalkedToBy(Myself))~
 	END
 
+/////////////////////////////////////////
+// Don't let Rayphus leave the area    //
+// We need him to get Garrick in place //
+/////////////////////////////////////////
+ALTER_TRANS BDRAYPHU
+	BEGIN 18 21 END
+	BEGIN 0 END
+	BEGIN 
+		"ACTION" ~~
+		"EPILOGUE" ~EXIT~ 
+	END
+
+
