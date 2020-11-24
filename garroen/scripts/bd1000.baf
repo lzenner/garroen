@@ -9,6 +9,7 @@ IF
 THEN
 	RESPONSE #100
 		AddAreaFlag(NOREST)
+		Continue()
 END
 
 IF
@@ -16,4 +17,5 @@ IF
 THEN
 	RESPONSE #100
 		RemoveAreaFlag(NOREST)
+		Continue()
 END
