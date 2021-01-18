@@ -2,6 +2,15 @@
 // Globals, timers, and "idle" cut scene kick-offs //
 /////////////////////////////////////////////////////
 
+// Set global letting other mods know this one is installed
+IF
+	Global("#L_Garroen","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("#L_Garroen","GLOBAL",1)
+		Continue()
+END
+
 // Every in-game day the romance will advance 
 // when the two are parked in the same spot
 IF
@@ -31,6 +40,21 @@ THEN
 	RESPONSE #100
 		IncrementGlobal("#L_GIRomance","GLOBAL",1)
 		SetGlobalTimer("#L_GIParkedDay","GLOBAL",ONE_DAY)
+		Continue()
+END
+
+// It can take a few rounds for the Garrick Infatuation variables to set themselves
+// By this time, Imoen is already flirting with Garrick
+// Have her back off until the infatuation gets to the 'your my best friend' part
+IF
+	InPartyAllowDead("%IMOEN_DV%")
+	InPartyAllowDead("GARRICK")
+	GlobalLT("#L_GIRomance","GLOBAL",5)
+	GlobalLT("P#GarrickFlirt","GLOBAL",44)
+THEN
+	RESPONSE #100
+		// Don't continue with the rest of the Garrick Flirt mod
+		SetGlobal("#L_GIRomance","GLOBAL",0)
 		Continue()
 END
 
