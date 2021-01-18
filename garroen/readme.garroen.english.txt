@@ -8,7 +8,7 @@ GENERAL
 ------------------------------------------------------------------------
 This mod requires EET, BG1EE, SoD, or BG2EE.
 
-Adds a romance between Garrick and Imoen, making Garrick available as a joinable NPC whenever Imoen is joinable or in need of rescuing.
+Adds a romance between Garrick and Imoen, making Garrick available as a joinable NPC whenever Imoen is joinable or in need of rescuing. When not in the group, Garrick will ID items for you at a reduced 'family' rate, depending upon how far along the romance has progressed.  He will also occasionally have 'gifts' for you in his store.
 
 ------------------------------------------------------------------------
 DESCRIPTION
@@ -32,21 +32,27 @@ For EET, the romance will only continue if it was started in the previous campai
 ------------------------------------------------------------------------
 PLANNED FUTURE ENHANCEMENTS
 ------------------------------------------------------------------------
+* Add out-of group dialogues
+	- To catch up on events without disrupting their romance
+	- To open a store where he will ID your stuff for a reduced "family" rate (rate goes down as romance goes up)
+	- To give 'I don't want you to get hurt' reasons for dropping them from you group
 * Research all the 'AdvanceTime' usages
 * Add sailing days to romance days
-* Make sure they've been out of the group for 25 days prior to wedding
-* Make sure they've been married for 25 days prior to moving to 'settled' scenes
 * Add wedding scene and invite the PC
 * Add campain independent situational dialogue  
 	- They pine for each other if not both in group (if they've met)
 	- Either of them are badly injured or die (make a number of these ... incremental)
+	- If either of them is fatigued, poisoned, diseased, immobilized or other nasty affect
 * Add BG1 situational dialogue  
 	- Ask to camp at particularly lovely spots
 	- During the Succubus event on the coast whether she latches onto Garrick or not
 	- If either of them get charmed by the sirens, or if either of them resist getting charmed
-* Add SoD situational dialogue
+	- Entering unusual places
+* Set up parking spots in SoD, BG2, and ToB for the both of them where Garrick can perform when they're not in the group
+* Add campaign specific situational dialogue for SoD, BG2, and ToB
 	- Ask to camp at particularly lovely spots
-	- In the betting of souls situation
+	- In the betting of souls situation (SoD)
+	- Entering unusual places
 * Jaheirafan Today at 11:54 AM 
 	- you could, like, suggest a certain homeliness, think about it: the PC, ever lonely traveling forward, but in the certainty that he has an extended family meaning Garrick and Immy, waiting for him
 
@@ -58,7 +64,8 @@ There are no known compatibility issues at this time
 ------------------------------------------------------------------------
 INSTALLATION
 ------------------------------------------------------------------------
-If installing Endless BG1, Transitions, Imoen Forever, or BG1NPC do so before install this mod.  
+If installing Endless BG1, Transitions, Imoen Forever, or BG1NPC do so before installing this mod.  
+If installing A7-MagicStore, do so after installing
 
 Installation using Project Infinity (https://forums.beamdog.com/discussion/comment/1145416/#Comment_1145416) will ensure this and other mods are installed in the correct order.
 
