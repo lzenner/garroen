@@ -22,6 +22,7 @@ IF
 THEN
 	RESPONSE #100
 		IncrementGlobal("#L_GIRomance","GLOBAL",1)
+		IncrementGlobal("#L_GIAtInn","GLOBAL",1)
 		SetGlobalTimer("#L_GIParkedDay","GLOBAL",ONE_DAY)
 		Continue()
 END
@@ -64,7 +65,7 @@ IF
 	GlobalLT("P#GarrickFlirt","GLOBAL",99)
 	Global("P#GarrickMatch","GLOBAL",1)
 	OR(2)
-		GlobalGT("#L_GIRomance","GLOBAL",5)
+		GlobalGT("#L_GIAtInn","GLOBAL",5)
 		GlobalGT("EndOfBG1","GLOBAL",0)
 THEN
 	RESPONSE #100
@@ -107,6 +108,7 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("#L_GIMarried","GLOBAL",1)
+		SetGlobal("#L_GIRomance","GLOBAL",101)
 		SetGlobal("#L_GarrickPositioned","%Beregost_FeldepostsInn_L1%",0)
 		SetGlobal("#L_ImoenPositioned","%Beregost_FeldepostsInn_L1%",0)
 		SetGlobal("#L_GarrickFeldepost","GLOBAL",1)

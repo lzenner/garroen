@@ -86,7 +86,9 @@ END
 
 IF
 	GlobalGT("#L_GIRomance","GLOBAL",75)
-	GlobalLT("#L_GIRomance","GLOBAL",101)
+	OR(2)
+		GlobalLT("#L_GIRomance","GLOBAL",101)
+		GlobalLT("#L_GIAtInn","GLOBAL",25)
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
@@ -96,7 +98,7 @@ END
 
 IF
 	GlobalGT("#L_GIRomance","GLOBAL",100)
-	GlobalLT("#L_GIRomance","GLOBAL",126)
+	GlobalGT("#L_GIAtInn","GLOBAL",24)
 	Global("#L_GIMarried","GLOBAL",0)
 THEN
 	RESPONSE #100

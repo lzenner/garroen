@@ -71,7 +71,7 @@ ALTER_TRANS %GARRICK_POST%
 	BEGIN 3 END
 	BEGIN 0 END
 	BEGIN
-		"ACTION" ~SetGlobal("KickedOut","LOCALS",0) SetGlobal("#L_GarrickFeldepost","GLOBAL",0) JoinParty()~
+		"ACTION" ~SetGlobal("KickedOut","LOCALS",0) SetGlobal("#L_GarrickFeldepost","GLOBAL",0) SetGlobal("#L_GIAtInn","GLOBAL",0) JoinParty()~
 	END
 
 APPEND %GARRICK_POST%
@@ -104,6 +104,11 @@ APPEND %GARRICK_POST%
 		IF ~Global("KickedOut","LOCALS",1)~ EXIT
 	END
 END
+
+ALTER_TRANS %IMOEN_POST%
+	BEGIN 4 END
+	BEGIN 0 END
+	BEGIN "ACTION" ~SetGlobal("KickedOut","LOCALS",0) SetGlobal("#L_GIAtInn","GLOBAL",0) ActionOverride("imoen",JoinParty())~ END
 
 EXTEND_BOTTOM %IMOEN_POST% 0 1
 	IF ~!AreaCheck("%Beregost_FeldepostsInn_L1%")~ GOTO IMOEN_TO_FELDEPOST
