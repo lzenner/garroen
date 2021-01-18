@@ -2,15 +2,6 @@
 // Globals, timers, and "idle" cut scene kick-offs //
 /////////////////////////////////////////////////////
 
-// Set global letting other mods know this one is installed
-IF
-	Global("#L_Garroen","GLOBAL",0)
-THEN
-	RESPONSE #100
-		SetGlobal("#L_Garroen","GLOBAL",1)
-		Continue()
-END
-
 // Every in-game day the romance will advance 
 // when the two are parked in the same spot
 IF
