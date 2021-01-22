@@ -36,6 +36,7 @@ PLANNED FUTURE ENHANCEMENTS
 	- To catch up on events without disrupting their romance
 	- To open a store where he will ID your stuff for a reduced "family" rate (rate goes down as romance goes up)
 	- To give 'I don't want you to get hurt' reasons for dropping them from you group
+	- suggest a certain homeliness: the PC, ever lonely traveling forward, but in the certainty that he has an extended family meaning Garrick and Immy, waiting for him (Jaheirafan)
 * Research all the 'AdvanceTime' usages
 * Add sailing days to romance days
 * Add wedding scene and invite the PC
@@ -53,8 +54,6 @@ PLANNED FUTURE ENHANCEMENTS
 	- Ask to camp at particularly lovely spots
 	- In the betting of souls situation (SoD)
 	- Entering unusual places
-* Jaheirafan Today at 11:54 AM 
-	- you could, like, suggest a certain homeliness, think about it: the PC, ever lonely traveling forward, but in the certainty that he has an extended family meaning Garrick and Immy, waiting for him
 
 ------------------------------------------------------------------------
 COMPATIBILITY NOTES
@@ -65,7 +64,7 @@ There are no known compatibility issues at this time
 INSTALLATION
 ------------------------------------------------------------------------
 If installing Endless BG1, Transitions, Imoen Forever, or BG1NPC do so before installing this mod.  
-If installing A7-MagicStore, do so after installing
+If installing A7-MagicStore, do so after installing this mod
 
 Installation using Project Infinity (https://forums.beamdog.com/discussion/comment/1145416/#Comment_1145416) will ensure this and other mods are installed in the correct order.
 
