@@ -101,6 +101,7 @@ CREDITS
 * G3 guest Gob Oafenplug: for the new code for change_door_name.tpa 
 * Grammarsalad, subtledoctor, grodrigues, Mike1072, and jastey: for the ideas, guidance and help on the tool that provides proper and upper case player1 pronouns (cases.tpa)
 * jastey: For being a mentor and friend and for your awesome NPC SoD tutorial!
+* jaheirafan (discord): for the wonderful idea of giving the mod a homy feeling with the Garrick and Immy being an extended family (hope I did it justice)
 * Bubb and CamDawg for LOVE YOU FOREVER!!! Thought I'd forget, didn't ya.
 * The folks at The Gibberlings Three forums: for never failing to answer my many many questions
 

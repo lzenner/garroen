@@ -101,14 +101,23 @@ END~~~~~
 	
 	// Garrick's stores
 	COPY ~%mod_root%/objects/#LGISto1.sto~ ~override~
+		SAY (0x016c + 0x0008) @1000	// Round of drinks
 	COPY ~%mod_root%/objects/#LGISto2.sto~ ~override~
+		SAY (0x016c + 0x0008) @1000	// Round of drinks
 	COPY ~%mod_root%/objects/#LGISto3.sto~ ~override~
+		SAY (0x016c + 0x0008) @1000	// Round of drinks
 	COPY ~%mod_root%/objects/#LGISto4.sto~ ~override~
+		SAY (0x016c + 0x0008) @1000	// Round of drinks
 	COPY ~%mod_root%/objects/#LGISto5.sto~ ~override~
+		SAY (0x016c + 0x0008) @1000	// Round of drinks
 	COPY ~%mod_root%/objects/#LGISto6.sto~ ~override~
+		SAY (0x016c + 0x0008) @1000	// Round of drinks
 	COPY ~%mod_root%/objects/#LGISto7.sto~ ~override~
+		SAY (0x016c + 0x0008) @1000	// Round of drinks
 	COPY ~%mod_root%/objects/#LGISto8.sto~ ~override~
+		SAY (0x016c + 0x0008) @1000	// Round of drinks
 	COPY ~%mod_root%/objects/#LGISto9.sto~ ~override~
+		SAY (0x016c + 0x0008) @1000	// Round of drinks
 
 	ACTION_IF (MOD_IS_INSTALLED ~transitions.tp2~ (ID_OF_LABEL "transitions.tp2" "#L-TRANSITIONS-MAIN")) BEGIN
 		// Get a couple strrefs from Transitions 

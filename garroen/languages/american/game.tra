@@ -1,4 +1,6 @@
 ///////////////////////////////////
 // STRINGS NEEDED FOR GAME ITEMS //
 ///////////////////////////////////
-@1000   = ~~
+
+// Garrick's drink
+@1000   = ~A round of drinks~
