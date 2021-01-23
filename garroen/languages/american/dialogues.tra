@@ -184,3 +184,14 @@
 // RAYPHUS AND GARRICK CHATTER //
 /////////////////////////////////
 @2170	= ~Right this way, Sir Garrick!  What a pleasure it will be to have you in camp.~
+
+/////////////////////////////
+// BG1 POST FILE ADDITIONS //
+/////////////////////////////
+@2200	= ~Hello <CHARNAME>. It's good to see you again.  Pull up a chair!~ 
+@2201	= ~I have absolutely everything I could hope for.~
+@2202 	= ~I miss a certain bard, but other than that, I'm fine.~
+@2203	= ~I miss my Garrick, but other than that, I'm fine.~
+@2204	= ~I miss a certain roguish grin, but other than that, I'm fine.~
+@2205	= ~Of course I'll join you.  Any time you need me!~
+@2206	= ~Can you tell me anything about this item I found?~
