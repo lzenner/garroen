@@ -46,7 +46,10 @@ END
 
 // After romance has started, every few in-game days they're not together the one in the party will comment
 IF
-	GlobalGT("#L_GIRomance","GLOBAL",5)
+	GlobalGT("#L_GIRomance","GLOBAL",0)
+	OR(2)
+		GlobalGT("#L_GIRomance","GLOBAL",5)
+		InPartyAllowDead("%IMOEN_DV%")
 	Global("#L_GIPineTimer","GLOBAL",0)
 	OR(2)
 		InPartyAllowDead("%IMOEN_DV%")
@@ -99,6 +102,7 @@ THEN
 	RESPONSE #100
 		// Don't continue with the rest of the Garrick Flirt mod
 		SetGlobal("#L_GIRomance","GLOBAL",0)
+		SetGlobal("#L_GIPineTimer","GLOBAL",0)
 		Continue()
 END
 
