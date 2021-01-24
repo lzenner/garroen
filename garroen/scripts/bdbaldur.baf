@@ -2,10 +2,6 @@
 // Globals, timers, and "idle" cut scene kick-offs //
 /////////////////////////////////////////////////////
 
-// I think I'm doubling up
-// I think only that which is SoD specific goes in this file
-// Baldur.bcs is in every campaign
-/*
 // Set global letting other mods know this one is installed
 IF
 	Global("#L_Garroen","GLOBAL",0)
@@ -85,7 +81,6 @@ END
 
 // After romance has started, every few in-game days they're not together the one in the party will comment
 IF
-	GlobalGT("#L_GIRomance","GLOBAL",5)
 	Global("#L_GIPineTimer","GLOBAL",0)
 	OR(2)
 		InPartyAllowDead("%IMOEN_DV%")
@@ -100,6 +95,30 @@ THEN
 	RESPONSE #100
 		SetGlobalTimer("#L_GIPineTimer","GLOBAL",TEN_DAYS)
 		Continue()
+END
+
+IF
+	GlobalGT("#L_GIPineTimer","GLOBAL",0)
+	GlobalTimerExpired("#L_GIPineTimer","GLOBAL")
+	IsValidForPartyDialogue("%IMOEN_DV%")
+	TriggerOverride("%IMOEN_DV%",ActionListEmpty())
+	TriggerOverride(Player1,ActionListEmpty())
+THEN
+	RESPONSE #100
+		SetGlobal("#L_GIPine","GLOBAL",1)
+		ActionOverride("%IMOEN_DV%",StartDialogueNoSet(Player1))
+END
+
+IF
+	GlobalGT("#L_GIPineTimer","GLOBAL",0)
+	GlobalTimerExpired("#L_GIPineTimer","GLOBAL")
+	IsValidForPartyDialogue("GARRICK")
+	TriggerOverride("GARRICK",ActionListEmpty())
+	TriggerOverride(Player1,ActionListEmpty())
+THEN
+	RESPONSE #100
+		SetGlobal("#L_GIPine","GLOBAL",1)
+		ActionOverride("GARRICK",StartDialogueNoSet(Player1))
 END
 
 // Check to see if we're ready for an "idle" scene
@@ -148,4 +167,3 @@ THEN
 		SetGlobal("#L_GIIdle","GLOBAL",0) // Find another idle moment
 		Continue()
 END
-*/
