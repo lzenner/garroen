@@ -80,7 +80,7 @@ END~~~~~
 	EXTEND_TOP ~BALDUR.BCS~ ~%mod_root%/scripts/baldur.baf~ EVAL
 
 	// Kicks off scenes that happen just before rest
-	EXTEND_BOTTOM ~PLAYER1D.BCS~ ~%mod_root%/scripts/player1d.baf~ EVAL
+	EXTEND_BOTTOM ~PLAYER1D.BCS~ ~%mod_root%/scripts/player1d.baf~ EVAL USING ~%tra_loc%/%s/dialogues.tra~
 
 	// Globals and kicks off scenes in the inns
 	ACTION_IF GAME_IS ~bgee eet~ BEGIN

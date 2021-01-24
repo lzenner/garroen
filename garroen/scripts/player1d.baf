@@ -39,6 +39,46 @@ THEN
 END
 
 IF
+	GlobalGT("#L_GIPineTimer","GLOBAL",0)
+	IsValidForPartyDialogue("%IMOEN_DV%")
+	OR(2)
+		Global("#L_GIPineCampTimer","GLOBAL",0)
+		GlobalTimerExpired("#L_GIPineCampTimer","GLOBAL")
+	OR(2)
+		AreaType(DUNGEON)
+		AreaType(FOREST)
+THEN
+	RESPONSE #100
+		StartCutSceneMode()
+		MoveViewObject("%IMOEN_DV%",INSTANT)
+		DisplayStringHead("%IMOEN_DV%",@2405) // ~Imoen stares forlornly into the fire and sighs.~
+		SetGlobalTimer("#L_GIPineCampTimer","GLOBAL",EIGHT_HOURS)
+		Wait(5)
+		EndCutSceneMode()
+		RestParty()
+END
+
+IF
+	GlobalGT("#L_GIPineTimer","GLOBAL",0)
+	IsValidForPartyDialogue("GARRICK")
+	OR(2)
+		Global("#L_GIPineCampTimer","GLOBAL",0)
+		GlobalTimerExpired("#L_GIPineCampTimer","GLOBAL")
+	OR(2)
+		AreaType(DUNGEON)
+		AreaType(FOREST)
+THEN
+	RESPONSE #100
+		StartCutSceneMode()
+		MoveViewObject("GARRICK",INSTANT)
+		DisplayStringHead("GARRICK",@2406) // ~Garrick stares forlornly into the fire and sighs.~
+		SetGlobalTimer("#L_GIPineCampTimer","GLOBAL",EIGHT_HOURS)
+		Wait(5)
+		EndCutSceneMode()
+		RestParty()
+END
+
+IF
 	GlobalGT("#L_GIRomance","GLOBAL",0)
 	GlobalLT("#L_GIRomance","GLOBAL",150)
 	OR(2)
