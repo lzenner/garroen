@@ -44,6 +44,49 @@ THEN
 		Continue()
 END
 
+// After romance has started, every 3 in-game days they're not together the one in the party will comment
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",0)
+	Global("#L_GIPineTimer","GLOBAL",0)
+	OR(2)
+		InPartyAllowDead("%IMOEN_DV%")
+		InPartyAllowDead("GARRICK")
+	OR(2)
+		!InPartyAllowDead("%IMOEN_DV%")
+		!InPartyAllowDead("GARRICK")
+	OR(2)
+		!TriggerOverride(Player1,Range("%IMOEN_DV%",60))
+		!TriggerOverride(Player1,Range("GARRICK",60))
+THEN
+	RESPONSE #100
+		SetGlobalTimer("#L_GIPineTimer","GLOBAL",THREE_DAYS)
+		Continue()
+END
+
+IF
+	GlobalGT("#L_GIPineTimer","GLOBAL",0)
+	GlobalTimerExpired("#L_GIPineTimer","GLOBAL")
+	IsValidForPartyDialogue("%IMOEN_DV%")
+	TriggerOverride("%IMOEN_DV%",ActionListEmpty())
+	TriggerOverride(Player1,ActionListEmpty())
+THEN
+	RESPONSE #100
+		SetGlobal("#L_GIPine","GLOBAL",1)
+		ActionOverride("%IMOEN_DV%",StartDialogueNoSet(Player1))
+END
+
+IF
+	GlobalGT("#L_GIPineTimer","GLOBAL",0)
+	GlobalTimerExpired("#L_GIPineTimer","GLOBAL")
+	IsValidForPartyDialogue("GARRICK")
+	TriggerOverride("GARRICK",ActionListEmpty())
+	TriggerOverride(Player1,ActionListEmpty())
+THEN
+	RESPONSE #100
+		SetGlobal("#L_GIPine","GLOBAL",1)
+		ActionOverride("GARRICK",StartDialogueNoSet(Player1))
+END
+
 // It can take a few rounds for the Garrick Infatuation variables to set themselves
 // By this time, Imoen is already flirting with Garrick
 // Have her back off until the infatuation gets to the 'your my best friend' part
@@ -129,7 +172,7 @@ IF
 		Global("P#GarrickMatch","GLOBAL",0)	// Not loaded or not matched
 	    GlobalGT("P#GarrickStopFlirt","GLOBAL",9) // Flirt has been aborted
 		Global("P#GarrickFlirt","GLOBAL",99) // Reached the end of friendship portion
-		GlobalGT("EndOfBG1","GLOBAL",0) // We're not longer in BG1
+		GlobalGT("EndOfBG1","GLOBAL",0) // We're no longer in BG1
 THEN
 	RESPONSE #100
 		// Start the romance

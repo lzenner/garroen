@@ -210,3 +210,26 @@
 @2306	= ~During Garrick's next break, the three of you find a quiet table to share a drink and chat. Imoen and Garrick talk excitedly about married life, at times sharing way too much information.~
 @2307	= ~During Garrick's next break, the three of you find a quiet table to share a drink and chat. After catching up on current events, you fondly reminisce about the past.~
 
+///////////////////////////
+// SITUATIONAL DIALOGUES //
+///////////////////////////
+// One of them is parked while the other is in the group
+@2400 	= ~I wonder what Garrick is doing.~
+@2401	= ~I wonder what Imoen is doing.~
+@2402	= ~Do you think Garrick thinks of me?~
+@2403	= ~Do you think Imoen thinks of me?~
+@2404	= ~*sighs heavily*~
+@2405	= ~Imoen stares sadly into the fire and sighs.~
+@2406	= ~Garrick stares sadly into the fire and sighs.~
+@2407	= ~I hope Garrick is ok all alone.~
+@2408	= ~I hope Immy is ok all alone.~
+@2409	= ~I miss Garrick.~
+@2410	= ~I miss my Immy.~
+@2411	= ~Garrick has this funny little way he...uh...never mind.~
+@2412	= ~Immy has this funny little way she...uh...never mind.~
+@2413	= ~I don't suppose we could visit Garrick any time soon?~
+@2414	= ~I don't suppose we could visit Imoen any time soon?~
+@2415	= ~I think Garrick would make a great addition to the group.  We should go get him.~
+@2416	= ~I think Imoen would make a great addition to the group.  We should go get her.~
+
+// One of them is slightly injured

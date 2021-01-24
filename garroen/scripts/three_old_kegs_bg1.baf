@@ -60,3 +60,12 @@ THEN
 		StartCutSceneEx("#LGISing",TRUE)
 END
 
+IF
+	OR(2)
+		Global("#L_ImoenInPalace","GLOBAL",1)
+		Global("#L_GarrickTOK_BG1","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("#L_GIPineTimer","GLOBAL",0)
+		Continue()
+END
