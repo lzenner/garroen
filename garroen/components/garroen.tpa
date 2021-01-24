@@ -139,6 +139,7 @@ END~~~~~
 	ACTION_IF GAME_IS ~bgee eet~ BEGIN
 		COMPILE EVALUATE_BUFFER ~%mod_root%/dialogues/dialogues_bg1.d~ USING ~%tra_loc%/%s/dialogues.tra~
 		COMPILE EVALUATE_BUFFER ~%mod_root%/dialogues/dialogues_all.d~ USING ~%tra_loc%/%s/dialogues.tra~
+		COMPILE EVALUATE_BUFFER ~%mod_root%/dialogues/dialogues_taverns.d~ USING ~%tra_loc%/%s/dialogues.tra~  // Used for BG1 and BG2
 	END
 
 	ACTION_IF GAME_INCLUDES ~sod~ BEGIN
