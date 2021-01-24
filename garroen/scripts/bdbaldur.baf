@@ -2,6 +2,10 @@
 // Globals, timers, and "idle" cut scene kick-offs //
 /////////////////////////////////////////////////////
 
+// I think I'm doubling up
+// I think only that which is SoD specific goes in this file
+// Baldur.bcs is in every campaign
+/*
 // Set global letting other mods know this one is installed
 IF
 	Global("#L_Garroen","GLOBAL",0)
@@ -144,3 +148,4 @@ THEN
 		SetGlobal("#L_GIIdle","GLOBAL",0) // Find another idle moment
 		Continue()
 END
+*/
