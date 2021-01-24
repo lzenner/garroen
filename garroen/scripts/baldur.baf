@@ -44,9 +44,9 @@ THEN
 		Continue()
 END
 
-// After romance has started, every 3 in-game days they're not together the one in the party will comment
+// After romance has started, every few in-game days they're not together the one in the party will comment
 IF
-	GlobalGT("#L_GIRomance","GLOBAL",0)
+	GlobalGT("#L_GIRomance","GLOBAL",5)
 	Global("#L_GIPineTimer","GLOBAL",0)
 	OR(2)
 		InPartyAllowDead("%IMOEN_DV%")
@@ -59,7 +59,7 @@ IF
 		!TriggerOverride(Player1,Range("GARRICK",60))
 THEN
 	RESPONSE #100
-		SetGlobalTimer("#L_GIPineTimer","GLOBAL",THREE_DAYS)
+		SetGlobalTimer("#L_GIPineTimer","GLOBAL",TEN_DAYS)
 		Continue()
 END
 
