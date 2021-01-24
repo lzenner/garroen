@@ -79,6 +79,25 @@ THEN
 		Continue()
 END
 
+// After romance has started, every few in-game days they're not together the one in the party will comment
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",5)
+	Global("#L_GIPineTimer","GLOBAL",0)
+	OR(2)
+		InPartyAllowDead("%IMOEN_DV%")
+		InPartyAllowDead("GARRICK")
+	OR(2)
+		!InPartyAllowDead("%IMOEN_DV%")
+		!InPartyAllowDead("GARRICK")
+	OR(2)
+		!TriggerOverride(Player1,Range("%IMOEN_DV%",60))
+		!TriggerOverride(Player1,Range("GARRICK",60))
+THEN
+	RESPONSE #100
+		SetGlobalTimer("#L_GIPineTimer","GLOBAL",TEN_DAYS)
+		Continue()
+END
+
 // Check to see if we're ready for an "idle" scene
 IF
 	IsValidForPartyDialogue("%IMOEN_DV%")
