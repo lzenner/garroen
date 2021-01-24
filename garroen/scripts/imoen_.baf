@@ -1,0 +1,81 @@
+//////////////////////////////////
+// "pining" cut scene kick-offs //
+//////////////////////////////////
+
+// After romance has started, every few in-game days they're not together the one in the party will comment
+IF
+	Range("GARRICK",60)
+THEN
+	RESPONSE #100
+		SetGlobal("#L_GIPineTimer","GLOBAL",0)
+		Continue()
+END
+
+IF
+	Global("#L_GIPineCounter","GLOBAL",0)
+	GlobalGT("#L_GIRomance","GLOBAL",0)
+	Global("#L_GIPineTimer","GLOBAL",0)
+	IsValidForPartyDialogue(MYSELF)
+	!InPartyAllowDead("GARRICK")
+	!Range("GARRICK",60)
+THEN
+	RESPONSE #100
+		SetGlobalTimer("#L_GIPineTimer","GLOBAL",THREE_DAYS)
+		Continue()
+END
+
+IF
+	GlobalGT("#L_GIPineCounter","GLOBAL",0)
+	GlobalLT("#L_GIPineCounter","GLOBAL",6)
+	GlobalGT("#L_GIRomance","GLOBAL",0)
+	Global("#L_GIPineTimer","GLOBAL",0)
+	IsValidForPartyDialogue(MYSELF)
+	!InPartyAllowDead("GARRICK")
+	!Range("GARRICK",60)
+THEN
+	RESPONSE #100
+		SetGlobalTimer("#L_GIPineTimer","GLOBAL",FIVE_DAYS)
+		Continue()
+END
+
+IF
+	GlobalGT("#L_GIPineCounter","GLOBAL",5)
+	GlobalLT("#L_GIPineCounter","GLOBAL",11)
+	GlobalGT("#L_GIRomance","GLOBAL",0)
+	Global("#L_GIPineTimer","GLOBAL",0)
+	IsValidForPartyDialogue(MYSELF)
+	!InPartyAllowDead("GARRICK")
+	!Range("GARRICK",60)
+THEN
+	RESPONSE #100
+		SetGlobalTimer("#L_GIPineTimer","GLOBAL",TEN_DAYS)
+		Continue()
+END
+
+IF
+	GlobalGT("#L_GIPineCounter","GLOBAL",10)
+	GlobalLT("#L_GIPineCounter","GLOBAL",21)
+	GlobalGT("#L_GIRomance","GLOBAL",0)
+	Global("#L_GIPineTimer","GLOBAL",0)
+	IsValidForPartyDialogue(MYSELF)
+	!InPartyAllowDead("GARRICK")
+	!Range("GARRICK",60)
+THEN
+	RESPONSE #100
+		SetGlobalTimer("#L_GIPineTimer","GLOBAL",THIRTY_DAYS)
+		Continue()
+END
+
+IF
+	GlobalGT("#L_GIPineTimer","GLOBAL",0)
+	GlobalTimerExpired("#L_GIPineTimer","GLOBAL")
+	IsValidForPartyDialogue(MYSELF)
+	ActionListEmpty()
+	TriggerOverride(Player1,ActionListEmpty())
+THEN
+	RESPONSE #100
+		SetGlobal("#L_GIPine","GLOBAL",1)
+		IncrementGlobal("#L_GIPineCounter","GLOBAL",1)
+		StartDialogueNoSet(Player1)
+END
+
