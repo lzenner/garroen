@@ -138,6 +138,7 @@ END~~~~~
 	// Compile their BG1 dialogues
 	ACTION_IF GAME_IS ~bgee eet~ BEGIN
 		COMPILE EVALUATE_BUFFER ~%mod_root%/dialogues/dialogues_bg1.d~ USING ~%tra_loc%/%s/dialogues.tra~
+		COMPILE EVALUATE_BUFFER ~%mod_root%/dialogues/dialogues_all.d~ USING ~%tra_loc%/%s/dialogues.tra~
 	END
 
 	ACTION_IF GAME_INCLUDES ~sod~ BEGIN
@@ -167,7 +168,7 @@ END~~~~~
 	BEGIN 7 END
 	BEGIN 0 END
 	BEGIN
-		"ACTION" ~SetGlobal("C#IM_ImoenRejoinsbd1000","GLOBAL",5) SetGlobal("#L_GarrickJoined","GLOBAL",1) SetGlobal("#L_FollowingImoen","MYAREA",0) ActionOverride("GARRICK",JoinParty()) ActionOverride("GARRICK",SetDialogue("BDGARRIJ")) SetDialogue("BDIMOENJ") JoinParty()~
+		"ACTION" ~SetGlobal("C#IM_ImoenRejoinsbd1000","GLOBAL",5) SetGlobal("#L_GarrickJoined","GLOBAL",1) SetGlobal("#L_FollowingImoen","MYAREA",0) ActionOverride("GARRICK",JoinParty()) ActionOverride("GARRICK",SetDialogue("BDGARRIJ")) SetDialogue("BDIMOEN") JoinParty()~
 	END~~~~~
 		END ELSE BEGIN
 			// Move Garrick to the first camp based on I4E Globals
@@ -179,7 +180,10 @@ END~~~~~
 		COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGar15O.baf~
 
 		// Compile the dialogues
+		OUTER_SPRINT %GARRICK_JOINED% ~BDGARRIJ~
+		OUTER_SPRINT %IMOEN_JOINED% ~BDIMOEN~
 		COMPILE EVALUATE_BUFFER ~%mod_root%/dialogues/dialogues_sod.d~ USING ~%tra_loc%/%s/dialogues.tra~
+		COMPILE EVALUATE_BUFFER ~%mod_root%/dialogues/dialogues_all.d~ USING ~%tra_loc%/%s/dialogues.tra~
 
 		// Give Rayphus nice things to say to Garrick
 		// when they're in camp together
