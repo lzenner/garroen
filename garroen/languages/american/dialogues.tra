@@ -232,5 +232,14 @@
 @2415	= ~I think Garrick would make a great addition to the group.  We should go get him.~
 @2416	= ~I think Imoen would make a great addition to the group.  We should go get her.~
 
-// One of them is slightly injured
-@2450	= ~~
+// One of them is injured
+@2450	= ~Oh Garrick!  You're hurt!  Let me kiss it and make it better.~
+@2451	= ~Oh Imoen!  You're hurt!  Let me kiss it and make it better.~
+@2452	= ~Garrick could use some healing over here!~
+@2453	= ~Imoen could use some healing over here!~
+@2454	= ~Help!  Help!  Garrick!  Someone help Garrick!~
+@2455	= ~Help!  Help!  Imoen!  Imoen needs help!~
+@2456	= ~NO!  Not Garrick!  You monster!  I'll have you for this!~
+@2457	= ~NO!  Not Imoen!  You monster!  I'll have you for this!~
+@2458 	= ~NO! No, this cannot be!  We have to get Garrick to a temple immediately!  Oh my poor Garrick!~
+@2459 	= ~NO! No, this cannot be!  We have to get Imoen to a temple immediately!  Oh my poor Immy!~

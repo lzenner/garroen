@@ -4,3 +4,6 @@
 
 // Garrick's drink
 @1000   = ~A round of drinks~
+
+// Their spell to kiss and make it better
+@1001	= ~Kiss~

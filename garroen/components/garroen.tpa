@@ -118,6 +118,10 @@ END~~~~~
 		SAY (0x016c + 0x0008) @1000	// Round of drinks
 	COPY ~%mod_root%/objects/#LGISto9.sto~ ~override~
 		SAY (0x016c + 0x0008) @1000	// Round of drinks
+		
+	// Their 'kiss and make it better' +1 HP spell
+	COPY ~%mod_root%/objects/#LGIKiss.spl~ ~override~
+		SAY (0x0008) @1001 // Kiss
 
 	ACTION_IF (MOD_IS_INSTALLED ~transitions.tp2~ (ID_OF_LABEL "transitions.tp2" "#L-TRANSITIONS-MAIN")) BEGIN
 		// Get a couple strrefs from Transitions 
@@ -140,8 +144,8 @@ END~~~~~
 		COMPILE EVALUATE_BUFFER ~%mod_root%/dialogues/dialogues_bg1.d~ USING ~%tra_loc%/%s/dialogues.tra~
 		COMPILE EVALUATE_BUFFER ~%mod_root%/dialogues/dialogues_all.d~ USING ~%tra_loc%/%s/dialogues.tra~
 		COMPILE EVALUATE_BUFFER ~%mod_root%/dialogues/dialogues_taverns.d~ USING ~%tra_loc%/%s/dialogues.tra~  // Used for BG1 and BG2
-		EXTEND_TOP ~garrick_.bcs~ ~%mod_root%/scripts/garrick_.baf~
-		EXTEND_TOP ~imoen_.bcs~ ~%mod_root%/scripts/imoen_.baf~
+		EXTEND_TOP ~garrick_.bcs~ ~%mod_root%/scripts/garrick_.baf~ USING ~%tra_loc%/%s/dialogues.tra~ 
+		EXTEND_TOP ~imoen_.bcs~ ~%mod_root%/scripts/imoen_.baf~ USING ~%tra_loc%/%s/dialogues.tra~ 
 	END
 
 	ACTION_IF GAME_INCLUDES ~sod~ BEGIN

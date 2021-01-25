@@ -79,10 +79,35 @@ THEN
 		StartDialogueNoSet(Player1)
 END
 
+// Check to see if the other is hurt
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",10)
+	IsValidForPartyDialogue("%IMOEN_DV%")
+	IsValidForPartyDialogue(MYSELF)
+	HPPercentLT("%IMOEN_DV%",100)
+	HPPercentGT("%IMOEN_DV%",89)
+	TriggerOverride("%IMOEN_DV%",ActionListEmpty())
+	ActionListEmpty()
+	OR(2)
+		Global("#L_GIImoenBetter","GLOBAL",0)
+		GlobalTimerExpired("#L_GIImoenBetter","GLOBAL")
+THEN
+	RESPONSE #100
+		StartCutSceneMode()
+		SetGlobalTimer("#L_GIImoenBetter","GLOBAL",ONE_DAY)
+		MoveViewObject("%IMOEN_DV%",INSTANT)
+		MoveToObject("%IMOEN_DV%")
+		DisplayStringHead(MYSELF,@2451) // ~Oh Imoen!  You're hurt!  Let me kiss it and make it better.~
+		Wait(2)
+		ApplySpellRES("#LGIKiss","%IMOEN_DV%")
+		Wait(1)
+		EndCutSceneMode()
+END
+
 // Check to see if we're ready for an "idle" scene
 IF
 	IsValidForPartyDialogue("%IMOEN_DV%")
-	IsValidForPartyDialogue("GARRICK")
+	IsValidForPartyDialogue(MYSELF)
 	GlobalGT("#L_GIRomance","GLOBAL",0)
 	OR(2)
 		Global("#L_GIActionTimer","GLOBAL",0)

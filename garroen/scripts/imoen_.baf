@@ -79,3 +79,28 @@ THEN
 		StartDialogueNoSet(Player1)
 END
 
+// Check to see if the other is hurt
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",10)
+	IsValidForPartyDialogue("GARRICK")
+	IsValidForPartyDialogue(MYSELF)
+	HPPercentLT("GARRICK",100)
+	HPPercentGT("GARRICK",89)
+	TriggerOverride("GARRICK",ActionListEmpty())
+	ActionListEmpty()
+	OR(2)
+		Global("#L_GIGarrickBetter","GLOBAL",0)
+		GlobalTimerExpired("#L_GIGarrickBetter","GLOBAL")
+THEN
+	RESPONSE #100
+		StartCutSceneMode()
+		SetGlobalTimer("#L_GIGarrickBetter","GLOBAL",ONE_DAY)
+		MoveViewObject("GARRICK",INSTANT)
+		MoveToObject("GARRICK")
+		DisplayStringHead(MYSELF,@2450) // ~Oh Garrick!  You're hurt!  Let me kiss it and make it better.~
+		Wait(2)
+		ApplySpellRES("#LGIKiss","GARRICK")
+		Wait(1)
+		EndCutSceneMode()
+END
+
