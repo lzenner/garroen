@@ -5,6 +5,7 @@
 // After romance has started, every few in-game days they're not together the one in the party will comment
 IF
 	Range("%IMOEN_DV%",60)
+	GlobalGT("#L_GIPineTimer","GLOBAL",0)
 THEN
 	RESPONSE #100
 		SetGlobal("#L_GIPineTimer","GLOBAL",0)
@@ -85,7 +86,9 @@ IF
 	IsValidForPartyDialogue("%IMOEN_DV%")
 	IsValidForPartyDialogue(MYSELF)
 	HPPercentLT("%IMOEN_DV%",100)
-	HPPercentGT("%IMOEN_DV%",89)
+	OR(2)
+		HPPercentGT("%IMOEN_DV%",89)
+		TriggerOverride("%IMOEN_DV%",DamageTakenLT(3))
 	TriggerOverride("%IMOEN_DV%",ActionListEmpty())
 	ActionListEmpty()
 	OR(2)

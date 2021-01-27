@@ -144,8 +144,8 @@ END~~~~~
 		COMPILE EVALUATE_BUFFER ~%mod_root%/dialogues/dialogues_bg1.d~ USING ~%tra_loc%/%s/dialogues.tra~
 		COMPILE EVALUATE_BUFFER ~%mod_root%/dialogues/dialogues_all.d~ USING ~%tra_loc%/%s/dialogues.tra~
 		COMPILE EVALUATE_BUFFER ~%mod_root%/dialogues/dialogues_taverns.d~ USING ~%tra_loc%/%s/dialogues.tra~  // Used for BG1 and BG2
-		EXTEND_TOP ~garrick_.bcs~ ~%mod_root%/scripts/garrick_.baf~ USING ~%tra_loc%/%s/dialogues.tra~ 
-		EXTEND_TOP ~imoen_.bcs~ ~%mod_root%/scripts/imoen_.baf~ USING ~%tra_loc%/%s/dialogues.tra~ 
+		EXTEND_TOP ~garrick_.bcs~ ~%mod_root%/scripts/garrick_.baf~ EVAL USING ~%tra_loc%/%s/dialogues.tra~ 
+		EXTEND_TOP ~imoen_.bcs~ ~%mod_root%/scripts/imoen_.baf~ EVAL USING ~%tra_loc%/%s/dialogues.tra~ 
 	END
 
 	ACTION_IF GAME_INCLUDES ~sod~ BEGIN
