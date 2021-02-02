@@ -146,6 +146,59 @@ END~~~~~
 		COMPILE EVALUATE_BUFFER ~%mod_root%/dialogues/dialogues_taverns.d~ USING ~%tra_loc%/%s/dialogues.tra~  // Used for BG1 and BG2
 		EXTEND_TOP ~garrick_.bcs~ ~%mod_root%/scripts/garrick_.baf~ EVAL USING ~%tra_loc%/%s/dialogues.tra~ 
 		EXTEND_TOP ~imoen_.bcs~ ~%mod_root%/scripts/imoen_.baf~ EVAL USING ~%tra_loc%/%s/dialogues.tra~ 
+		
+		// Add areas where they comment about picnics or wanting to camp
+		COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGISpot.baf~
+		COPY_EXISTING ~%FireLeafForest%.ARE~ ~override~
+			LPF ADD_AREA_REGION_TRIGGER
+				INT_VAR
+					ab_RT_Type = 0		//Proximity Trigger
+					ab_RT_BbLX = 3350
+					ab_RT_BbLY = 1475
+					ab_RT_BbHX = 4225
+					ab_RT_BbHY = 2000
+					ab_RT_VxPr = 4
+					ab_RT_Fbit = 2		// Resets
+					ab_RT_TDtD = 100
+					ab_RT_TRmD = 100
+					ab_RT_TSet = 1
+					ab_RT_Vx_X_0 = 3375
+					ab_RT_Vx_Y_0 = 1475
+					ab_RT_Vx_X_1 = 3350
+					ab_RT_Vx_Y_1 = 1900
+					ab_RT_Vx_X_2 = 4025
+					ab_RT_Vx_Y_2 = 2000
+					ab_RT_Vx_X_3 = 4225
+					ab_RT_Vx_Y_3 = 1750
+				STR_VAR
+					ab_RT_Rbcs = ~#LGISpot~
+					ab_RT_Name = "#LGISpot"
+			END
+		COPY_EXISTING ~%DryadFalls%.ARE~ ~override~
+			LPF ADD_AREA_REGION_TRIGGER
+				INT_VAR
+					ab_RT_Type = 0		//Proximity Trigger
+					ab_RT_BbLX = 2975
+					ab_RT_BbLY = 1750
+					ab_RT_BbHX = 3370
+					ab_RT_BbHY = 2250
+					ab_RT_VxPr = 4
+					ab_RT_Fbit = 2		// Resets
+					ab_RT_TDtD = 100
+					ab_RT_TRmD = 100
+					ab_RT_TSet = 1
+					ab_RT_Vx_X_0 = 2975
+					ab_RT_Vx_Y_0 = 1750
+					ab_RT_Vx_X_1 = 3350
+					ab_RT_Vx_Y_1 = 1775
+					ab_RT_Vx_X_2 = 3370
+					ab_RT_Vx_Y_2 = 2250
+					ab_RT_Vx_X_3 = 3015
+					ab_RT_Vx_Y_3 = 2220
+				STR_VAR
+					ab_RT_Rbcs = ~#LGISpot~
+					ab_RT_Name = "#LGISpot"
+			END
 	END
 
 	ACTION_IF GAME_INCLUDES ~sod~ BEGIN

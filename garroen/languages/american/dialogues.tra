@@ -243,3 +243,9 @@
 @2457	= ~NO!  Not Imoen!  You monster!  I'll have you for this!~
 @2458 	= ~NO! No, this cannot be!  We have to get Garrick to a temple immediately!  Oh my poor Garrick!~
 @2459 	= ~NO! No, this cannot be!  We have to get Imoen to a temple immediately!  Oh my poor Immy!~
+
+// Spots around BG1 area that they like
+@2500	= ~Oh Immy, isn't this a lovely spot.~
+@2501	= ~We should stop and rest, just for a little while.  <CHARNAME> can we stop for a little while and ... uh ... relax?~
+@2502	= ~I guess. Sure. Everyone, set up camp. We're resting here.~
+@2503	= ~Imoen, now is not the time. Sorry.~

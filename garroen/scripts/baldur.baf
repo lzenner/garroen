@@ -54,7 +54,6 @@ IF
 	GlobalLT("P#GarrickFlirt","GLOBAL",44)
 THEN
 	RESPONSE #100
-		// Don't continue with the rest of the Garrick Flirt mod
 		SetGlobal("#L_GIRomance","GLOBAL",0)
 		SetGlobal("#L_GIPineTimer","GLOBAL",0)
 		Continue()

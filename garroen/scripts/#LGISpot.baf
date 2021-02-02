@@ -1,0 +1,27 @@
+//////////////////////////////
+// Proximity trigger script //
+// Their reponses to areas  //
+//////////////////////////////
+
+IF
+	IsOverMe("Garrick")
+	IsOverMe("%IMOEN_DV%")
+	IsValidForPartyDialogue("GARRICK")
+	IsValidForPartyDialogue("%IMOEN_DV%")
+	IsValidForPartyDialogue(Player1)
+	GlobalGT("#L_GIRomance","GLOBAL",10)
+	Global("#L_GISpot","MYAREA",0)
+	OR(2)
+		Global("#L_GISpotTimer","GLOBAL",0)
+		GlobalTimerExpired("#L_GISpotTimer","GLOBAL")
+	OR(2)
+		!AreaCheck("%DryadFalls%")
+		!Exists("CDryad")
+	CombatCounter(0)
+THEN
+	RESPONSE #100
+		ClearAllActions()
+		SetGlobal("#L_GISpot","MYAREA",1)
+		ActionOverride("GARRICK",StartDialogueNoSet(Player1))
+END
+

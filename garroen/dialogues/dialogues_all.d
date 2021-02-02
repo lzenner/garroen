@@ -48,6 +48,12 @@ APPEND ~%IMOEN_JOINED%~
 		SAY @2415 // ~I think Garrick would make a great addition to the group.  We should go get him.~
 		IF ~~ THEN DO ~SetGlobal("#L_GIPine","GLOBAL",0) SetGlobal("#L_GIPineTimer","GLOBAL",0)~ EXIT
 	END
+	
+	IF ~~ BEGIN NICE_SPOT
+		SAY @2501 // ~We should stop and rest, just for a little while.  <CHARNAME> can we stop for a little while and ... uh ... relax?~
+		++ @2502 /* ~I guess. Sure. Everyone, set up camp. We're resting here.~ */ DO ~SetGlobalTimer("#L_GISpotTimer","GLOBAL",ONE_DAY) RestParty()~ EXIT
+		++ @2503 /* ~Imoen, now is not the time. Sorry.~ */ EXIT
+	END
 END
 
 APPEND ~%GARRICK_JOINED%~
@@ -97,4 +103,9 @@ APPEND ~%GARRICK_JOINED%~
 		SAY @2416 // ~I think Imoen would make a great addition to the group.  We should go get her.~
 		IF ~~ THEN DO ~SetGlobal("#L_GIPine","GLOBAL",0) SetGlobal("#L_GIPineTimer","GLOBAL",0)~ EXIT
 	END
+
+	IF WEIGHT #-98 ~Global("#L_GISpot","MYAREA",1)~ BEGIN NICE_SPOT
+		SAY @2500 // ~Oh Immy, isn't this a lovely spot.~
+		IF ~~ THEN DO ~SetGlobal("#L_GISpot","MYAREA",2)~ EXTERN %IMOEN_JOINED% NICE_SPOT
+	END	
 END

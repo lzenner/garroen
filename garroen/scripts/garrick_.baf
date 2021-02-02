@@ -86,10 +86,9 @@ IF
 	IsValidForPartyDialogue("%IMOEN_DV%")
 	IsValidForPartyDialogue(MYSELF)
 	HPPercentLT("%IMOEN_DV%",100)
-	OR(2)
-		HPPercentGT("%IMOEN_DV%",89)
-		TriggerOverride("%IMOEN_DV%",DamageTakenLT(3))
+	HPPercentGT("%IMOEN_DV%",89)
 	TriggerOverride("%IMOEN_DV%",ActionListEmpty())
+	CombatCounter(0)
 	ActionListEmpty()
 	OR(2)
 		Global("#L_GIImoenBetter","GLOBAL",0)
@@ -105,6 +104,107 @@ THEN
 		ApplySpellRES("#LGIKiss","%IMOEN_DV%")
 		Wait(1)
 		EndCutSceneMode()
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",10)
+	IsValidForPartyDialogue(MYSELF)
+	HPPercentLT("%IMOEN_DV%",90)
+	HPPercentGT("%IMOEN_DV%",50)
+	!CombatCounter(0)
+	OR(2)
+		Global("#L_GIHelpImoen1","GLOBAL",0)
+		GlobalTimerExpired("#L_GIHelpImoen1","GLOBAL")
+THEN
+	RESPONSE #100
+		SetGlobalTimer("#L_GIHelpImoen1","GLOBAL",THREE_ROUNDS)
+		MoveViewObject("%IMOEN_DV%",INSTANT)
+		DisplayStringHead(MYSELF,@2453)	// ~Imoen could use some healing over here!~
+		PauseGame()
+		Attack(LastAttackerOf("%IMOEN_DV%"))
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",10)
+	IsValidForPartyDialogue(MYSELF)
+	!CombatCounter(0)
+	!Dead("%IMOEN_DV%")
+	OR(2)
+		HPPercent("%IMOEN_DV%",50)
+		HPPercentLT("%IMOEN_DV%",50)
+	OR(2)
+		Global("#L_GIHelpImoen2","GLOBAL",0)
+		GlobalTimerExpired("#L_GIHelpImoen2","GLOBAL")
+THEN
+	RESPONSE #100
+		SetGlobalTimer("#L_GIHelpImoen2","GLOBAL",ONE_ROUND)
+		MoveViewObject("%IMOEN_DV%",INSTANT)
+		DisplayStringHead(MYSELF,@2455) // ~Help!  Help!  Imoen!  Imoen needs help!~
+		PauseGame()
+		Attack(LastAttackerOf("%IMOEN_DV%"))
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",10)
+	IsValidForPartyDialogue(MYSELF)
+	Dead("%IMOEN_DV%")
+	!CombatCounter(0)
+	Global("#L_GIDeadImoen1","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("#L_GIDeadImoen1","GLOBAL",1)
+		MoveViewObject("%IMOEN_DV%",INSTANT)
+		DisplayStringHead(MYSELF,@2457) // ~NO!  Not Imoen!  You monster!  I'll have you for this!~
+		PauseGame()
+		Attack(LastAttackerOf("%IMOEN_DV%"))
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",10)
+	IsValidForPartyDialogue(MYSELF)
+	HPPercentLT("%IMOEN_DV%",90)
+	!Dead("%IMOEN_DV%")
+	CombatCounter(0)
+	OR(2)
+		Global("#L_GIHelpImoen1","GLOBAL",0)
+		GlobalTimerExpired("#L_GIHelpImoen1","GLOBAL")
+	OR(2)
+		Global("#L_GIHelpImoen2","GLOBAL",0)
+		GlobalTimerExpired("#L_GIHelpImoen2","GLOBAL")
+THEN
+	RESPONSE #100
+		SetGlobalTimer("#L_GIHelpImoen1","GLOBAL",THREE_ROUNDS)
+		MoveViewObject("%IMOEN_DV%",INSTANT)
+		DisplayStringHead(MYSELF,@2453)	// ~Imoen could use some healing over here!~
+		PauseGame()
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",10)
+	IsValidForPartyDialogue(MYSELF)
+	Dead("%IMOEN_DV%")
+	CombatCounter(0)
+	Global("#L_GIDeadImoen2","GLOBAL",0)
+THEN
+	RESPONSE #100
+		StartCutSceneMode()
+		SetGlobal("#L_GIDeadImoen2","GLOBAL",1)
+		MoveViewObject("%IMOEN_DV%",INSTANT)
+		MoveToObject("%IMOEN_DV%")
+		DisplayStringHead(MYSELF,@2459) // ~NO! No, this cannot be!  We have to get Imoen to a temple immediately!  Oh my poor Immy!~
+		Wait(1)
+		EndCutSceneMode()
+END
+
+IF
+	OR(2)
+		Global("#L_GIDeadImoen1","GLOBAL",1)
+		Global("#L_GIDeadImoen2","GLOBAL",1)
+	!Dead("%IMOEN_DV%")
+THEN
+	RESPONSE #100
+		SetGlobal("#L_GIDeadImoen1","GLOBAL",0)
+		SetGlobal("#L_GIDeadImoen2","GLOBAL",0)
 END
 
 // Check to see if we're ready for an "idle" scene

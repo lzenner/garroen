@@ -86,10 +86,9 @@ IF
 	IsValidForPartyDialogue("GARRICK")
 	IsValidForPartyDialogue(MYSELF)
 	HPPercentLT("GARRICK",100)
-	OR(2)
-		HPPercentGT("GARRICK",89)
-		TriggerOverride("GARRICK",DamageTakenLT(3))
+	HPPercentGT("GARRICK",89)
 	TriggerOverride("GARRICK",ActionListEmpty())
+	CombatCounter(0)
 	ActionListEmpty()
 	OR(2)
 		Global("#L_GIGarrickBetter","GLOBAL",0)
@@ -106,4 +105,107 @@ THEN
 		Wait(1)
 		EndCutSceneMode()
 END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",10)
+	IsValidForPartyDialogue(MYSELF)
+	HPPercentLT("GARRICK",90)
+	HPPercentGT("GARRICK",50)
+	!CombatCounter(0)
+	OR(2)
+		Global("#L_GIHelpGarrick1","GLOBAL",0)
+		GlobalTimerExpired("#L_GIHelpGarrick1","GLOBAL")
+THEN
+	RESPONSE #100
+		SetGlobalTimer("#L_GIHelpGarrick1","GLOBAL",THREE_ROUNDS)
+		MoveViewObject("GARRICK",INSTANT)
+		DisplayStringHead(MYSELF,@2452) // ~Garrick could use some healing over here!~
+		PauseGame()
+		Attack(LastAttackerOf("GARRICK"))
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",10)
+	IsValidForPartyDialogue(MYSELF)
+	!CombatCounter(0)
+	!Dead("GARRICK")
+	OR(2)
+		HPPercent("GARRICK",50)
+		HPPercentLT("GARRICK",50)
+	OR(2)
+		Global("#L_GIHelpGarrick2","GLOBAL",0)
+		GlobalTimerExpired("#L_GIHelpGarrick2","GLOBAL")
+THEN
+	RESPONSE #100
+		SetGlobalTimer("#L_GIHelpGarrick2","GLOBAL",ONE_ROUND)
+		MoveViewObject("GARRICK",INSTANT)
+		DisplayStringHead(MYSELF,@2454) // ~Help!  Help!  Garrick!  Someone help Garrick!~
+		PauseGame()
+		Attack(LastAttackerOf("GARRICK"))
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",10)
+	IsValidForPartyDialogue(MYSELF)
+	Dead("GARRICK")
+	!CombatCounter(0)
+	Global("#L_GIDeadGarrick1","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("#L_GIDeadGarrick1","GLOBAL",1)
+		MoveViewObject("GARRICK",INSTANT)
+		DisplayStringHead(MYSELF,@2456) // ~NO!  Not Garrick!  You monster!  I'll have you for this!~
+		PauseGame()
+		Attack(LastAttackerOf("GARRICK"))
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",10)
+	IsValidForPartyDialogue(MYSELF)
+	HPPercentLT("GARRICK",90)
+	!Dead("GARRICK")
+	CombatCounter(0)
+	OR(2)
+		Global("#L_GIHelpGarrick1","GLOBAL",0)
+		GlobalTimerExpired("#L_GIHelpGarrick1","GLOBAL")
+	OR(2)
+		Global("#L_GIHelpGarrick2","GLOBAL",0)
+		GlobalTimerExpired("#L_GIHelpGarrick2","GLOBAL")
+THEN
+	RESPONSE #100
+		SetGlobalTimer("#L_GIHelpGarrick1","GLOBAL",THREE_ROUNDS)
+		MoveViewObject("GARRICK",INSTANT)
+		DisplayStringHead(MYSELF,@2452) // ~Garrick could use some healing over here!~
+		PauseGame()
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",10)
+	IsValidForPartyDialogue(MYSELF)
+	Dead("GARRICK")
+	CombatCounter(0)
+	Global("#L_GIDeadGarrick2","GLOBAL",0)
+THEN
+	RESPONSE #100
+		StartCutSceneMode()
+		SetGlobal("#L_GIDeadGarrick2","GLOBAL",1)
+		MoveViewObject("GARRICK",INSTANT)
+		MoveToObject("GARRICK")
+		DisplayStringHead(MYSELF,@2458) // ~NO! No, this cannot be!  We have to get Garrick to a temple immediately!  Oh my poor Garrick!~
+		Wait(1)
+		EndCutSceneMode()
+END
+
+IF
+	OR(2)
+		Global("#L_GIDeadGarrick1","GLOBAL",1)
+		Global("#L_GIDeadGarrick2","GLOBAL",1)
+	!Dead("GARRICK")
+THEN
+	RESPONSE #100
+		SetGlobal("#L_GIDeadGarrick1","GLOBAL",0)
+		SetGlobal("#L_GIDeadGarrick2","GLOBAL",0)
+END
+
+
 
