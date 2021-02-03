@@ -251,3 +251,7 @@
 @2501	= ~We should stop and rest, just for a little while.  <CHARNAME> can we stop for a little while and ... uh ... relax?~
 @2502	= ~I guess. Sure. Everyone, set up camp. We're resting here.~
 @2503	= ~Imoen, now is not the time. Sorry.~
+
+// Shoal the Nereid encounter
+@2600	= ~Accompany us and we will make certain you are safe!~
+@2601	= ~Keep your lips to yourself, you watery tart!~

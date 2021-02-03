@@ -1,9 +1,8 @@
-//////////////////////////////////////////////
-// Post dialogues for BG1                   //
-// Makes sure they both go to Feldepost Inn //
-//////////////////////////////////////////////
+///////////////////////
+// Dialogues for BG1 //
+///////////////////////
 
-
+// Make sure they go to the correct inn
 ALTER_TRANS GARRIC 
 	BEGIN 3 6 12 END
 	BEGIN 0 END
@@ -247,4 +246,26 @@ BEGIN ~#LGISto9~	// Days 100 ->
 		IF ~~ THEN EXIT
 	END
 // End of new #LGISto9
+
+////////////////////////////////
+// SHOAL THE NEREID ENCOUNTER //
+////////////////////////////////
+APPEND SHOAL
+	IF WEIGHT #-1 ~NumTimesTalkedTo(0) IsGabber("GARRICK") IsValidForPartyDialogue("GARRICK") IsValidForPartyDialogue("%IMOEN_DV%") GlobalGT("#L_GIRomance","GLOBAL",10)~ BEGIN SHOAL_1
+		SAY #201974 /* ~Please to help me, will you? I am alone on this desolate dry-land and who knows what lurks in these woods.~ */
+		IF ~~ THEN REPLY @2600 /* ~Accompany us and we will make certain you are safe!~ */ GOTO SHOAL_2
+	END
+	
+	IF ~~ BEGIN SHOAL_2
+		SAY #201976 /* ~Wonderful! Perhaps a kiss to show my appreciation?~ */
+		IF ~~ THEN EXTERN %IMOEN_JOINED% SHOAL_KISS
+	END
+END
+
+APPEND %IMOEN_JOINED%
+	IF ~~ BEGIN SHOAL_KISS
+		SAY @2601 // ~Keep your lips to yourself, you watery tart!~
+		IF ~~ THEN EXTERN SHOAL 3
+	END
+END
 
