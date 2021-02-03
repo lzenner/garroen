@@ -90,8 +90,6 @@ END
 IF
 	GlobalGT("#L_GIRomance","GLOBAL",35)
 	GlobalLT("#L_GIRomance","GLOBAL",51)
-	!IsValidForPartyDialogue("JAHEIRA")
-	!IsValidForPartyDialogue("FALDORN")
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
