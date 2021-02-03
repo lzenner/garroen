@@ -104,6 +104,7 @@ THEN
 		ApplySpellRES("#LGIKiss","GARRICK")
 		Wait(1)
 		EndCutSceneMode()
+		Continue()
 END
 
 IF
@@ -122,6 +123,7 @@ THEN
 		DisplayStringHead(MYSELF,@2452) // ~Garrick could use some healing over here!~
 		PauseGame()
 		Attack(LastAttackerOf("GARRICK"))
+		Continue()
 END
 
 IF
@@ -142,6 +144,7 @@ THEN
 		DisplayStringHead(MYSELF,@2454) // ~Help!  Help!  Garrick!  Someone help Garrick!~
 		PauseGame()
 		Attack(LastAttackerOf("GARRICK"))
+		Continue()
 END
 
 IF
@@ -157,6 +160,7 @@ THEN
 		DisplayStringHead(MYSELF,@2456) // ~NO!  Not Garrick!  You monster!  I'll have you for this!~
 		PauseGame()
 		Attack(LastAttackerOf("GARRICK"))
+		Continue()
 END
 
 IF
@@ -177,6 +181,7 @@ THEN
 		MoveViewObject("GARRICK",INSTANT)
 		DisplayStringHead(MYSELF,@2452) // ~Garrick could use some healing over here!~
 		PauseGame()
+		Continue()
 END
 
 IF
@@ -194,6 +199,7 @@ THEN
 		DisplayStringHead(MYSELF,@2458) // ~NO! No, this cannot be!  We have to get Garrick to a temple immediately!  Oh my poor Garrick!~
 		Wait(1)
 		EndCutSceneMode()
+		Continue()
 END
 
 IF
@@ -205,7 +211,27 @@ THEN
 	RESPONSE #100
 		SetGlobal("#L_GIDeadGarrick1","GLOBAL",0)
 		SetGlobal("#L_GIDeadGarrick2","GLOBAL",0)
+		Continue()
 END
 
-
-
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",10)
+	IsValidForPartyDialogue(MYSELF)
+	OR(6)
+		StateCheck("GARRICK",STATE_SLEEPING)
+		StateCheck("GARRICK",STATE_PANIC)
+		StateCheck("GARRICK",STATE_STUNNED)
+		StateCheck("GARRICK",STATE_CHARMED)
+		StateCheck("GARRICK",STATE_FEEBLEMINDED)
+		StateCheck("GARRICK",STATE_CONFUSED)
+THEN
+	RESPONSE #100
+		StartCutSceneMode()
+		MoveViewObject("GARRICK",INSTANT)
+		DisplayStringHead(MYSELF,@2460) // ~Oh my poor Garrick!  I'm coming, Garrick!~
+		MoveToObject("GARRICK")
+		ApplySpellRES("#LGIKiss","GARRICK")
+		Wait(1)
+		EndCutSceneMode()
+		Continue()
+END

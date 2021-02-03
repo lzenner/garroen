@@ -253,3 +253,25 @@ THEN
 		SetGlobal("#L_GIIdle","GLOBAL",0) // Find another idle moment
 		Continue()
 END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",10)
+	IsValidForPartyDialogue(MYSELF)
+	OR(6)
+		StateCheck("%IMOEN_DV%",STATE_SLEEPING)
+		StateCheck("%IMOEN_DV%",STATE_PANIC)
+		StateCheck("%IMOEN_DV%",STATE_STUNNED)
+		StateCheck("%IMOEN_DV%",STATE_CHARMED)
+		StateCheck("%IMOEN_DV%",STATE_FEEBLEMINDED)
+		StateCheck("%IMOEN_DV%",STATE_CONFUSED)
+THEN
+	RESPONSE #100
+		StartCutSceneMode()
+		MoveViewObject("%IMOEN_DV%",INSTANT)
+		DisplayStringHead(MYSELF,@2461) // ~Oh my poor Immy!  I'm coming, Imoen!~
+		MoveToObject("%IMOEN_DV%")
+		ApplySpellRES("#LGIKiss","%IMOEN_DV%")
+		Wait(1)
+		EndCutSceneMode()
+		Continue()
+END
