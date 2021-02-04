@@ -211,6 +211,28 @@ END~~~~~
         		REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~ActionOverride("BDGARRIC",DialogueInterrupt(FALSE))~ ~ActionOverride("BDGARRIC",DestroySelf()) RemoveMapNote([806.325],%STRREF_GARRICK%)~
 			END
 
+		// Advance romance days when days are skipped in the game
+		COPY_EXISTING ~BD0103.BCS~ ~override~
+			DECOMPILE_AND_PATCH BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~AdvanceTime(FOURTEEN_DAYS)~ ~AdvanceTime(FOURTEEN_DAYS) IncrementGlobal("#L_GIRomance","GLOBAL",13)~
+			END
+		COPY_EXISTING ~BDCUT10.BCS~ ~override~
+			DECOMPILE_AND_PATCH BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~AdvanceTime(THREE_DAYS)~ ~AdvanceTime(THREE_DAYS) IncrementGlobal("#L_GIRomance","GLOBAL",2)~
+			END
+		COPY_EXISTING ~BDSODTRN.BCS~ ~override~
+			DECOMPILE_AND_PATCH BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~AdvanceTime(TEN_DAYS)~ ~AdvanceTime(TEN_DAYS) IncrementGlobal("#L_GIRomance","GLOBAL",9)~
+			END
+		COPY_EXISTING ~ISLOFF.BCS~ ~override~
+			DECOMPILE_AND_PATCH BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~AdvanceTime(TWENTYTWO_DAYS)~ ~AdvanceTime(TWENTYTWO_DAYS) IncrementGlobal("#L_GIRomance","GLOBAL",21)~
+			END
+		COPY_EXISTING ~ISLON.BCS~ ~override~
+			DECOMPILE_AND_PATCH BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~AdvanceTime(TWENTYFIVE_DAYS)~ ~AdvanceTime(TWENTYFIVE_DAYS) IncrementGlobal("#L_GIRomance","GLOBAL",24)~
+			END
+		
 		// Start scenes in palace (3rd floor)
 		EXTEND_TOP ~BD0103.BCS~ ~%mod_root%/scripts/palace_3rd_floor_sod.baf~ USING ~%tra_loc%/%s/dialogues.tra~
 
