@@ -269,3 +269,10 @@ APPEND %IMOEN_JOINED%
 	END
 END
 
+//////////////////////////////////////////////////////////////
+// Mendelas calls cut scene that needs to evaluate triggers //
+//////////////////////////////////////////////////////////////
+ALTER_TRANS MENDA2
+	BEGIN 3 END
+	BEGIN 0 END
+	BEGIN "ACTION" ~ClearAllActions() StartCutSceneMode() StartCutSceneEx("ISLON",TRUE)~ END

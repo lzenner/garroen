@@ -224,14 +224,12 @@ END~~~~~
 			DECOMPILE_AND_PATCH BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~AdvanceTime(TEN_DAYS)~ ~AdvanceTime(TEN_DAYS) IncrementGlobal("#L_GIRomance","GLOBAL",9)~
 			END
-		COPY_EXISTING ~ISLOFF.BCS~ ~override~
+		COPY_EXISTING ~SHIP.BCS~ ~override~
 			DECOMPILE_AND_PATCH BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~AdvanceTime(TWENTYTWO_DAYS)~ ~AdvanceTime(TWENTYTWO_DAYS) IncrementGlobal("#L_GIRomance","GLOBAL",21)~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~StartCutScene("ISLOFF")~ ~StartCutSceneEx("ISLOFF",TRUE)~
 			END
-		COPY_EXISTING ~ISLON.BCS~ ~override~
-			DECOMPILE_AND_PATCH BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~AdvanceTime(TWENTYFIVE_DAYS)~ ~AdvanceTime(TWENTYFIVE_DAYS) IncrementGlobal("#L_GIRomance","GLOBAL",24)~
-			END
+		EXTEND_TOP ~ISLOFF.BCS~ ~%mod_root%/scripts/isloff.baf~ EVAL
+		EXTEND_TOP ~ISLON.BCS~ ~%mod_root%/scripts/islon.baf~ EVAL
 		
 		// Start scenes in palace (3rd floor)
 		EXTEND_TOP ~BD0103.BCS~ ~%mod_root%/scripts/palace_3rd_floor_sod.baf~ USING ~%tra_loc%/%s/dialogues.tra~

@@ -1,0 +1,19 @@
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",0)
+	InPartyAllowDead("GARRICK")
+	InPartyAllowDead("%IMOEN_DV%")
+THEN
+	RESPONSE #100
+		IncrementGlobal("#L_GIRomance","GLOBAL",21)
+		Continue()
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",0)
+	!InPartyAllowDead("GARRICK")
+	!InPartyAllowDead("%IMOEN_DV%")
+THEN
+	RESPONSE #100
+		IncrementGlobal("#L_GIRomance","GLOBAL",21)
+		Continue()
+END
