@@ -207,6 +207,28 @@ THEN
 		SetGlobal("#L_GIDeadImoen2","GLOBAL",0)
 END
 
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",10)
+	IsValidForPartyDialogue(MYSELF)
+	OR(6)
+		StateCheck("%IMOEN_DV%",STATE_SLEEPING)
+		StateCheck("%IMOEN_DV%",STATE_PANIC)
+		StateCheck("%IMOEN_DV%",STATE_STUNNED)
+		StateCheck("%IMOEN_DV%",STATE_CHARMED)
+		StateCheck("%IMOEN_DV%",STATE_FEEBLEMINDED)
+		StateCheck("%IMOEN_DV%",STATE_CONFUSED)
+THEN
+	RESPONSE #100
+		StartCutSceneMode()
+		MoveViewObject("%IMOEN_DV%",INSTANT)
+		DisplayStringHead(MYSELF,@2461) // ~Oh my poor Immy!  I'm coming, Imoen!~
+		MoveToObject("%IMOEN_DV%")
+		ApplySpellRES("#LGIKiss","%IMOEN_DV%")
+		Wait(1)
+		EndCutSceneMode()
+		Continue()
+END
+
 // Check to see if we're ready for an "idle" scene
 IF
 	IsValidForPartyDialogue("%IMOEN_DV%")
@@ -215,6 +237,8 @@ IF
 	OR(2)
 		Global("#L_GIActionTimer","GLOBAL",0)
 		GlobalTimerExpired("#L_GIActionTimer","GLOBAL")
+	CombatCounter(0)
+	TriggerOverride(Player1,ActionListEmpty())
 	TriggerOverride("%IMOEN_DV%",ActionListEmpty())
 	ActionListEmpty()
 	Global("#L_GIIdle","GLOBAL",0)
@@ -251,27 +275,5 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("#L_GIIdle","GLOBAL",0) // Find another idle moment
-		Continue()
-END
-
-IF
-	GlobalGT("#L_GIRomance","GLOBAL",10)
-	IsValidForPartyDialogue(MYSELF)
-	OR(6)
-		StateCheck("%IMOEN_DV%",STATE_SLEEPING)
-		StateCheck("%IMOEN_DV%",STATE_PANIC)
-		StateCheck("%IMOEN_DV%",STATE_STUNNED)
-		StateCheck("%IMOEN_DV%",STATE_CHARMED)
-		StateCheck("%IMOEN_DV%",STATE_FEEBLEMINDED)
-		StateCheck("%IMOEN_DV%",STATE_CONFUSED)
-THEN
-	RESPONSE #100
-		StartCutSceneMode()
-		MoveViewObject("%IMOEN_DV%",INSTANT)
-		DisplayStringHead(MYSELF,@2461) // ~Oh my poor Immy!  I'm coming, Imoen!~
-		MoveToObject("%IMOEN_DV%")
-		ApplySpellRES("#LGIKiss","%IMOEN_DV%")
-		Wait(1)
-		EndCutSceneMode()
 		Continue()
 END

@@ -48,9 +48,9 @@ END
 // By this time, Imoen is already flirting with Garrick
 // Have her back off until the infatuation gets to the 'your my best friend' part
 IF
-	InPartyAllowDead("%IMOEN_DV%")
 	InPartyAllowDead("GARRICK")
 	GlobalLT("#L_GIRomance","GLOBAL",5)
+	Global("P#GarrickMatch","GLOBAL",1)
 	GlobalLT("P#GarrickFlirt","GLOBAL",44)
 THEN
 	RESPONSE #100
