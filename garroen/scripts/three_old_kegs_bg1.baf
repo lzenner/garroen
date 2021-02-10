@@ -85,7 +85,7 @@ IF
 	OR(2)
 		Global("#L_GIPerformTimer","MYAREA",0)
 		GlobalTimerExpired("#L_GIPerformTimer","MYAREA")
-	TriggerOverride("GARRICK",LOS(Player1,30))
+	TriggerOverride("GARRICK",LOS(Player1,20))
 THEN
 	RESPONSE #100
 		StartCutSceneMode()
