@@ -255,3 +255,13 @@
 // Shoal the Nereid encounter
 @2600	= ~Accompany us and we will make certain you are safe!~
 @2601	= ~Keep your lips to yourself, you watery tart!~
+
+//////////////////////////////////////////////////////////////////////////////////
+// BG1 Feldepost patrons/bartender react when Garrick leaves for Three Old Kegs //
+//////////////////////////////////////////////////////////////////////////////////
+@2650	= ~Your young friend, Imoen, told me to let you know they've up and moved to Baldur's Gate. I guess Garrick got himself a permanent gig at Three Old Kegs.  We'll miss him 'round here.~
+@2651	= ~Your young friend, Imoen, told me to let you know she's up and moved to Baldur's Gate. She mentioned Three Old Kegs...maybe I should warn the Flaming Fist 'bout her.~
+@2652	= ~Business sure has been off since that young bard, Garrick, up and moved to Baldur's Gate. I guess he got himself a permanent gig at Three Old Kegs.  We'll miss him 'round here.~
+@2653	= ~It's just not the same without Garrick here.~
+@2654	= ~I wish Garrick the best of luck up in Baldur's Gate.~
+@2655	= ~Three Old Kegs better treat Garrick well or they'll hear from me!~

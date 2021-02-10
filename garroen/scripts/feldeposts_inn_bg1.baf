@@ -68,3 +68,52 @@ THEN
 		SetGlobal("#L_GIPineTimer","GLOBAL",0)
 		Continue()
 END
+
+// The patrons bemoan Garrick leaving
+// For the next three visits to the inn...not forever
+IF
+	Global("#L_GarrickTOK_BG1","GLOBAL",1)
+	Global("#L_PatronChatter","MYAREA",0)
+	OR(2)
+		Global("#L_GIPatronChatterTimer","MYAREA",0)
+		GlobalTimerExpired("#L_GIPatronChatterTimer","MYAREA")
+THEN
+	RESPONSE #100
+		SetGlobal("#L_PatronChatter","MYAREA",1)
+		SetGlobalTimer("#L_GIPatronChatterTimer","MYAREA",ONE_DAY)
+		StartCutSceneMode()
+		DisplayStringHead("Patron_1",@2653) // ~It's just not the same without Garrick here.~
+		Wait(2)
+		EndCutSceneMode()
+		Continue()
+END
+
+IF
+	Global("#L_GarrickTOK_BG1","GLOBAL",1)
+	Global("#L_PatronChatter","MYAREA",1)
+	GlobalTimerExpired("#L_GIPatronChatterTimer","MYAREA")
+THEN
+	RESPONSE #100
+		SetGlobal("#L_PatronChatter","MYAREA",2)
+		SetGlobalTimer("#L_GIPatronChatterTimer","MYAREA",ONE_DAY)
+		StartCutSceneMode()
+		DisplayStringHead("Patron_2",@2654) // ~I wish Garrick the best of luck up in Baldur's Gate.~
+		Wait(2)
+		EndCutSceneMode()
+		Continue()
+END
+
+IF
+	Global("#L_GarrickTOK_BG1","GLOBAL",1)
+	Global("#L_PatronChatter","MYAREA",2)
+	GlobalTimerExpired("#L_GIPatronChatterTimer","MYAREA")
+THEN
+	RESPONSE #100
+		SetGlobal("#L_PatronChatter","MYAREA",3)
+		SetGlobal("#L_GIPatronChatterTimer","MYAREA",0)
+		StartCutSceneMode()
+		DisplayStringHead("Bartender",@2655) // ~Three Old Kegs better treat Garrick well or they'll hear from me!~
+		Wait(2)
+		EndCutSceneMode()
+		Continue()
+END

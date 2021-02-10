@@ -121,7 +121,7 @@ END~~~~~
 
 	// Globals and kicks off scenes in the inns
 	ACTION_IF GAME_IS ~bgee eet~ BEGIN
-		EXTEND_BOTTOM ~%Beregost_FeldepostsInn_L1%.BCS~ ~%mod_root%/scripts/feldeposts_inn_bg1.baf~ EVAL
+		EXTEND_BOTTOM ~%Beregost_FeldepostsInn_L1%.BCS~ ~%mod_root%/scripts/feldeposts_inn_bg1.baf~ EVAL USING ~%tra_loc%/%s/dialogues.tra~ 
 		EXTEND_BOTTOM ~%NBaldursGate_ThreeOldKegs_L1%.BCS~ ~%mod_root%/scripts/three_old_kegs_bg1.baf~ EVAL
 	END
 	ACTION_IF GAME_INCLUDES ~sod~ BEGIN
@@ -246,6 +246,15 @@ END~~~~~
 					ab_RT_Rbcs = ~#LGISpot~
 					ab_RT_Name = "#LGISpot"
 			END
+			
+		// Have folks in Feldepost bemoan Garrick's leaving
+		// Give the handles...
+		COPY_EXISTING ~MTOWBEST.CRE~ ~override~
+			WRITE_ASCII 0x280 ~Patron_1~ #32 // set DV
+		COPY_EXISTING ~FTOWBESC.CRE~ ~override~
+			WRITE_ASCII 0x280 ~Patron_2~ #32 // set DV
+		COPY_EXISTING ~Bart5.CRE~ ~override~
+			WRITE_ASCII 0x280 ~Bartender~ #32 // set DV
 	END
 
 	ACTION_IF GAME_INCLUDES ~sod~ BEGIN
