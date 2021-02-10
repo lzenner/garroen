@@ -12,6 +12,7 @@ THEN
 	RESPONSE #100
 		SetGlobal("#L_GarrickTOK_BG1","GLOBAL",0)
 		SetGlobal("#L_GarrickPositioned","MYAREA",0)
+		SetGlobal("#L_ImoenPositioned","MYAREA",0)
 END
 
 IF

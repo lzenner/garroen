@@ -13,6 +13,7 @@ THEN
 	RESPONSE #100
 		SetGlobal("#L_GarrickFeldepost","GLOBAL",0)
 		SetGlobal("#L_GarrickPositioned","MYAREA",0)
+		SetGlobal("#L_ImoenPositioned","MYAREA",0)
 		SetGlobal("#L_GIAtInn","GLOBAL",0)		// Continuous number of days both are at an inn (either one)
 END
 

@@ -151,7 +151,9 @@ END
 
 IF
 	Global("#L_GarrickTOK_BG1","GLOBAL",1)
-	Global("#L_ImoenInPalace","GLOBAL",1)
+	OR(2)
+		Global("#L_ImoenTOK_BG1","GLOBAL",1)
+		Global("#L_ImoenInPalace","GLOBAL",1)
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
@@ -160,12 +162,18 @@ THEN
 END
 
 IF
-	OR(2)
-		Global("#L_GarrickFeldepost","GLOBAL",1)
-		!Global("#L_ImoenFeldepost","GLOBAL",1)
-	OR(2)
-		Global("#L_GarrickTOK_BG1","GLOBAL",1)
-		!Global("#L_ImoenInPalace","GLOBAL",1)
+	Global("#L_GarrickFeldepost","GLOBAL",1)
+	!Global("#L_ImoenFeldepost","GLOBAL",1)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		EndCutSceneMode()
+END
+
+IF
+	Global("#L_GarrickTOK_BG1","GLOBAL",1)
+	!Global("#L_ImoenTOK_BG1","GLOBAL",1)
+	!Global("#L_ImoenInPalace","GLOBAL",1)
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
@@ -179,4 +187,3 @@ THEN
 		CutSceneId(Player1)
 		EndCutSceneMode()
 END
-
