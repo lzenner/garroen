@@ -178,7 +178,7 @@ END~~~~~
 		COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGITOK.baf~ USING ~%tra_loc%/%s/dialogues.tra~
 	END
 
-	// Compile their BG1 dialogues and override scripts
+	// Compile their BG1 dialogues and scripts
 	ACTION_IF GAME_IS ~bgee eet~ BEGIN
 		// Advance romance days when days are skipped in the game
 		COPY_EXISTING ~SHIP.BCS~ ~override~

@@ -74,6 +74,7 @@ END
 IF
 	Global("#L_GarrickTOK_BG1","GLOBAL",1)
 	Global("#L_PatronChatter","MYAREA",0)
+	GlobalGT("L_GIAtFeldepost",GLOBAL",5)	// If he was at Feldeposts for longer than 5 days
 	OR(2)
 		Global("#L_GIPatronChatterTimer","MYAREA",0)
 		GlobalTimerExpired("#L_GIPatronChatterTimer","MYAREA")
