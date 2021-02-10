@@ -108,6 +108,7 @@ IF
 	Global("#L_GarrickTOK_BG1","GLOBAL",1)
 	Global("#L_PatronChatter","MYAREA",2)
 	GlobalTimerExpired("#L_GIPatronChatterTimer","MYAREA")
+	TriggerOverride("Bartender",LOS(Player1,30))
 THEN
 	RESPONSE #100
 		SetGlobal("#L_PatronChatter","MYAREA",3)

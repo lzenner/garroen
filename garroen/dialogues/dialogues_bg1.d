@@ -269,6 +269,27 @@ APPEND %IMOEN_JOINED%
 	END
 END
 
+///////////////////////////
+// FELDEPOST'S BARTENDER //
+///////////////////////////
+APPEND BART5
+	IF WEIGHT #-99 ~OR(2) Global("#L_GarrickTOK_BG1","GLOBAL",1) Global("#L_GarrickTOK_SoD","GLOBAL",1) OR(2) Global("#L_ImoenTOK_BG1","GLOBAL",1) Global("#L_ImoenInPalace","GLOBAL",1) Global("#L_GIMovedMsg","MYAREA",0)~ THEN BEGIN THEY_MOVED
+		SAY @2650 // ~Your young friend, Imoen, told me to let you know they've up and moved to Baldur's Gate. I guess Garrick got himself a permanent gig at Three Old Kegs.  We'll miss him 'round here.~
+		IF ~~ THEN DO ~SetGlobal("#L_GIMovedMsg","MYAREA",1)~ EXIT
+	END
+
+	IF WEIGHT #-98 ~OR(2) Global("#L_ImoenTOK_BG1","GLOBAL",1) Global("#L_ImoenInPalace","GLOBAL",1) Global("#L_GIMovedMsg","MYAREA",0)~ THEN BEGIN SHE_MOVED
+		SAY @2651 // ~Your young friend, Imoen, told me to let you know she's up and moved to Baldur's Gate. She mentioned Three Old Kegs...maybe I should warn the Flaming Fist 'bout her.~
+		IF ~~ THEN DO ~SetGlobal("#L_GIMovedMsg","MYAREA",1)~ EXIT
+	END
+
+	IF WEIGHT #-97 ~OR(2) Global("#L_GarrickTOK_BG1","GLOBAL",1) Global("#L_GarrickTOK_SoD","GLOBAL",1) Global("#L_GIMovedMsg","MYAREA",0)~ THEN BEGIN HE_MOVED
+		SAY @2652 // ~Business sure has been off since that young bard, Garrick, up and moved to Baldur's Gate. I guess he got himself a permanent gig at Three Old Kegs.  We'll miss him 'round here.~
+		IF ~~ THEN DO ~SetGlobal("#L_GIMovedMsg","MYAREA",1)~ EXIT
+	END
+END
+
+
 //////////////////////////////////////////////////////////////
 // Mendelas calls cut scene that needs to evaluate triggers //
 //////////////////////////////////////////////////////////////
