@@ -7,41 +7,41 @@ ALTER_TRANS GARRIC
 	BEGIN 3 6 12 END
 	BEGIN 0 END
 	BEGIN
-		"TRIGGER" ~Global("#L_ImoenInPalace","GLOBAL",0)~
+		"TRIGGER" ~GlobalLT("Chapter","GLOBAL",5)~
 		"ACTION" ~~
 		"EPILOGUE" ~GOTO GARRIC_TO_FELDEPOST~
 	END
 EXTEND_TOP GARRIC 3 #0
-	IF ~Global("#L_ImoenInPalace","GLOBAL",1)~ THEN REPLY #200552 GOTO GARRIC_TO_TOK
+	IF ~GlobalGT("Chapter","GLOBAL",4) Global("EndOfBG1","GLOBAL",0)~ THEN REPLY #200552 GOTO GARRIC_TO_TOK
 END
 EXTEND_TOP GARRIC 6 #0
-	IF ~Global("#L_ImoenInPalace","GLOBAL",1)~ THEN REPLY #200556 GOTO GARRIC_TO_TOK
+	IF ~GlobalGT("Chapter","GLOBAL",4) Global("EndOfBG1","GLOBAL",0)~ THEN REPLY #200556 GOTO GARRIC_TO_TOK
 END
 EXTEND_TOP GARRIC 12 #0
-	IF ~Global("#L_ImoenInPalace","GLOBAL",1)~ THEN REPLY #214735 GOTO GARRIC_TO_TOK
+	IF ~GlobalGT("Chapter","GLOBAL",4) Global("EndOfBG1","GLOBAL",0)~ THEN REPLY #214735 GOTO GARRIC_TO_TOK
 END
 
 ALTER_TRANS GARRIC 
 	BEGIN 7 END
 	BEGIN 1 END
 	BEGIN
-		"TRIGGER" ~Global("#L_ImoenInPalace","GLOBAL",0)~
+		"TRIGGER" ~GlobalLT("Chapter","GLOBAL",5)~
 		"EPILOGUE" ~GOTO GARRIC_TO_FELDEPOST~
 	END
 EXTEND_TOP GARRIC 7 #1
-	IF ~Global("#L_ImoenInPalace","GLOBAL",1)~ THEN REPLY #200557 GOTO GARRIC_TO_TOK
+	IF ~GlobalGT("Chapter","GLOBAL",4) Global("EndOfBG1","GLOBAL",0)~ THEN REPLY #200557 GOTO GARRIC_TO_TOK
 END
 
 ALTER_TRANS GARRIC 
 	BEGIN 13 END
 	BEGIN 0 END
 	BEGIN
-		"TRIGGER" ~Global("#L_ImoenInPalace","GLOBAL",0)~
+		"TRIGGER" ~GlobalLT("Chapter","GLOBAL",5)~
 		"ACTION" ~SetDialogue("GARRIJ") LeaveParty()~
 		"EPILOGUE" ~GOTO GARRIC_TO_FELDEPOST~
 	END
 EXTEND_TOP GARRIC 13 #0
-	IF ~Global("#L_ImoenInPalace","GLOBAL",1)~ THEN REPLY #214736 DO ~SetDialogue("GARRIJ") LeaveParty()~ GOTO GARRIC_TO_TOK
+	IF ~GlobalGT("Chapter","GLOBAL",4) Global("EndOfBG1","GLOBAL",0)~ THEN REPLY #214736 DO ~SetDialogue("GARRIJ") LeaveParty()~ GOTO GARRIC_TO_TOK
 END
 
 APPEND GARRIC
@@ -57,10 +57,10 @@ APPEND GARRIC
 END
 
 EXTEND_BOTTOM %GARRICK_POST% 0 1
-	IF ~!AreaCheck("%Beregost_FeldepostsInn_L1%") Global("#L_ImoenInPalace","GLOBAL",0)~ GOTO GARRICK_TO_FELDEPOST
-	IF ~AreaCheck("%Beregost_FeldepostsInn_L1%") Global("#L_ImoenInPalace","GLOBAL",0)~ GOTO GARRICK_AT_FELDEPOST
-	IF ~!AreaCheck("%NBaldursGate_ThreeOldKegs_L1%") Global("#L_ImoenInPalace","GLOBAL",1)~ GOTO GARRICK_TO_TOK
-	IF ~AreaCheck("%NBaldursGate_ThreeOldKegs_L1%") Global("#L_ImoenInPalace","GLOBAL",1)~ GOTO GARRICK_AT_TOK
+	IF ~!AreaCheck("%Beregost_FeldepostsInn_L1%") GlobalLT("Chapter","GLOBAL",5)~ GOTO GARRICK_TO_FELDEPOST
+	IF ~AreaCheck("%Beregost_FeldepostsInn_L1%") GlobalLT("Chapter","GLOBAL",5)~ GOTO GARRICK_AT_FELDEPOST
+	IF ~!AreaCheck("%NBaldursGate_ThreeOldKegs_L1%") GlobalGT("Chapter","GLOBAL",4) Global("EndOfBG1","GLOBAL",0)~ GOTO GARRICK_TO_TOK
+	IF ~AreaCheck("%NBaldursGate_ThreeOldKegs_L1%") GlobalGT("Chapter","GLOBAL",4) Global("EndOfBG1","GLOBAL",0)~ GOTO GARRICK_AT_TOK
 END
 
 // Shake off all the mods trying to send garrick to other areas
@@ -112,8 +112,10 @@ ALTER_TRANS %IMOEN_POST%
 	BEGIN "ACTION" ~SetGlobal("KickedOut","LOCALS",0) SetGlobal("#L_ImoenFeldepost","GLOBAL",0) SetGlobal("#L_GIAtInn","GLOBAL",0) JoinParty()~ END
 
 EXTEND_BOTTOM %IMOEN_POST% 0 1
-	IF ~!AreaCheck("%Beregost_FeldepostsInn_L1%")~ GOTO IMOEN_TO_FELDEPOST
-	IF ~AreaCheck("%Beregost_FeldepostsInn_L1%")~ GOTO IMOEN_AT_FELDEPOST
+	IF ~!AreaCheck("%Beregost_FeldepostsInn_L1%") GlobalLT("Chapter","GLOBAL",5)~ GOTO IMOEN_TO_FELDEPOST
+	IF ~AreaCheck("%Beregost_FeldepostsInn_L1%") GlobalLT("Chapter","GLOBAL",5)~ GOTO IMOEN_AT_FELDEPOST
+	IF ~!AreaCheck("%NBaldursGate_ThreeOldKegs_L1%") GlobalGT("Chapter","GLOBAL",4) Global("EndOfBG1","GLOBAL",0)~ GOTO IMOEN_TO_TOK
+	IF ~AreaCheck("%NBaldursGate_ThreeOldKegs_L1%") GlobalGT("Chapter","GLOBAL",4) Global("EndOfBG1","GLOBAL",0)~ GOTO IMOEN_AT_TOK
 END
 
 // Shake off all the mods trying to send Imoen to other areas
@@ -139,6 +141,17 @@ APPEND %IMOEN_POST%
 		IF ~Global("KickedOut","LOCALS",1)~ EXIT
 	END
 	
+	IF ~~ BEGIN IMOEN_TO_TOK
+		SAY	@2003 // ~I'll be at Three Old Keg's in North Baldur's Gate if you need me in the future.~
+		IF ~~ DO ~SetGlobal("#L_ImoenTOK_BG1","GLOBAL",1) SetGlobal("KickedOut","LOCALS",1) ChangeAIScript("",DEFAULT) EscapeAreaMove("%NBaldursGate_ThreeOldKegs_L1%",365,215,N)~ EXIT
+	END
+
+	IF ~~ BEGIN IMOEN_AT_TOK
+		SAY @2002 /* ~I'll be right here if you need me in the future.~ */
+		IF ~~ DO ~SetGlobal("#L_ImoenTOK_BG1","GLOBAL",1) SetGlobal("KickedOut","LOCALS",1) ChangeAIScript("",DEFAULT) MoveToPoint([365.215]) Face(N)~ EXIT
+		IF ~Global("KickedOut","LOCALS",1)~ EXIT
+	END
+
 	IF ~!HappinessLT(Myself,UNHAPPY_ANGRY_BOUNDARY) Global("KickedOut","LOCALS",1) GlobalGT("#L_GIRomance","GLOBAL",5)~ THEN BEGIN NEW_IMOEN_3
 		SAY @2200 // ~Hello <CHARNAME>. It's good to see you again.  Pull up a chair!~ 
 		++ @2151 /* ~I'd like you to join me.~ */ GOTO JOIN_OF_COURSE
