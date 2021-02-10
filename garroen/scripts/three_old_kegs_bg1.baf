@@ -21,6 +21,7 @@ THEN
 	RESPONSE #100
 		ActionOverride("GARRICK",Face(SE))
 		SetGlobal("#L_GarrickPositioned","MYAREA",1)
+		SetGlobal("#L_ImoenPositioned","MYAREA",0)
 END
 
 IF
@@ -36,10 +37,21 @@ END
 
 IF
 	Global("#L_ImoenTOK_BG1","GLOBAL",1)
+	Global("#L_GarrickTOK_BG1","GLOBAL",1)
 	Global("#L_ImoenPositioned","MYAREA",0)
 THEN
 	RESPONSE #100
 		ActionOverride("%IMOEN_DV%",Face(N))
+		SetGlobal("#L_ImoenPositioned","MYAREA",1)
+END
+
+IF
+	Global("#L_ImoenTOK_BG1","GLOBAL",1)
+	Global("#L_GarrickTOK_BG1","GLOBAL",0)
+	Global("#L_ImoenPositioned","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("%IMOEN_DV%",Face(S))
 		SetGlobal("#L_ImoenPositioned","MYAREA",1)
 END
 
