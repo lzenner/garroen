@@ -5,6 +5,7 @@
 // Failsafe for when other mods mess with their parking spots
 IF
 	Global("#L_GarrickFeldepost","GLOBAL",1)
+	Global("#L_GIAwayForWedding","GLOBAL",0)
 	OR(2)
 		!Exists("GARRICK")
 		InPartyAllowDead("GARRICK")
@@ -12,10 +13,12 @@ THEN
 	RESPONSE #100
 		SetGlobal("#L_GarrickFeldepost","GLOBAL",0)
 		SetGlobal("#L_GarrickPositioned","MYAREA",0)
+		SetGlobal("#L_GIAtInn","GLOBAL",0)		// Continuous number of days both are at an inn (either one)
 END
 
 IF
 	Global("#L_ImoenFeldepost","GLOBAL",1)
+	Global("#L_GIAwayForWedding","GLOBAL",0)
 	OR(2)
 		!Exists("%IMOEN_DV%")
 		InPartyAllowDead("%IMOEN_DV%")
@@ -23,6 +26,7 @@ THEN
 	RESPONSE #100
 		SetGlobal("#L_ImoenFeldepost","GLOBAL",0)
 		SetGlobal("#L_ImoenPositioned","MYAREA",0)
+		SetGlobal("#L_GIAtInn","GLOBAL",0)		// Continuous number of days both are at an inn (either one)
 END
 
 IF

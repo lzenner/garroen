@@ -21,8 +21,9 @@ IF
 		GlobalTimerExpired("#L_GIParkedDay","GLOBAL")
 THEN
 	RESPONSE #100
-		IncrementGlobal("#L_GIRomance","GLOBAL",1)
-		IncrementGlobal("#L_GIAtInn","GLOBAL",1)
+		IncrementGlobal("#L_GIRomance","GLOBAL",1)		// Overall romance progress
+		IncrementGlobal("#L_GIAtInn","GLOBAL",1)		// Continuous number of days both are at an inn (either one)
+		IncrementGlobal("#L_GIAtFeldepost","GLOBAL",1)	// Number of total days spent at Feldepost's Inn
 		SetGlobalTimer("#L_GIParkedDay","GLOBAL",ONE_DAY)
 		Continue()
 END
@@ -39,7 +40,9 @@ IF
 		GlobalTimerExpired("#L_GIParkedDay","GLOBAL")
 THEN
 	RESPONSE #100
-		IncrementGlobal("#L_GIRomance","GLOBAL",1)
+		IncrementGlobal("#L_GIRomance","GLOBAL",1)		// Overall romance progress
+		IncrementGlobal("#L_GIAtInn","GLOBAL",1)		// Continuous number of days both are at an inn (either one)
+		IncrementGlobal("#L_GIAtTOK","GLOBAL",1)		// Number of total days spent at Three Old Kegs Inn
 		SetGlobalTimer("#L_GIParkedDay","GLOBAL",ONE_DAY)
 		Continue()
 END
@@ -60,7 +63,7 @@ THEN
 END
 
 IF
-	// If they've spent more than 5 days together at an inn
+	// If they've spent more than 5 continuous days together at an inn
 	// Or we're no longer in BG1
 	GlobalLT("P#GarrickFlirt","GLOBAL",99)
 	Global("P#GarrickMatch","GLOBAL",1)

@@ -11,14 +11,14 @@ DEFINE_ACTION_FUNCTION garroen BEGIN
 	OUTER_SPRINT MOVE_GARRICK_TOK_SOD ~~
 	OUTER_SPRINT TRANSITIONS_IMOEN_TRAIN ~~
 
-	// Move Garrick to Three Old Kegs when Imoen goes into training
-	// Which version(s) of the place differ depending upon installed game
+	// Move Garrick and Imoen to Three Old Kegs at the start of Chapter 5 (BG1)
+//	Global("#L_ImoenInPalace","GLOBAL",1)
 	ACTION_IF GAME_IS ~bgee eet~ BEGIN
 		OUTER_SPRINT MOVE_GARRICK_TOK_BG1 ~~~~~IF
-	Global("#L_ImoenInPalace","GLOBAL",1)
+	Global("Chapter","GLOBAL",5)
+	Global("#L_GIAwayForWedding","GLOBAL",0)
 	!InPartyAllowDead("GARRICK")
 	!TriggerOverride("GARRICK",InMyArea(Player1))
-	Global("EndOfBG1","GLOBAL",0)
 	Global("#L_MovedGarrickTOK_BG1","GLOBAL",0)
 	Global("#L_GarrickTOK_BG1","GLOBAL",0)
 THEN
@@ -26,26 +26,63 @@ THEN
 		SetGlobal("#L_MovedGarrickTOK_BG1","GLOBAL",1)
 		SetGlobal("#L_GarrickFeldepost","GLOBAL",0)
 		SetGlobal("#L_GarrickTOK_BG1","GLOBAL",1)
-		SetGlobal("#L_GarrickModded","GLOBAL",1)
-		SetGlobal("#L_GarrickOKInBG1Areas","GLOBAL",1)
 		MoveGlobal("%NBaldursGate_ThreeOldKegs_L1%","GARRICK",[360.140])
 		Continue()
 END
 
 IF
+	Global("Chapter","GLOBAL",5)
+	Global("#L_GIAwayForWedding","GLOBAL",0)
+	!InPartyAllowDead("%IMOEN_DV%")
+	!TriggerOverride("%IMOEN_DV%",InMyArea(Player1))
+	Global("#L_MovedImoenTOK_BG1","GLOBAL",0)
+	Global("#L_ImoenTOK_BG1","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("#L_MovedImoenTOK_BG1","GLOBAL",1)
+		SetGlobal("#L_ImoenFeldepost","GLOBAL",0)
+		SetGlobal("#L_ImoenTOK_BG1","GLOBAL",1)
+		MoveGlobal("%NBaldursGate_ThreeOldKegs_L1%","%IMOEN_DV%",[365.215])
+		Continue()
+END
+
+// Return them to their proper inn after their honeymoon
+IF
+	GlobalLT("Chapter","GLOBAL",5)
 	Global("#L_GIMarried","GLOBAL",0)
-	Global("#L_ImoenInPalace","GLOBAL",1)
-	Global("EndOfBG1","GLOBAL",0)
+	GlobalGT("#L_GIAwayForWedding","GLOBAL",0)
 	GlobalTimerExpired("#L_GIAwayForWedding","GLOBAL")
 THEN
 	RESPONSE #100
 		SetGlobal("#L_GIMarried","GLOBAL",1)
-		SetGlobal("#L_GarrickPositioned","%NBaldursGate_ThreeOldKegs_L1%",0)
-		SetGlobal("#L_ImoenSet","%NBaldursGate_ThreeOldKegs_L1%",0)
+		SetGlobal("#L_GIAwayForWedding","GLOBAL",0)
+		SetGlobal("#L_GarrickPositioned","%Beregost_FeldepostsInn_L1%",0)	// So the room will redo it's positioning routine
+		SetGlobal("#L_ImoenPositioned","%Beregost_FeldepostsInn_L1%",0)
+		MoveGlobal("%Beregost_FeldepostsInn_L1%","GARRICK",[900.510])
+		MoveGlobal("%Beregost_FeldepostsInn_L1%","%IMOEN_DV%",[780.580])
+		Continue()
+END
+
+IF
+	GlobalGT("Chapter","GLOBAL",4)
+	Global("EndOfBG1","GLOBAL",0)
+	Global("#L_GIMarried","GLOBAL",0)
+	GlobalGT("#L_GIAwayForWedding","GLOBAL",0)
+	GlobalTimerExpired("#L_GIAwayForWedding","GLOBAL")
+THEN
+	RESPONSE #100
+		SetGlobal("#L_GIMarried","GLOBAL",1)
+		SetGlobal("#L_GIAwayForWedding","GLOBAL",0)
+		SetGlobal("#L_GarrickPositioned","%NBaldursGate_ThreeOldKegs_L1%",0)	// So the room will redo it's positioning routine
+		SetGlobal("#L_ImoenPositioned","%NBaldursGate_ThreeOldKegs_L1%",0)
+		SetGlobal("#L_MovedGarrickTOK_BG1","GLOBAL",1)							// In case chapter 5 started during their honeymoon
+		SetGlobal("#L_MovedImoenTOK_BG1","GLOBAL",1)
 		SetGlobal("#L_GarrickFeldepost","GLOBAL",0)
 		SetGlobal("#L_ImoenFeldepost","GLOBAL",0)
 		SetGlobal("#L_GarrickTOK_BG1","GLOBAL",1)
+		SetGlobal("#L_ImoenTOK_BG1","GLOBAL",1)
 		MoveGlobal("%NBaldursGate_ThreeOldKegs_L1%","GARRICK",[360.140])
+		MoveGlobal("%NBaldursGate_ThreeOldKegs_L1%","%IMOEN_DV%",[365.215])
 		Continue()
 END~~~~~
 	END  // end of game_is bgee eet
@@ -76,7 +113,7 @@ THEN
 END~~~~~
 	END  // end of game includes sod
 
-	// Globals, timers, kicks off scenes when idle, and moves Garrick to Three Old Kegs
+	// Globals, timers and moves them to Three Old Kegs
 	EXTEND_TOP ~BALDUR.BCS~ ~%mod_root%/scripts/baldur.baf~ EVAL
 
 	// Kicks off scenes that happen just before rest
@@ -91,7 +128,7 @@ END~~~~~
 		EXTEND_BOTTOM ~BD0106.BCS~ ~%mod_root%/scripts/three_old_kegs_sod.baf~ EVAL
 	END
 
-	// The scenes
+	// Campaign independent scenes
 	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGIIdle.baf~ USING ~%tra_loc%/%s/dialogues.tra~
 	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGISing.baf~ USING ~%tra_loc%/%s/dialogues.tra~	
 	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGISigh.baf~ USING ~%tra_loc%/%s/dialogues.tra~	
@@ -120,6 +157,8 @@ END~~~~~
 		SAY (0x016c + 0x0008) @1000	// Round of drinks
 		
 	// Their 'kiss and make it better' +1 HP spell
+	// Made it rather powerful - cures things that distract them from each other
+	// like charm, sleep, confusion, etc
 	COPY ~%mod_root%/objects/#LGIKiss.spl~ ~override~
 		SAY (0x0008) @1001 // Kiss
 
@@ -210,7 +249,7 @@ END~~~~~
 	END
 
 	ACTION_IF GAME_INCLUDES ~sod~ BEGIN
-		// Set globals, timers, idle scenes etc
+		// Set globals, timers, etc
 		EXTEND_TOP ~BDBALDUR.BCS~ ~%mod_root%/scripts/bdbaldur.baf~ EVAL
 
 		// Get rid of cameo Garrick in Elfsong Tavern
