@@ -255,6 +255,20 @@ END~~~~~
 			WRITE_ASCII 0x280 ~Patron_2~ #32 // set DV
 		COPY_EXISTING ~Bart5.CRE~ ~override~
 			WRITE_ASCII 0x280 ~Bartender~ #32 // set DV
+			
+		// Wedding participants and guests
+		COPY ~%mod_root%/objects/#LBride.cre~ ~override~
+		COPY ~%mod_root%/objects/#LGroom.cre~ ~override~
+		COPY_EXISTING ~AGNASI.CRE~ ~override~
+			WRITE_ASCII 0x280 ~PriestF~ #32 // set DV
+		COPY_EXISTING ~CHANTH.CRE~ ~override~
+			WRITE_ASCII 0x280 ~PriestM~ #32 // set DV
+			
+		// Empty Script file to override guest actor scripts
+		COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LBlank.baf~ 
+		
+		// Wedding cut scene
+		COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGIWed.baf~ USING ~%tra_loc%/%s/dialogues.tra~  
 	END
 
 	ACTION_IF GAME_INCLUDES ~sod~ BEGIN

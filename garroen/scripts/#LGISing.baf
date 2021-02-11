@@ -103,14 +103,13 @@ IF
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
-		DisplayStringHead("GARRICK",@2080) // ~That's all for tonight folks.  My bride-to-be and I are on the way to the temple.  Then it's off to our honeymoon!~
+		DisplayStringHead("GARRICK",@2080) // ~That's all for tonight folks.  My bride-to-be and I are on the way to the temple...
 		Continue()
 END
 
 IF
-	GlobalGT("#L_GIRomance","GLOBAL",100)
-	GlobalLT("#L_GIRomance","GLOBAL",126)
-	Global("#L_GIMarried","GLOBAL",1)
+	GlobalGT("#L_GIMarried","GLOBAL",0)
+	GlobalLT("#L_GIMarried","GLOBAL",26)
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
@@ -119,18 +118,17 @@ THEN
 END
 
 IF
-	GlobalGT("#L_GIRomance","GLOBAL",125)
+	GlobalGT("#L_GIMarried","GLOBAL",25)
 	Global("#L_GIBride","MYAREA",0)
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
-		SetGlobal("#L_GIBride","MYAREA",1)
 		DisplayStringHead("GARRICK",@2090) // ~Here's a song for my lovely bride.  She completes me.~
 		Continue()
 END
 
 IF
-	GlobalGT("#L_GIRomance","GLOBAL",125)
+	GlobalGT("#L_GIMarried","GLOBAL",25)
 	Global("#L_GIBride","MYAREA",1)
 THEN
 	RESPONSE #100
@@ -168,6 +166,7 @@ THEN
 	RESPONSE #100
 		CutSceneId(Player1)
 		EndCutSceneMode()
+		Continue()
 END
 
 IF
@@ -178,6 +177,7 @@ THEN
 	RESPONSE #100
 		CutSceneId(Player1)
 		EndCutSceneMode()
+		Continue()
 END
 
 IF
@@ -186,4 +186,16 @@ THEN
 	RESPONSE #100
 		CutSceneId(Player1)
 		EndCutSceneMode()
+		Continue()
 END
+
+// Allow next line in the sequence to happen even if Imoen isn't in the inn
+IF
+	GlobalGT("#L_GIMarried","GLOBAL",25)
+	Global("#L_GIBride","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("#L_GIBride","MYAREA",1)
+		Continue()
+END
+

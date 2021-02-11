@@ -75,7 +75,9 @@ END
 
 IF
 	GlobalGT("#L_GIRomance","GLOBAL",75)
-	GlobalLT("#L_GIRomance","GLOBAL",101)
+	OR(2)
+		GlobalLT("#L_GIRomance","GLOBAL",101)
+		GlobalLT("#L_GIAtInn","GLOBAL",25)
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
@@ -87,7 +89,7 @@ END
 
 IF
 	GlobalGT("#L_GIRomance","GLOBAL",100)
-	GlobalLT("#L_GIRomance","GLOBAL",126)
+	GlobalGT("#L_GIAtInn","GLOBAL",24)
 	Global("#L_GIMarried","GLOBAL",0)
 	Global("#L_GarrickFeldepost","GLOBAL",0)
 	Global("#L_GarrickTOK_BG1","GLOBAL",1)
@@ -95,20 +97,18 @@ IF
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
-		SetGlobalTimer("#L_GIAwayForWedding","GLOBAL",EIGHT_HOURS)
+		SetGlobalTimer("#L_GIAwayForWedding","GLOBAL",TWENTY_HOURS)
 		Wait(2)
 		DisplayStringHead("%IMOEN_DV%",@2082) // ~Imoen blushes and beams with joy.~
 		Wait(2)
 		// Let Shep be an ass now
 		ActionOverride("SHEP",ChangeAIScript("INITDLG",CLASS))
-		ActionOverride("GARRICK",EscapeAreaObject("Door0200")
-		ActionOverride("%IMOEN_DV%",EscapeAreaObject("Door0200")
-		Continue()
+		ActionOverride("%IMOEN_DV%",StartDialogueNoSet(Player1))
 END
 
 IF
 	GlobalGT("#L_GIRomance","GLOBAL",100)
-	GlobalLT("#L_GIRomance","GLOBAL",126)
+	GlobalGT("#L_GIAtInn","GLOBAL",24)
 	Global("#L_GIMarried","GLOBAL",0)
 	Global("#L_GarrickFeldepost","GLOBAL",0)
 	Global("#L_GarrickTOK_BG1","GLOBAL",0)
@@ -116,18 +116,16 @@ IF
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
-		SetGlobalTimer("#L_GIAwayForWedding","GLOBAL",EIGHT_HOURS)
+		SetGlobalTimer("#L_GIAwayForWedding","GLOBAL",TWENTY_HOURS)
 		Wait(2)
 		DisplayStringHead("%IMOEN_DV%",@2082) // ~Imoen blushes and beams with joy.~
 		Wait(2)
-		ActionOverride("GARRICK",EscapeAreaObject("TranBD0040")
-		ActionOverride("%IMOEN_DV%",EscapeAreaObject("TranBD0040")
-		Continue()
+		ActionOverride("%IMOEN_DV%",StartDialogueNoSet(Player1))
 END
 
 IF
 	GlobalGT("#L_GIRomance","GLOBAL",100)
-	GlobalLT("#L_GIRomance","GLOBAL",126)
+	GlobalGT("#L_GIAtInn","GLOBAL",24)
 	Global("#L_GIMarried","GLOBAL",0)
 	Global("#L_GarrickFeldepost","GLOBAL",1)
 	Global("#L_GarrickTOK_BG1","GLOBAL",0)
@@ -135,22 +133,20 @@ IF
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
-		SetGlobalTimer("#L_GIAwayForWedding","GLOBAL",EIGHT_HOURS)
+		SetGlobalTimer("#L_GIAwayForWedding","GLOBAL",TWENTY_HOURS)
 		Wait(2)
 		DisplayStringHead("%IMOEN_DV%",@2082) // ~Imoen blushes and beams with joy.~
 		Wait(2)
-		ActionOverride("GARRICK",EscapeAreaObject("Door3300")
-		ActionOverride("%IMOEN_DV%",EscapeAreaObject("Door3300")
-		Continue()
+		ActionOverride("%IMOEN_DV%",StartDialogueNoSet(Player1))
 END
 
 IF
-	GlobalGT("#L_GIRomance","GLOBAL",100)
-	GlobalLT("#L_GIRomance","GLOBAL",126)
-	Global("#L_GIMarried","GLOBAL",1)
+	GlobalGT("#L_GIMarried","GLOBAL",0)
+	GlobalLT("#L_GIMarried","GLOBAL",26)
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
+		SetGlobal("#L_GIMarried","GLOBAL",2)
 		Wait(2)
 		DisplayStringHead("%IMOEN_DV%",@2083) // ~Imoen giggles and sings along.~
 		Wait(2)
@@ -158,7 +154,7 @@ THEN
 END
 
 IF
-	GlobalGT("#L_GIRomance","GLOBAL",125)
+	GlobalGT("#L_GIMarried","GLOBAL",25)
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
@@ -179,9 +175,10 @@ END
 IF
 	Global("#L_GarrickTOK_BG1","GLOBAL",1)
 	Global("#L_ImoenInPalace","GLOBAL",1)
+	// Make sure they're not on their way to their wedding
 	OR(3)
 		!GlobalGT("#L_GIRomance","GLOBAL",100)
-		!GlobalLT("#L_GIRomance","GLOBAL",126)
+		!GlobalGT("#L_GIAtInn","GLOBAL",24)
 		!Global("#L_GIMarried","GLOBAL",0)
 THEN
 	RESPONSE #100

@@ -182,6 +182,22 @@ APPEND %IMOEN_POST%
 		SAY @2205 // ~Of course I'll join you.  Any time you need me!~
 		IF ~~ THEN DO ~SetGlobal("KickedOut","LOCALS",0) SetGlobal("#L_ImoenFeldepost","GLOBAL",0) SetGlobal("#L_GIAtInn","GLOBAL",0) JoinParty()~ EXIT
 	END
+
+	// Off to the wedding
+	IF WEIGHT #-98 ~GlobalGT("#L_GIAwayForWedding","GLOBAL",0) GlobalGT("Chapter","GLOBAL",4)~ BEGIN COME_ALONG_POND_1
+		SAY @2084 // ~Come along, <CHARNAME>.  You don't think we'd hold the ceremony without you, do ya?~
+		IF ~~ THEN DO ~StartCutSceneMode() StartCutSceneEx("#LGIWed",TRUE)~ EXIT
+	END
+
+	IF WEIGHT #-97 ~GlobalGT("#L_GIAwayForWedding","GLOBAL",0) GlobalLT("Chapter","GLOBAL",5)~ BEGIN COME_ALONG_POND_2
+		SAY @2084 // ~Come along, <CHARNAME>.  You don't think we'd hold the ceremony without you, do ya?~
+		++ @2085 /* ~But Baldur's Gate is closed?  How will we get to the Lady's House?~ */ GOTO SNEAK_IN
+	END
+	
+	IF ~~ BEGIN SNEAK_IN
+		SAY @2086 // ~Don't be daft!  How ya think?  We'll sneak in.  I hired a smuggler to guide us.  Friends in low places and all that.~
+		IF ~~ THEN DO ~StartCutSceneMode() StartCutSceneEx("#LGIWed",TRUE)~ EXIT
+	END
 END
 
 /////////////////////////////////

@@ -16,6 +16,7 @@ END
 IF
 	Global("#L_GarrickFeldepost","GLOBAL",1)
 	Global("#L_ImoenFeldepost","GLOBAL",1)
+	Global("#L_GIMarried","GLOBAL",0)
 	OR(2)
 		Global("#L_GIParkedDay","GLOBAL",0)
 		GlobalTimerExpired("#L_GIParkedDay","GLOBAL")
@@ -28,10 +29,29 @@ THEN
 		Continue()
 END
 
+IF
+	Global("#L_GarrickFeldepost","GLOBAL",1)
+	Global("#L_ImoenFeldepost","GLOBAL",1)
+	GlobalGT("#L_GIMarried","GLOBAL",0)
+	OR(2)
+		Global("#L_GIParkedDay","GLOBAL",0)
+		GlobalTimerExpired("#L_GIParkedDay","GLOBAL")
+THEN
+	RESPONSE #100
+		IncrementGlobal("#L_GIRomance","GLOBAL",1)		// Overall romance progress
+		IncrementGlobal("#L_GIMarried","GLOBAL",1)		// Total number of days they've been married
+		IncrementGlobal("#L_GIAtFeldepost","GLOBAL",1)	// Number of total days spent at Feldepost's Inn
+		SetGlobalTimer("#L_GIParkedDay","GLOBAL",ONE_DAY)
+		Continue()
+END
+
 // Every in-game day the romance will advance 
 // when the Imoen is in traning and Garrick is at Three Old Kegs
 IF
-	Global("#L_ImoenInPalace","GLOBAL",1)
+	Global("#L_GIMarried","GLOBAL",0)
+	OR(2)
+		Global("#L_ImoenInPalace","GLOBAL",1)
+		Global("#L_ImoenTOK_BG1","GLOBAL",1)
 	OR(2)
 		Global("#L_GarrickTOK_BG1","GLOBAL",1)
 		Global("#L_GarrickTOK_SoD","GLOBAL",1)
@@ -42,6 +62,26 @@ THEN
 	RESPONSE #100
 		IncrementGlobal("#L_GIRomance","GLOBAL",1)		// Overall romance progress
 		IncrementGlobal("#L_GIAtInn","GLOBAL",1)		// Continuous number of days both are at an inn (either one)
+		IncrementGlobal("#L_GIAtTOK","GLOBAL",1)		// Number of total days spent at Three Old Kegs Inn
+		SetGlobalTimer("#L_GIParkedDay","GLOBAL",ONE_DAY)
+		Continue()
+END
+
+IF
+	GlobalGT("#L_GIMarried","GLOBAL",0)
+	OR(2)
+		Global("#L_ImoenInPalace","GLOBAL",1)
+		Global("#L_ImoenTOK_BG1","GLOBAL",1)
+	OR(2)
+		Global("#L_GarrickTOK_BG1","GLOBAL",1)
+		Global("#L_GarrickTOK_SoD","GLOBAL",1)
+	OR(2)
+		Global("#L_GIParkedDay","GLOBAL",0)
+		GlobalTimerExpired("#L_GIParkedDay","GLOBAL")
+THEN
+	RESPONSE #100
+		IncrementGlobal("#L_GIRomance","GLOBAL",1)		// Overall romance progress
+		IncrementGlobal("#L_GIMarried","GLOBAL",1)		// Total number of days they've been married
 		IncrementGlobal("#L_GIAtTOK","GLOBAL",1)		// Number of total days spent at Three Old Kegs Inn
 		SetGlobalTimer("#L_GIParkedDay","GLOBAL",ONE_DAY)
 		Continue()

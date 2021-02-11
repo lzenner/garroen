@@ -91,10 +91,14 @@
 //////////////////////////
 // They are newly weds
 // If they are parked longer than 25 days- they can proceed with the wedding in BG1
-@2080	= ~That's all for tonight folks.  My bride-to-be and I are on the way to the temple to be married!~
+@2080	= ~That's all for tonight folks.  My bride-to-be and I are on the way to Tymora's temple to be married!  We'll be back tomorrow!~
 @2081	= ~Sings, "Married life is a merry life with a merry wife indeed!~
 @2082	= ~Imoen blushes and beams with joy.~
 @2083	= ~Imoen giggles and sings along.~
+@2084	= ~Come along, <CHARNAME>.  You don't think we'd hold the ceremony without you, do ya?~
+@2085	= ~But Baldur's Gate is closed?  How will we get to the Lady's House?~
+@2086	= ~Don't be daft!  How ya think?  We'll sneak in.  I hired a smuggler to guide us.  Friends in low places and all that.~
+@2087	= ~The ceremony is brief but lovely, and amazingly well attended.  You didn't realize they had so many friends in the area.~
 
 //////////////////////////
 // ROMANCE DAYS 126->   //
@@ -265,3 +269,5 @@
 @2653	= ~It's just not the same without Garrick here.~
 @2654	= ~I wish Garrick the best of luck up in Baldur's Gate.~
 @2655	= ~Three Old Kegs better treat Garrick well or they'll hear from me!~
+
+
