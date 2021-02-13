@@ -102,9 +102,10 @@ THEN
 		Continue()
 END
 
+// If they've spent more than 5 continuous days together at an inn
+// Or we're no longer in BG1
+// Don't continue with the rest of the Garrick Flirt mod
 IF
-	// If they've spent more than 5 continuous days together at an inn
-	// Or we're no longer in BG1
 	GlobalLT("P#GarrickFlirt","GLOBAL",99)
 	Global("P#GarrickMatch","GLOBAL",1)
 	OR(2)
@@ -112,20 +113,19 @@ IF
 		GlobalGT("EndOfBG1","GLOBAL",0)
 THEN
 	RESPONSE #100
-		// Don't continue with the rest of the Garrick Flirt mod
 		SetGlobal("P#GarrickFlirt","GLOBAL",99)
 		Continue()
 END
 
+// If we've reached the end of the friendship portion of the infatuation
+// and Imoen is in the group
+// Don't continue with the rest of the Garrick Flirt mod
 IF
-	// If we've reached the end of the friendship portion of the infatuation
-	// and Imoen is in the group
 	InPartyAllowDead("%IMOEN_DV%")
 	GlobalLT("P#GarrickFlirt","GLOBAL",99)
 	GlobalGT("P#GarrickFlirt","GLOBAL",43)
 THEN
 	RESPONSE #100
-		// Don't continue with the rest of the Garrick Flirt mod
 		SetGlobal("P#GarrickFlirt","GLOBAL",99)
 		Continue()
 END
@@ -143,28 +143,11 @@ END
 
 %MOVE_GARRICK_TOK_SOD%
 
+// Start the romance
+// If they're in the group together
+// and the flirt isn't going to continue
+// and the romance hasn't started yet
 IF
-	Global("#L_GIMarried","GLOBAL",0)
-	Global("#L_ImoenInPalace","GLOBAL",0)
-	Global("EndOfBG1","GLOBAL",0)
-	GlobalTimerExpired("#L_GIAwayForWedding","GLOBAL")
-THEN
-	RESPONSE #100
-		SetGlobal("#L_GIMarried","GLOBAL",1)
-		SetGlobal("#L_GIRomance","GLOBAL",101)
-		SetGlobal("#L_GarrickPositioned","%Beregost_FeldepostsInn_L1%",0)
-		SetGlobal("#L_ImoenPositioned","%Beregost_FeldepostsInn_L1%",0)
-		SetGlobal("#L_GarrickFeldepost","GLOBAL",1)
-		SetGlobal("#L_ImoenFeldepost","GLOBAL",1)
-		MoveGlobal("%Beregost_FeldepostsInn_L1%","GARRICK",[900.510])
-		MoveGlobal("%Beregost_FeldepostsInn_L1%","%IMOEN_DV%",[780.580])
-		Continue()
-END
-
-IF
-	// If they're in the group together
-	// and the flirt isn't going to continue
-	// and the romance hasn't started yet
 	InPartyAllowDead("%IMOEN_DV%")
 	InPartyAllowDead("GARRICK")
 	Global("#L_GIRomance","GLOBAL",0)
@@ -175,7 +158,6 @@ IF
 		GlobalGT("EndOfBG1","GLOBAL",0) // We're no longer in BG1
 THEN
 	RESPONSE #100
-		// Start the romance
 		SetGlobal("#L_GIRomance","GLOBAL",1)
 		SetGlobalTimer("#L_GIPartyDay","GLOBAL",ONE_DAY)
 		Continue()

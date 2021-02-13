@@ -10,6 +10,13 @@ DEFINE_ACTION_FUNCTION garroen BEGIN
 	OUTER_SPRINT MOVE_GARRICK_TOK_BG1 ~~
 	OUTER_SPRINT MOVE_GARRICK_TOK_SOD ~~
 	OUTER_SPRINT TRANSITIONS_IMOEN_TRAIN ~~
+	OUTER_SET TEMPLE_SONG = 0
+	
+	ACTION_IF GAME_IS ~eet~ BEGIN
+		OUTER_SET TEMPLE_SONG = 116
+	END ELSE ACTION_IF GAME_IS ~bgee~ BEGIN
+		OUTER_SET TEMPLE_SONG = 11
+	END
 
 	// Move Garrick and Imoen to Three Old Kegs at the start of Chapter 5 (BG1)
 //	Global("#L_ImoenInPalace","GLOBAL",1)
@@ -256,6 +263,23 @@ END~~~~~
 		COPY_EXISTING ~Bart5.CRE~ ~override~
 			WRITE_ASCII 0x280 ~Bartender~ #32 // set DV
 			
+		// New area for the wedding
+		COPY ~%mod_root%/objects/#LBG0132.are~ ~override~
+		
+		// Make it its own master area
+//		COPY_EXISTING ~MASTAREA.2DA~ ~override~
+//			INSERT_2DA_ROW 2 2 ~#LBG0132 Value~
+		
+		// A couple wedding guests with no handles want to wander
+		COPY_EXISTING ~Parda.CRE~ ~override~
+			WRITE_ASCII 0x280 ~Parda~ #32 // set DV
+		COPY_EXISTING ~Hephis.CRE~ ~override~
+			WRITE_ASCII 0x280 ~Hephis~ #32 // set DV
+		COPY_EXISTING ~Gyllia.CRE~ ~override~
+			WRITE_ASCII 0x280 ~Gyllia~ #32 // set DV
+		COPY_EXISTING ~Bjorni.CRE~ ~override~
+			WRITE_ASCII 0x280 ~Bjornin~ #32 // set DV
+			
 		// Wedding participants and guests
 		COPY ~%mod_root%/objects/#LBride.cre~ ~override~
 		COPY ~%mod_root%/objects/#LGroom.cre~ ~override~
@@ -268,8 +292,9 @@ END~~~~~
 		COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LBlank.baf~ 
 		
 		// Wedding cut scene
-		COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGIWed.baf~ USING ~%tra_loc%/%s/dialogues.tra~  
-	END
+		COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGIWeda.baf~ USING ~%tra_loc%/%s/dialogues.tra~  
+		COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGIWedb.baf~ USING ~%tra_loc%/%s/dialogues.tra~
+	END // End of GAME_IS ~bgee eet~
 
 	ACTION_IF GAME_INCLUDES ~sod~ BEGIN
 		// Set globals, timers, etc

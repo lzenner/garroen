@@ -1,0 +1,31 @@
+///////////////////////////////////////////
+// Take the party back after the wedding //
+///////////////////////////////////////////
+
+IF
+	Global("#L_CeremonyFinished","MYAREA",1)
+	Global("#L_PausedGame","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride(Player1,PauseGame())
+		SetGlobal("#L_PausedGame","MYAREA",1)
+END
+
+IF
+	Global("#L_PausedGame","MYAREA",1)
+	Global("#L_PartyMoved","MYAREA",0)
+THEN
+	RESPONSE #100
+		// Move the party back to where they were
+		StartCutSceneMode()
+		SetGlobal("#L_PartyMoved","MYAREA",1)
+		Wait(1)
+		FadeToColor([30.0],0)
+		Wait(1)
+		RestorePartyLocations()
+		MultiPlayerSync()
+
+		FadeFromColor([30.0],0)
+		Wait(1)
+		EndCutSceneMode()
+END
