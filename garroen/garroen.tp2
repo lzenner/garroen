@@ -5,59 +5,62 @@ VERSION ~v0.1~
 README ~garroen/readme.garroen.%LANGUAGE%.txt~ ~garroen/readme.garroen.english.txt~
 
 ALWAYS
-   ACTION_IF !VARIABLE_IS_SET deja_vu BEGIN
-      // Global static variables used by WeiDU
-      OUTER_SPRINT mod_root "garroen"
-      OUTER_SPRINT external_loc "weidu_external"
-      OUTER_SPRINT tra_base "languages"
-      OUTER_SPRINT base_language "american"
-      OUTER_SPRINT workspace "%external_loc%/workspace/%mod_root%"
-      OUTER_SPRINT tra_loc "%workspace%/%tra_base%"
+	ACTION_IF !VARIABLE_IS_SET deja_vu BEGIN
+		// Global static variables used by WeiDU
+		OUTER_SPRINT mod_root "garroen"
+		OUTER_SPRINT external_loc "weidu_external"
+		OUTER_SPRINT tra_base "languages"
+		OUTER_SPRINT base_language "american"
+		OUTER_SPRINT workspace "%external_loc%/workspace/%mod_root%"
+		OUTER_SPRINT tra_loc "%workspace%/%tra_base%"
 
-      // Makes external working directories
-      // And copies language files to them
-      INCLUDE ~%mod_root%/lib/run_once.tpa~
-      LAF DO_RUN_ONCE END
+		// Makes external working directories
+		// And copies language files to them
+		INCLUDE ~%mod_root%/lib/run_once.tpa~
+		LAF DO_RUN_ONCE END
 
-      // Variables used throughout
-      INCLUDE ~%mod_root%/lib/#l_cmpvars.tpa~
+		// Variables used throughout
+		INCLUDE ~%mod_root%/lib/#l_cmpvars.tpa~
 
-      // Library functions used throughout
-      INCLUDE ~%mod_root%/lib/alter_script.tpa~
-      INCLUDE ~%mod_root%/lib/gw_cartes.tpa~
-      INCLUDE ~%mod_root%/lib/change_door_name.tpa~
-      INCLUDE ~%mod_root%/lib/update_bcs.tpa~
-   END
+		// Library functions used throughout
+		INCLUDE ~%mod_root%/lib/alter_script.tpa~
+		INCLUDE ~%mod_root%/lib/gw_cartes.tpa~
+		INCLUDE ~%mod_root%/lib/change_door_name.tpa~
+		INCLUDE ~%mod_root%/lib/update_bcs.tpa~
+	END
 
-   // This needs to be run before every component for some reason
-   // It has something to do with languages that use a different character set
-   // Why just converting it once and having the output stored (which happens)
-   // is not good enough, I'm not sure I'll ever understand or really believe
-   // but who cares, honestly, if it's done once or a thousand times
-   ACTION_DEFINE_ARRAY thismod_noconvert BEGIN setup END
-   ACTION_DEFINE_ARRAY thismod_reload BEGIN game cases END
+	// This needs to be run before every component for some reason
+	// It has something to do with languages that use a different character set
+	// Why just converting it once and having the output stored (which happens)
+	// is not good enough, I'm not sure I'll ever understand or really believe
+	// but who cares, honestly, if it's done once or a thousand times
+	ACTION_DEFINE_ARRAY thismod_noconvert BEGIN setup END
+	ACTION_DEFINE_ARRAY thismod_reload BEGIN game cases END
 
-   LAF HANDLE_CHARSETS 
-      INT_VAR 
-         infer_charsets = 1 
-      STR_VAR 
-         iconv_path = EVAL "%mod_root%/%tra_base%/iconv"
-         tra_path = EVAL "%tra_loc%"
-         noconvert_array = thismod_noconvert
-         reload_array = thismod_reload
-   END
+	LAF HANDLE_CHARSETS 
+		INT_VAR 
+			infer_charsets = 1 
+		STR_VAR 
+			iconv_path = EVAL "%mod_root%/%tra_base%/iconv"
+			tra_path = EVAL "%tra_loc%"
+			noconvert_array = thismod_noconvert
+			reload_array = thismod_reload
+	END
 
-   ACTION_IF NOT ((GAME_IS ~bgee bg2ee eet~) OR (GAME_INCLUDES ~sod~)) BEGIN
-      FAIL @1
-   END
+	ACTION_IF ((FILE_EXISTS ~dlc/sod-dlc.zip~) OR (FILE_EXISTS ~sod-dlc.zip~)) THEN BEGIN
+		FAIL @2 /* ~Argent's DLC Merger is required before mods can be installed on this game.~ */
+	END
+	ACTION_IF NOT ((GAME_IS ~bgee bg2ee eet~) OR (GAME_INCLUDES ~sod~)) BEGIN
+		FAIL @1
+	END
 
-   ACTION_IF !VARIABLE_IS_SET deja_vu BEGIN
-      // This actually installs changes to a 2da file so want it to run after the game check
-      INCLUDE ~%mod_root%/lib/cases.tpa~
-      LAF INSTALL_PROPER_CASES END
+	ACTION_IF !VARIABLE_IS_SET deja_vu BEGIN
+		// This actually installs changes to a 2da file so want it to run after the game check
+		INCLUDE ~%mod_root%/lib/cases.tpa~
+		LAF INSTALL_PROPER_CASES END
 
-      OUTER_SET deja_vu = 1
-   END
+		OUTER_SET deja_vu = 1
+	END
 END
 
 // Can't use variables here for some reason
