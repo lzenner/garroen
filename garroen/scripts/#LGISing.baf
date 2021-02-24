@@ -86,9 +86,31 @@ END
 
 IF
 	GlobalGT("#L_GIRomance","GLOBAL",75)
-	OR(2)
-		GlobalLT("#L_GIRomance","GLOBAL",101)
-		GlobalLT("#L_GIAtInn","GLOBAL",25)
+	GlobalLT("#L_GIRomance","GLOBAL",101)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		DisplayStringHead("GARRICK",@2070) // ~Sings, "Oh say you'll be mine! Please say you'll be mine! Be mine, be mine for rest of time!"~
+		Continue()
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",100)
+	Global("#L_GIMarried","GLOBAL",0)
+	!GlobalGT("#L_GIAtInn","GLOBAL",24)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		DisplayStringHead("GARRICK",@2070) // ~Sings, "Oh say you'll be mine! Please say you'll be mine! Be mine, be mine for rest of time!"~
+		Continue()
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",100)
+	Global("#L_GIMarried","GLOBAL",0)
+	GlobalGT("#L_GIAtInn","GLOBAL",24)
+	Global("Chapter","GLOBAL",7)
+	!Dead("Sarevok")
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
@@ -100,6 +122,9 @@ IF
 	GlobalGT("#L_GIRomance","GLOBAL",100)
 	GlobalGT("#L_GIAtInn","GLOBAL",24)
 	Global("#L_GIMarried","GLOBAL",0)
+	OR(2)
+		!Global("Chapter","GLOBAL",7)
+		Dead("Sarevok")
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
