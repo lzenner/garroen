@@ -75,9 +75,35 @@ END
 
 IF
 	GlobalGT("#L_GIRomance","GLOBAL",75)
-	OR(2)
-		GlobalLT("#L_GIRomance","GLOBAL",101)
-		GlobalLT("#L_GIAtInn","GLOBAL",25)
+	GlobalLT("#L_GIRomance","GLOBAL",101)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		Wait(2)
+		DisplayStringHead("%IMOEN_DV%",@2071) // ~Imoen beams at Garrick and gives him a wink.~
+		Wait(2)
+		Continue()
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",100)
+	Global("#L_GIMarried","GLOBAL",0)
+	!GlobalGT("#L_GIAtInn","GLOBAL",24)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		Wait(2)
+		DisplayStringHead("%IMOEN_DV%",@2071) // ~Imoen beams at Garrick and gives him a wink.~
+		Wait(2)
+		Continue()
+END
+
+IF
+	GlobalGT("#L_GIRomance","GLOBAL",100)
+	Global("#L_GIMarried","GLOBAL",0)
+	GlobalGT("#L_GIAtInn","GLOBAL",24)
+	Global("Chapter","GLOBAL",7)
+	!Dead("Sarevok")
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
@@ -91,6 +117,9 @@ IF
 	GlobalGT("#L_GIRomance","GLOBAL",100)
 	GlobalGT("#L_GIAtInn","GLOBAL",24)
 	Global("#L_GIMarried","GLOBAL",0)
+	OR(2)
+		!Global("Chapter","GLOBAL",7)
+		Dead("Sarevok")
 	Global("#L_GarrickFeldepost","GLOBAL",0)
 	Global("#L_GarrickTOK_BG1","GLOBAL",1)
 	Global("#L_GarrickTOK_SoD","GLOBAL",0)
@@ -110,6 +139,9 @@ IF
 	GlobalGT("#L_GIRomance","GLOBAL",100)
 	GlobalGT("#L_GIAtInn","GLOBAL",24)
 	Global("#L_GIMarried","GLOBAL",0)
+	OR(2)
+		!Global("Chapter","GLOBAL",7)
+		Dead("Sarevok")
 	Global("#L_GarrickFeldepost","GLOBAL",0)
 	Global("#L_GarrickTOK_BG1","GLOBAL",0)
 	Global("#L_GarrickTOK_SoD","GLOBAL",1)
@@ -127,6 +159,9 @@ IF
 	GlobalGT("#L_GIRomance","GLOBAL",100)
 	GlobalGT("#L_GIAtInn","GLOBAL",24)
 	Global("#L_GIMarried","GLOBAL",0)
+	OR(2)
+		!Global("Chapter","GLOBAL",7)
+		Dead("Sarevok")
 	Global("#L_GarrickFeldepost","GLOBAL",1)
 	Global("#L_GarrickTOK_BG1","GLOBAL",0)
 	Global("#L_GarrickTOK_SoD","GLOBAL",0)
