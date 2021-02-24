@@ -159,20 +159,12 @@ THEN
 END
 
 IF
-	GlobalGT("#L_GIAtFeldepost","GLOBAL",5)
 	GlobalGT("#L_GIAtTOK","GLOBAL",5)
-	GlobalLT("Chapter","GLOBAL",6)
-	Name("None",Player2)	// Ajantis wasn't positioned with the joinable NPCs
 THEN
 	RESPONSE #100
-		// Add in wedding guests from Feldepost's and TOK Inns on the right side
-		// (half of maximum planned from each)
-		// Candlekeep guests on the left side
-		// Liia and Firebead go on the left
 		CutSceneId(Player1)
-
 		
-		// Imoen's side = Liia, Firebead +6 other Candlekeep Folks (Tethoril swaps out when Liia present)
+		// Imoen's side = Liia, Firebead +6 other Candlekeep Folks (Phlydia swaps out when Liia present)
 		// Line 1 left side
 		CreateCreature("KARAN1",[103.148],S)
 		CreateCreature("Reevor",[146.182],S)
@@ -182,10 +174,56 @@ THEN
 		// Line 2 left side
 		CreateCreature("Parda",[133.128],S)
 		CreateCreature("Jondal",[176.162],S)
+		CreateCreature("Tethto",[237.186],S)
+		CreateCreature("Firebe",[280.220],S) // Closest to center
+
+		// Stop the runners
+		DisableAI("Firebe",TRUE) 
+		DisableAI("Parda",TRUE) 
+		DisableAI("KARAN1",TRUE) 
+
+		Continue()
+END
+
+IF
+	!GlobalGT("#L_GIAtTOK","GLOBAL",5)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		
+		// Imoen's side = Firebead +7 other Candlekeep Folks
+		// Line 1 left side
+		CreateCreature("KARAN1",[103.148],S)
+		CreateCreature("Reevor",[146.182],S)
+		CreateCreature("Tethto",[207.206],S)
+		CreateCreature("InnKe2",[250.240],S)	// Closest to center
+
+		// Line 2 left side
+		CreateCreature("Parda",[133.128],S)
+		CreateCreature("Jondal",[176.162],S)
 		CreateCreature("Phlydi",[237.186],S)
 		CreateCreature("Firebe",[280.220],S) // Closest to center
 
-		// Garrick's side = half 
+		// Stop the runners
+		DisableAI("Firebe",TRUE) 
+		DisableAI("Parda",TRUE) 
+		DisableAI("KARAN1",TRUE) 
+
+		Continue()
+END
+
+IF
+	GlobalGT("#L_GIAtFeldepost","GLOBAL",5)
+	GlobalGT("#L_GIAtTOK","GLOBAL",5)
+	Name("None",Player2)	// Ajantis wasn't positioned with the joinable NPCs
+THEN
+	RESPONSE #100
+		// Add in wedding guests from Feldepost's and TOK Inns on the right side
+		// Denkod swaps out for Ajantis
+		// (half of maximum planned from each)
+		CutSceneId(Player1)
+
+		// Garrick's side
 		// Line 1 right side
 		CreateCreature("Ithtyl",[375.325],NW) // Closest to center
 		CreateCreature("Dunkin",[418.359],NW)
@@ -199,9 +237,6 @@ THEN
 		CreateCreature("Hephis",[534.407],NW)
 
 		// Stop the runners
-		DisableAI("Firebe",TRUE) 
-		DisableAI("Parda",TRUE) 
-		DisableAI("KARAN1",TRUE) 
 		DisableAI("Marl",TRUE)
 		DisableAI("Hephis",TRUE)
 		DisableAI("Gyllia",TRUE)
@@ -212,29 +247,12 @@ END
 IF
 	GlobalGT("#L_GIAtFeldepost","GLOBAL",5)
 	GlobalGT("#L_GIAtTOK","GLOBAL",5)
-	GlobalLT("Chapter","GLOBAL",6)
 	!Name("None",Player2)	// Ajantis already placed, replace with Denkod
 THEN
 	RESPONSE #100
 		// Add in wedding guests from Feldepost's and TOK Inns on the right side
 		// (half of maximum planned from each)
-		// Candlekeep guests on the left side
-		// Liia and Firebead go on the left
 		CutSceneId(Player1)
-
-		
-		// Imoen's side = Liia, Firebead +6 other Candlekeep Folks (Tethoril swaps out when Liia present)
-		// Line 1 left side
-		CreateCreature("KARAN1",[103.148],S)
-		CreateCreature("Reevor",[146.182],S)
-		CreateCreature("Liia",[207.206],S)
-		CreateCreature("InnKe2",[250.240],S)	// Closest to center
-
-		// Line 2 left side
-		CreateCreature("Parda",[133.128],S)
-		CreateCreature("Jondal",[176.162],S)
-		CreateCreature("Phlydi",[237.186],S)
-		CreateCreature("Firebe",[280.220],S) // Closest to center
 
 		// Garrick's side
 		// Line 1 right side
@@ -250,9 +268,6 @@ THEN
 		CreateCreature("Hephis",[534.407],NW)
 
 		// Stop the runners
-		DisableAI("Firebe",TRUE) 
-		DisableAI("Parda",TRUE) 
-		DisableAI("KARAN1",TRUE) 
 		DisableAI("Marl",TRUE)
 		DisableAI("Hephis",TRUE)
 		DisableAI("Gyllia",TRUE)
@@ -264,27 +279,11 @@ END
 IF
 	GlobalGT("#L_GIAtFeldepost","GLOBAL",5)
 	!GlobalGT("#L_GIAtTOK","GLOBAL",5)
-	GlobalLT("Chapter","GLOBAL",6)
 	Name("None",Player2)	// Ajantis wasn't positioned with the joinable NPCs
 THEN
 	RESPONSE #100
 		// Add in full count of wedding guests from Feldepost's/Beregost on the right side
-		// Candlekeep guests on the left side
-		// Firebead goes on the left
 		CutSceneId(Player1)
-
-		// Imoen's side = Firebead +7 other Candlekeep Folks
-		// Line 1 left side
-		CreateCreature("KARAN1",[103.148],S)
-		CreateCreature("Reevor",[146.182],S)
-		CreateCreature("Tethto",[207.206],S)
-		CreateCreature("InnKe2",[250.240],S)	// Closest to center
-
-		// Line 2 left side
-		CreateCreature("Parda",[133.128],S)
-		CreateCreature("Jondal",[176.162],S)
-		CreateCreature("Phlydi",[237.186],S)
-		CreateCreature("Firebe",[280.220],S) // Closest to center
 
 		// Line 1 right side
 		CreateCreature("Bjorni",[375.325],NW) // Closest to center
@@ -299,9 +298,6 @@ THEN
 		CreateCreature("Hephis",[534.407],NW)
 
 		// Stop the runners
-		DisableAI("Firebe",TRUE) 
-		DisableAI("Parda",TRUE) 
-		DisableAI("KARAN1",TRUE) 
 		DisableAI("Marl",TRUE)
 		DisableAI("Hephis",TRUE)
 		DisableAI("Gyllia",TRUE)
@@ -313,27 +309,11 @@ END
 IF
 	GlobalGT("#L_GIAtFeldepost","GLOBAL",5)
 	!GlobalGT("#L_GIAtTOK","GLOBAL",5)
-	GlobalLT("Chapter","GLOBAL",6)
 	!Name("None",Player2)	// Ajantis was positioned with the joinable NPCs Alora put in
 THEN
 	RESPONSE #100
 		// Add in full count of wedding guests from Feldepost's/Beregost on the right side
-		// Candlekeep guests on the left side
-		// Firebead goes on the left
 		CutSceneId(Player1)
-
-		// Imoen's side = Firebead +7 other Candlekeep Folks
-		// Line 1 left side
-		CreateCreature("KARAN1",[103.148],S)
-		CreateCreature("Reevor",[146.182],S)
-		CreateCreature("Tethto",[207.206],S)
-		CreateCreature("InnKe2",[250.240],S)	// Closest to center
-
-		// Line 2 left side
-		CreateCreature("Parda",[133.128],S)
-		CreateCreature("Jondal",[176.162],S)
-		CreateCreature("Phlydi",[237.186],S)
-		CreateCreature("Firebe",[280.220],S) // Closest to center
 
 		// Line 1 right side
 		CreateCreature("Bjorni",[375.325],NW) // Closest to center
@@ -348,9 +328,6 @@ THEN
 		CreateCreature("Hephis",[534.407],NW)
 
 		// Stop the runners
-		DisableAI("Firebe",TRUE) 
-		DisableAI("Parda",TRUE) 
-		DisableAI("KARAN1",TRUE) 
 		DisableAI("Marl",TRUE)
 		DisableAI("Hephis",TRUE)
 		DisableAI("Gyllia",TRUE)
@@ -363,27 +340,11 @@ END
 IF
 	!GlobalGT("#L_GIAtFeldepost","GLOBAL",5)
 	GlobalGT("#L_GIAtTOK","GLOBAL",5)
-	GlobalLT("Chapter","GLOBAL",6)
 	Name("None",Player2)	// Ajantis wasn't positioned with the joinable NPCs
 THEN
 	RESPONSE #100
 		// Add in full count of wedding guests from TOK on the right side
-		// Candlekeep guests on the left side
-		// Liia and Firebead go on the left
 		CutSceneId(Player1)
-
-		// Imoen's side = Liia, Firebead +6 other Candlekeep Folks (Tethoril swaps out when Liia present)
-		// Line 1 left side
-		CreateCreature("KARAN1",[103.148],S)
-		CreateCreature("Reevor",[146.182],S)
-		CreateCreature("Liia",[207.206],S)
-		CreateCreature("InnKe2",[250.240],S)	// Closest to center
-
-		// Line 2 left side
-		CreateCreature("Parda",[133.128],S)
-		CreateCreature("Jondal",[176.162],S)
-		CreateCreature("Phlydi",[237.186],S)
-		CreateCreature("Firebe",[280.220],S) // Closest to center
 
 		// Garrick's side
 		// Line 1 right side
@@ -410,27 +371,11 @@ END
 IF
 	!GlobalGT("#L_GIAtFeldepost","GLOBAL",5)
 	GlobalGT("#L_GIAtTOK","GLOBAL",5)
-	GlobalLT("Chapter","GLOBAL",6)
 	!Name("None",Player2)	// Ajantis was positioned with the joinable NPCs - repace with Denkod
 THEN
 	RESPONSE #100
 		// Add in full count of wedding guests from TOK on the right side
-		// Candlekeep guests on the left side
-		// Liia and Firebead go on the left
 		CutSceneId(Player1)
-
-		// Imoen's side = Liia, Firebead +6 other Candlekeep Folks (Tethoril swaps out when Liia present)
-		// Line 1 left side
-		CreateCreature("KARAN1",[103.148],S)
-		CreateCreature("Reevor",[146.182],S)
-		CreateCreature("Liia",[207.206],S)
-		CreateCreature("InnKe2",[250.240],S)	// Closest to center
-
-		// Line 2 left side
-		CreateCreature("Parda",[133.128],S)
-		CreateCreature("Jondal",[176.162],S)
-		CreateCreature("Phlydi",[237.186],S)
-		CreateCreature("Firebe",[280.220],S) // Closest to center
 
 		// Garrick's side
 		// Line 1 right side
@@ -450,271 +395,6 @@ THEN
 		DisableAI("Parda",TRUE) 
 		DisableAI("KARAN1",TRUE) 
 		DisableAI("Alora",TRUE)
-
-		Continue()
-END
-	
-IF
-	GlobalGT("#L_GIAtFeldepost","GLOBAL",5)
-	GlobalGT("#L_GIAtTOK","GLOBAL",5)
-	!GlobalLT("Chapter","GLOBAL",6)
-	Name("None",Player2)	// Ajantis wasn't positioned with the joinable NPCs
-THEN
-	RESPONSE #100
-		// Add in full count of wedding guests from Feldepost's on the right side
-		// Add in full count of wedding guests from TOK on the left side
-		// Liia and Firebead go on the left
-		CutSceneId(Player1)
-
-		// Line 1 left side
-		CreateCreature("Bellam",[103.148],S)
-		CreateCreature("Gorpel",[146.182],S)
-		CreateCreature("Ithtyl",[207.206],S)
-		CreateCreature("Liia",[250.240],S)	// Closest to center
-
-		// Line 2 left side
-		CreateCreature("Nantri",[133.128],S)
-		CreateCreature("Rinnie",[176.162],S)
-		CreateCreature("Denkod",[237.186],S)
-		CreateCreature("Firebe",[280.220],S) // Closest to center
-
-		// Garrick's side
-		// Line 1 right side
-		CreateCreature("Bjorni",[375.325],NW) // Closest to center
-		CreateCreature("Dunkin",[418.359],NW)
-		CreateCreature("Algern",[461.393],NW)
-		CreateCreature("Gyllia",[504.427],NW)
-
-		// Line 2 right side
-		CreateCreature("Nobl10",[405.305],NW) // Closest to center
-		CreateCreature("Marl",[448.339],NW)
-		CreateCreature("Ajanti",[491.373],NW)
-		CreateCreature("Hephis",[534.407],NW)
-
-		// Stop the runners
-		DisableAI("Firebe",TRUE) 
-		DisableAI("Marl",TRUE)
-		DisableAI("Hephis",TRUE)
-		DisableAI("Gyllia",TRUE)
-		DisableAI("Bjornin",TRUE)
-
-		Continue()
-END
-
-IF
-	GlobalGT("#L_GIAtFeldepost","GLOBAL",5)
-	GlobalGT("#L_GIAtTOK","GLOBAL",5)
-	!GlobalLT("Chapter","GLOBAL",6)
-	!Name("None",Player2)	// Ajantis was positioned with the joinable NPCs
-THEN
-	RESPONSE #100
-		// Add in full count of wedding guests from Feldepost's on the right side
-		// Add in full count of wedding guests from TOK on the left side
-		// Liia and Firebead go on the left
-		CutSceneId(Player1)
-
-		// Line 1 left side
-		CreateCreature("Bellam",[103.148],S)
-		CreateCreature("Gorpel",[146.182],S)
-		CreateCreature("Ithtyl",[207.206],S)
-		CreateCreature("Liia",[250.240],S)	// Closest to center
-
-		// Line 2 left side
-		CreateCreature("Nantri",[133.128],S)
-		CreateCreature("Rinnie",[176.162],S)
-		CreateCreature("Denkod",[237.186],S)
-		CreateCreature("Firebe",[280.220],S) // Closest to center
-
-		// Garrick's side
-		// Line 1 right side
-		CreateCreature("Bjorni",[375.325],NW) // Closest to center
-		CreateCreature("Dunkin",[418.359],NW)
-		CreateCreature("Algern",[461.393],NW)
-		CreateCreature("Gyllia",[504.427],NW)
-
-		// Line 2 right side
-		CreateCreature("Nobl10",[405.305],NW) // Closest to center
-		CreateCreature("Marl",[448.339],NW)
-		CreateCreature("Alora",[491.373],NW)
-		CreateCreature("Hephis",[534.407],NW)
-
-		// Stop the runners
-		DisableAI("Firebe",TRUE) 
-		DisableAI("Marl",TRUE)
-		DisableAI("Hephis",TRUE)
-		DisableAI("Gyllia",TRUE)
-		DisableAI("Bjornin",TRUE)
-		DisableAI("Alora",TRUE)
-
-		Continue()
-END
-
-IF
-	!GlobalGT("#L_GIAtFeldepost","GLOBAL",5)
-	GlobalGT("#L_GIAtTOK","GLOBAL",5)
-	!GlobalLT("Chapter","GLOBAL",6)
-	Name("None",Player2)	// Ajantis wasn't positioned with the joinable NPCs
-THEN
-	RESPONSE #100
-		// Add in full count of wedding guests from TOK half on right, half on the left
-		// Liia and Firebead go on the left
-		CutSceneId(Player1)
-
-		// Line 1 left side
-		CreateCreature("Bellam",[103.148],S)
-		CreateCreature("Alora",[146.182],S)
-		CreateCreature("Ithtyl",[207.206],S)
-		CreateCreature("Liia",[250.240],S)	// Closest to center
-
-		// Line 2 left side
-		CreateCreature("BlackL",[133.128],S)
-		CreateCreature("Narlen",[176.162],S)
-		CreateCreature("Denkod",[237.186],S)
-		CreateCreature("Firebe",[280.220],S) // Closest to center
-
-		// Garrick's side
-		// Line 1 right side
-		CreateCreature("Glanma",[375.325],NW) // Closest to center
-		CreateCreature("Gorpel",[418.359],NW)
-		CreateCreature("Rinnie",[461.393],NW)
-		CreateCreature("Beland",[504.427],NW)
-
-		// Line 2 right side
-		CreateCreature("Nantri",[405.305],NW) // Closest to center
-		CreateCreature("Maple",[448.339],NW)
-		CreateCreature("Brathl",[491.373],NW)
-		CreateCreature("Ajanti",[534.407],NW)
-
-		// Stop the runners
-		DisableAI("Firebe",TRUE) 
-		DisableAI("Alora",TRUE)
-
-		Continue()
-END
-
-IF
-	!GlobalGT("#L_GIAtFeldepost","GLOBAL",5)
-	GlobalGT("#L_GIAtTOK","GLOBAL",5)
-	!GlobalLT("Chapter","GLOBAL",6)
-	!Name("None",Player2)	// Ajantis was positioned with the joinable NPCs
-THEN
-	RESPONSE #100
-		// Add in full count of wedding guests from TOK half on right, half on the left
-		// Liia and Firebead go on the left
-		CutSceneId(Player1)
-
-		// Line 1 left side
-		CreateCreature("Bellam",[103.148],S)
-		CreateCreature("Alora",[146.182],S)
-		CreateCreature("Ithtyl",[207.206],S)
-		CreateCreature("Liia",[250.240],S)	// Closest to center
-
-		// Line 2 left side
-		CreateCreature("BlackL",[133.128],S)
-		CreateCreature("Narlen",[176.162],S)
-		CreateCreature("Denkod",[237.186],S)
-		CreateCreature("Firebe",[280.220],S) // Closest to center
-
-		// Garrick's side
-		// Line 1 right side
-		CreateCreature("Glanma",[375.325],NW) // Closest to center
-		CreateCreature("Gorpel",[418.359],NW)
-		CreateCreature("Rinnie",[461.393],NW)
-		CreateCreature("Beland",[504.427],NW)
-
-		// Line 2 right side
-		CreateCreature("Nantri",[405.305],NW) // Closest to center
-		CreateCreature("Maple",[448.339],NW)
-		CreateCreature("Brathl",[491.373],NW)
-		CreateCreature("Kivan",[534.407],NW)
-
-		// Stop the runners
-		DisableAI("Firebe",TRUE) 
-		DisableAI("Alora",TRUE)
-
-		Continue()
-END
-
-IF
-	GlobalGT("#L_GIAtFeldepost","GLOBAL",5)
-	!GlobalGT("#L_GIAtTOK","GLOBAL",5)
-	!GlobalLT("Chapter","GLOBAL",6)
-	Name("None",Player2)	// Ajantis wasn't positioned with the joinable NPCs
-THEN
-	RESPONSE #100
-		// This probably can't happen, but including it for completeness sake
-		// Add in full count of wedding guests from Feldepost half on right, half on the left
-		// Firebead goes on the left
-		CutSceneId(Player1)
-
-		// Line 1 left side
-		CreateCreature("Alora",[103.148],S)
-		CreateCreature("Spengil",[146.182],S)
-		CreateCreature("Mirian",[207.206],S)
-		CreateCreature("Firebe",[250.240],S)	// Closest to center
-
-		// Line 2 left side
-		CreateCreature("Perdue",[133.128],S)
-		CreateCreature("Raleo",[176.162],S)
-		CreateCreature("Yeslic",[237.186],S)
-		CreateCreature("Taerom",[280.220],S) // Closest to center
-
-		// Line 1 right side
-		CreateCreature("Bjorni",[375.325],NW) // Closest to center
-		CreateCreature("Ajanti",[418.359],NW)
-		CreateCreature("Algern",[461.393],NW)
-		CreateCreature("Gyllia",[504.427],NW)
-
-		// Line 2 right side
-		CreateCreature("Nobl10",[405.305],NW) // Closest to center
-		CreateCreature("Marl",[448.339],NW)
-		CreateCreature("Kivan",[491.373],NW)
-		CreateCreature("Hephis",[534.407],NW)
-
-		// Stop the runners
-		DisableAI("Firebe",TRUE) 
-
-		Continue()
-END
-
-IF
-	GlobalGT("#L_GIAtFeldepost","GLOBAL",5)
-	!GlobalGT("#L_GIAtTOK","GLOBAL",5)
-	!GlobalLT("Chapter","GLOBAL",6)
-	!Name("None",Player2)	// Ajantis was positioned with the joinable NPCs
-THEN
-	RESPONSE #100
-		// This probably can't happen, but including it for completeness sake
-		// Add in full count of wedding guests from Feldepost half on right, half on the left
-		// Firebead goes on the left
-		CutSceneId(Player1)
-
-		// Line 1 left side
-		CreateCreature("Alora",[103.148],S)
-		CreateCreature("Spengil",[146.182],S)
-		CreateCreature("Mirian",[207.206],S)
-		CreateCreature("Firebe",[250.240],S)	// Closest to center
-
-		// Line 2 left side
-		CreateCreature("Perdue",[133.128],S)
-		CreateCreature("Raleo",[176.162],S)
-		CreateCreature("Yeslic",[237.186],S)
-		CreateCreature("Taerom",[280.220],S) // Closest to center
-
-		// Line 1 right side
-		CreateCreature("Bjorni",[375.325],NW) // Closest to center
-		CreateCreature("Dunkin",[418.359],NW)
-		CreateCreature("Algern",[461.393],NW)
-		CreateCreature("Gyllia",[504.427],NW)
-
-		// Line 2 right side
-		CreateCreature("Nobl10",[405.305],NW) // Closest to center
-		CreateCreature("Marl",[448.339],NW)
-		CreateCreature("Kivan",[491.373],NW)
-		CreateCreature("Hephis",[534.407],NW)
-
-		// Stop the runners
-		DisableAI("Firebe",TRUE) 
 
 		Continue()
 END
