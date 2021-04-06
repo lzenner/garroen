@@ -72,7 +72,6 @@ IF
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
-		SetGlobal("#L_GITent","GLOBAL",1)
 		SetGlobalTimer("#L_GIRestTimer","GLOBAL",FIVE_DAYS)
 		DisplayStringHead("%IMOEN_DV%",@2063) // ~Garrick and Imoen setup their bedrolls next to each.~
 		Wait(5)
