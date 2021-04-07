@@ -10,7 +10,53 @@ DEFINE_ACTION_FUNCTION garroen BEGIN
 	OUTER_SPRINT MOVE_GARRICK_TOK_BG1 ~~
 	OUTER_SPRINT MOVE_GARRICK_TOK_SOD ~~
 	OUTER_SPRINT TRANSITIONS_IMOEN_TRAIN ~~
+	OUTER_SPRINT TRIGGER_DREAM ~~
 	OUTER_SET TEMPLE_SONG = 0
+
+	ACTION_IF GAME_INCLUDES ~sod~ BEGIN
+		OUTER_SPRINT TRIGGER_DREAM ~OR(20)
+		AreaCheck("%Nashkel_Inn%")
+		AreaCheck("%Beregost_RedSheaf_L1%")
+		AreaCheck("%Beregost_FeldepostsInn_L1%")
+		AreaCheck("%Beregost_BurningWizard_L1%")
+		AreaCheck("%Beregost_JovialJuggler_L1%")
+		AreaCheck("%Candlekeep_Inn_L1%")
+		AreaCheck("%FriendlyArmInn_L1%")
+		AreaCheck("%SEBaldursGate_Inn_L1%")
+		AreaCheck("%BaldursGateDocks_JopalinsTavern%")
+		AreaCheck("%EBaldursGate_Inn_L1%")
+		AreaCheck("%CentralBaldursGate_DrakonTavern%")
+		AreaCheck("%EBaldursGate_ElfsongTavern_L1%")
+		AreaCheck("%NWBaldursGate_Tavern_L1%")
+		AreaCheck("%EBaldursGate_KeexieTavern_L1%")
+		AreaCheck("%NBaldursGate_ThreeOldKegs_L1%")
+		AreaCheck("%NWBaldursGate_Helm&Cloak_L1%")
+		AreaCheck("%NEBaldursGate_BlushingMermaid_L1%")
+		AreaCheck("%SEBaldursGate_Blade&Stars_L1%")
+		AreaCheck("%NEBaldursGate_SplurgingSturgeon_L1%")
+		TriggerOverride("FF_Camp",IsOverMe(Player1))~
+	END ELSE ACTION_IF GAME_IS ~bgee~ BEGIN
+		OUTER_SPRINT TRIGGER_DREAM ~OR(19)
+		AreaCheck("%Nashkel_Inn%")
+		AreaCheck("%Beregost_RedSheaf_L1%")
+		AreaCheck("%Beregost_FeldepostsInn_L1%")
+		AreaCheck("%Beregost_BurningWizard_L1%")
+		AreaCheck("%Beregost_JovialJuggler_L1%")
+		AreaCheck("%Candlekeep_Inn_L1%")
+		AreaCheck("%FriendlyArmInn_L1%")
+		AreaCheck("%SEBaldursGate_Inn_L1%")
+		AreaCheck("%BaldursGateDocks_JopalinsTavern%")
+		AreaCheck("%EBaldursGate_Inn_L1%")
+		AreaCheck("%CentralBaldursGate_DrakonTavern%")
+		AreaCheck("%EBaldursGate_ElfsongTavern_L1%")
+		AreaCheck("%NWBaldursGate_Tavern_L1%")
+		AreaCheck("%EBaldursGate_KeexieTavern_L1%")
+		AreaCheck("%NBaldursGate_ThreeOldKegs_L1%")
+		AreaCheck("%NWBaldursGate_Helm&Cloak_L1%")
+		AreaCheck("%NEBaldursGate_BlushingMermaid_L1%")
+		AreaCheck("%SEBaldursGate_Blade&Stars_L1%")
+		AreaCheck("%NEBaldursGate_SplurgingSturgeon_L1%")~
+	END
 	
 	ACTION_IF GAME_IS ~eet~ BEGIN
 		OUTER_SET TEMPLE_SONG = 116
@@ -143,6 +189,9 @@ END~~~~~
 	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGIDngn.baf~ USING ~%tra_loc%/%s/dialogues.tra~
 	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGIInn.baf~ USING ~%tra_loc%/%s/dialogues.tra~
 	
+	// Won't fire unless Transitions is installed but is referenced in #LGISing
+	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGITOK.baf~ USING ~%tra_loc%/%s/dialogues.tra~
+	
 	// Garrick's stores
 	COPY ~%mod_root%/objects/#LGISto1.sto~ ~override~
 		SAY (0x016c + 0x0008) @1000	// Round of drinks
@@ -180,9 +229,6 @@ END~~~~~
 			END
 			OUTER_SPRINT TRANSITIONS_IMOEN_TRAIN ~~~~~IF ~GlobalGT("#L_ImTrainRsp","GLOBAL",0)~ THEN REPLY #%TRANS_WONT_NEED_YOU% GOTO %TRANS_GO_TRAIN%~~~~~
 		END
-
-		// Compile scenes that only occur for Transitions
-		COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGITOK.baf~ USING ~%tra_loc%/%s/dialogues.tra~
 	END
 
 	// Compile their BG1 dialogues and scripts
