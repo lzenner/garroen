@@ -133,22 +133,7 @@ ALTER_TRANS BDSCHAEL
 	BEGIN
 		"TRIGGER" ~False()~
 	END
-REPLACE_SAY BDSCHAEL 277 @2143 // ~The bard Garrick, the witch Dynaheir and her bodyguard Minsc are staying at the Three Old Kegs...~
-REPLACE_SAY BDSCHAEL 279 @2144 // ~You tell me. We are to acquire equipment and allies for the trip north. There's a bard and a couple of Rashemi adventurers we can talk to at the Three Old Kegs, the thieves at the Elfsong Tavern. Or we could just return to the palace.~
-REPLACE_SAY BDSCHAEL 280 @2145 // ~You tell me. We are to acquire equipment and allies for the trip north. There's the thieves at the Elfsong Tavern, or a monk at the Iron Throne Building. Or we could just return to the palace.~
-ALTER_TRANS BDSCHAEL
-	BEGIN 280 END
-	BEGIN 3 END
-	BEGIN
-		"TRIGGER" ~False()~
-	END
-REPLACE_SAY BDSCHAEL 281 @2146 // ~You tell me. We are to acquire equipment and allies for the trip north. There's the thieves at the Elfsong Tavern. Or we could just return to the palace.~
-ALTER_TRANS BDSCHAEL
-	BEGIN 281 END
-	BEGIN 2 END
-	BEGIN
-		"TRIGGER" ~False()~
-	END
+%DIALOGUE_BDSCHAEL_EET%
 
 /////////////////////////////////////////////////
 // Have Garrick join the group when Imoen does //

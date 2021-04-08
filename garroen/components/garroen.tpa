@@ -10,62 +10,44 @@ DEFINE_ACTION_FUNCTION garroen BEGIN
 	OUTER_SPRINT MOVE_GARRICK_TOK_BG1 ~~
 	OUTER_SPRINT MOVE_GARRICK_TOK_SOD ~~
 	OUTER_SPRINT TRANSITIONS_IMOEN_TRAIN ~~
-	OUTER_SPRINT TRIGGER_DREAM ~~
+	OUTER_SPRINT DIALOGUE_BDSCHAEL_EET ~~
 	OUTER_SET TEMPLE_SONG = 0
+	OUTER_SET GARRICK_SAY_YOURE_BACK = 15778
+	OUTER_SET GARRICK_REPLY_WELCOME = 15781
+	OUTER_SET GARRICK_REPLY_SORRY = 15782
+	OUTER_SET IMOEN_SAY_YOURE_BACK = 16412
+	OUTER_SET IMOEN_REPLY_WELCOME = 16413
+	OUTER_SET IMOEN_REPLY_SORRY = 16414
 
-	ACTION_IF GAME_INCLUDES ~sod~ BEGIN
-		OUTER_SPRINT TRIGGER_DREAM ~OR(20)
-		AreaCheck("%Nashkel_Inn%")
-		AreaCheck("%Beregost_RedSheaf_L1%")
-		AreaCheck("%Beregost_FeldepostsInn_L1%")
-		AreaCheck("%Beregost_BurningWizard_L1%")
-		AreaCheck("%Beregost_JovialJuggler_L1%")
-		AreaCheck("%Candlekeep_Inn_L1%")
-		AreaCheck("%FriendlyArmInn_L1%")
-		AreaCheck("%SEBaldursGate_Inn_L1%")
-		AreaCheck("%BaldursGateDocks_JopalinsTavern%")
-		AreaCheck("%EBaldursGate_Inn_L1%")
-		AreaCheck("%CentralBaldursGate_DrakonTavern%")
-		AreaCheck("%EBaldursGate_ElfsongTavern_L1%")
-		AreaCheck("%NWBaldursGate_Tavern_L1%")
-		AreaCheck("%EBaldursGate_KeexieTavern_L1%")
-		AreaCheck("%NBaldursGate_ThreeOldKegs_L1%")
-		AreaCheck("%NWBaldursGate_Helm&Cloak_L1%")
-		AreaCheck("%NEBaldursGate_BlushingMermaid_L1%")
-		AreaCheck("%SEBaldursGate_Blade&Stars_L1%")
-		AreaCheck("%NEBaldursGate_SplurgingSturgeon_L1%")
-		TriggerOverride("FF_Camp",IsOverMe(Player1))~
-	END ELSE ACTION_IF GAME_IS ~bgee~ BEGIN
-		OUTER_SPRINT TRIGGER_DREAM ~OR(19)
-		AreaCheck("%Nashkel_Inn%")
-		AreaCheck("%Beregost_RedSheaf_L1%")
-		AreaCheck("%Beregost_FeldepostsInn_L1%")
-		AreaCheck("%Beregost_BurningWizard_L1%")
-		AreaCheck("%Beregost_JovialJuggler_L1%")
-		AreaCheck("%Candlekeep_Inn_L1%")
-		AreaCheck("%FriendlyArmInn_L1%")
-		AreaCheck("%SEBaldursGate_Inn_L1%")
-		AreaCheck("%BaldursGateDocks_JopalinsTavern%")
-		AreaCheck("%EBaldursGate_Inn_L1%")
-		AreaCheck("%CentralBaldursGate_DrakonTavern%")
-		AreaCheck("%EBaldursGate_ElfsongTavern_L1%")
-		AreaCheck("%NWBaldursGate_Tavern_L1%")
-		AreaCheck("%EBaldursGate_KeexieTavern_L1%")
-		AreaCheck("%NBaldursGate_ThreeOldKegs_L1%")
-		AreaCheck("%NWBaldursGate_Helm&Cloak_L1%")
-		AreaCheck("%NEBaldursGate_BlushingMermaid_L1%")
-		AreaCheck("%SEBaldursGate_Blade&Stars_L1%")
-		AreaCheck("%NEBaldursGate_SplurgingSturgeon_L1%")~
-	END
-	
 	ACTION_IF GAME_IS ~eet~ BEGIN
+		OUTER_SET GARRICK_SAY_YOURE_BACK = 215778
+		OUTER_SET GARRICK_REPLY_WELCOME = 215781
+		OUTER_SET GARRICK_REPLY_SORRY = 215782
+		OUTER_SET IMOEN_SAY_YOURE_BACK = 216412
+		OUTER_SET IMOEN_REPLY_WELCOME = 216413
+		OUTER_SET IMOEN_REPLY_SORRY = 216414
 		OUTER_SET TEMPLE_SONG = 116
+		OUTER_SPRINT DIALOGUE_BDSCHAEL_EET ~~~~~REPLACE_SAY BDSCHAEL 277 @2143 // ~The bard Garrick, the witch Dynaheir and her bodyguard Minsc are staying at the Three Old Kegs...~
+			REPLACE_SAY BDSCHAEL 279 @2144 // ~You tell me. We are to acquire equipment and allies for the trip north. There's a bard and a couple of Rashemi adventurers we can talk to at the Three Old Kegs, the thieves at the Elfsong Tavern. Or we could just return to the palace.~
+			REPLACE_SAY BDSCHAEL 280 @2145 // ~You tell me. We are to acquire equipment and allies for the trip north. There's the thieves at the Elfsong Tavern, or a monk at the Iron Throne Building. Or we could just return to the palace.~
+			ALTER_TRANS BDSCHAEL
+				BEGIN 280 END
+				BEGIN 3 END
+				BEGIN
+					"TRIGGER" ~False()~
+				END
+			REPLACE_SAY BDSCHAEL 281 @2146 // ~You tell me. We are to acquire equipment and allies for the trip north. There's the thieves at the Elfsong Tavern. Or we could just return to the palace.~
+			ALTER_TRANS BDSCHAEL
+				BEGIN 281 END
+				BEGIN 2 END
+				BEGIN
+					"TRIGGER" ~False()~
+				END~~~~~
 	END ELSE ACTION_IF GAME_IS ~bgee~ BEGIN
 		OUTER_SET TEMPLE_SONG = 11
 	END
 
 	// Move Garrick and Imoen to Three Old Kegs at the start of Chapter 5 (BG1)
-//	Global("#L_ImoenInPalace","GLOBAL",1)
 	ACTION_IF GAME_IS ~bgee eet~ BEGIN
 		OUTER_SPRINT MOVE_GARRICK_TOK_BG1 ~~~~~IF
 	Global("Chapter","GLOBAL",5)
@@ -169,8 +151,14 @@ END~~~~~
 	// Globals, timers and moves them to Three Old Kegs
 	EXTEND_TOP ~BALDUR.BCS~ ~%mod_root%/scripts/baldur.baf~ EVAL
 
-	// Kicks off scenes that happen just before rest
-	EXTEND_BOTTOM ~PLAYER1D.BCS~ ~%mod_root%/scripts/player1d.baf~ EVAL USING ~%tra_loc%/%s/dialogues.tra~
+	ACTION_IF !(GAME_IS ~bgee~) OR (GAME_INCLUDES ~sod~) BEGIN
+		// Kicks off scenes that happen just before rest
+		// There are no dreams in BG1 without SoD - Player1D doesn't exist there
+		EXTEND_BOTTOM ~PLAYER1D.BCS~ ~%mod_root%/scripts/player1d.baf~ EVAL USING ~%tra_loc%/%s/dialogues.tra~
+		COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGICamp.baf~ USING ~%tra_loc%/%s/dialogues.tra~
+		COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGIDngn.baf~ USING ~%tra_loc%/%s/dialogues.tra~
+		COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGIInn.baf~ USING ~%tra_loc%/%s/dialogues.tra~
+	END
 
 	// Globals and kicks off scenes in the inns
 	ACTION_IF GAME_IS ~bgee eet~ BEGIN
@@ -185,9 +173,6 @@ END~~~~~
 	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGIIdle.baf~ USING ~%tra_loc%/%s/dialogues.tra~
 	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGISing.baf~ USING ~%tra_loc%/%s/dialogues.tra~	
 	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGISigh.baf~ USING ~%tra_loc%/%s/dialogues.tra~	
-	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGICamp.baf~ USING ~%tra_loc%/%s/dialogues.tra~
-	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGIDngn.baf~ USING ~%tra_loc%/%s/dialogues.tra~
-	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGIInn.baf~ USING ~%tra_loc%/%s/dialogues.tra~
 	
 	// Won't fire unless Transitions is installed but is referenced in #LGISing
 	COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGITOK.baf~ USING ~%tra_loc%/%s/dialogues.tra~
@@ -218,6 +203,9 @@ END~~~~~
 	COPY ~%mod_root%/objects/#LGIKiss.spl~ ~override~
 		SAY (0x0008) @1001 // Kiss
 
+	// Get rid of his infatuation with Skie
+	
+	
 	ACTION_IF (MOD_IS_INSTALLED ~transitions.tp2~ (ID_OF_LABEL "transitions.tp2" "#L-TRANSITIONS-MAIN")) BEGIN
 		// Get a couple strrefs from Transitions 
 		// so we can recreate portion of the dialogue I needed to sidestep
@@ -244,8 +232,8 @@ END~~~~~
 		COMPILE EVALUATE_BUFFER ~%mod_root%/dialogues/dialogues_bg1.d~ USING ~%tra_loc%/%s/dialogues.tra~
 		COMPILE EVALUATE_BUFFER ~%mod_root%/dialogues/dialogues_all.d~ USING ~%tra_loc%/%s/dialogues.tra~
 		COMPILE EVALUATE_BUFFER ~%mod_root%/dialogues/dialogues_taverns.d~ USING ~%tra_loc%/%s/dialogues.tra~  // Used for BG1 and BG2
-		EXTEND_TOP ~garrick_.bcs~ ~%mod_root%/scripts/garrick_.baf~ EVAL USING ~%tra_loc%/%s/dialogues.tra~ 
-		EXTEND_TOP ~imoen_.bcs~ ~%mod_root%/scripts/imoen_.baf~ EVAL USING ~%tra_loc%/%s/dialogues.tra~ 
+		EXTEND_TOP ~%GARRICK_BCS%.bcs~ ~%mod_root%/scripts/garrick_.baf~ EVAL USING ~%tra_loc%/%s/dialogues.tra~ 
+		EXTEND_TOP ~%IMOEN_BCS%.bcs~ ~%mod_root%/scripts/imoen_.baf~ EVAL USING ~%tra_loc%/%s/dialogues.tra~ 
 		
 		// Add areas where they comment about picnics or wanting to camp
 		COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGISpot.baf~
@@ -395,8 +383,8 @@ END~~~~~
 		COMPILE EVALUATE_BUFFER ~%mod_root%/scripts/#LGar15O.baf~
 
 		// Compile the dialogues
-		OUTER_SPRINT %GARRICK_JOINED% ~BDGARRIJ~
-		OUTER_SPRINT %IMOEN_JOINED% ~BDIMOEN~
+		OUTER_SPRINT GARRICK_JOINED ~BDGARRIJ~
+		OUTER_SPRINT IMOEN_JOINED ~BDIMOEN~
 		COMPILE EVALUATE_BUFFER ~%mod_root%/dialogues/dialogues_sod.d~ USING ~%tra_loc%/%s/dialogues.tra~
 		COMPILE EVALUATE_BUFFER ~%mod_root%/dialogues/dialogues_all.d~ USING ~%tra_loc%/%s/dialogues.tra~
 
