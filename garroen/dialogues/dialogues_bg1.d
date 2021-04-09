@@ -106,6 +106,11 @@ APPEND %GARRICK_POST%
 	// He uses the tavern post dialogue in BG1 (added separately)
 END
 
+// Get rid of banter with Skie if romance has started
+ADD_STATE_TRIGGER %GARRICK_BANTER% 0 ~Global("#L_GIRomance","GLOBAL",0)~
+%DIALOGUE_BG1NPC_BANTER_1%
+%DIALOGUE_BG1NPC_BANTER_2%
+
 ALTER_TRANS %IMOEN_POST%
 	BEGIN 4 END
 	BEGIN 0 END

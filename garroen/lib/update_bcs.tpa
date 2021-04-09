@@ -21,17 +21,17 @@ BEGIN
 		ACTION_MATCH %action_taken% WITH 
 			1 BEGIN 
 				ACTION_IF STRING_LENGTH ~%using_tra%~ == 0 BEGIN
-					EXTEND_TOP ~%bcs_name%.BCS~ ~%baf_location%%baf_name%.BAF~ 
+					EXTEND_TOP ~%bcs_name%.BCS~ ~%baf_location%%baf_name%.BAF~ EVAL
 				END ELSE BEGIN
-					EXTEND_TOP ~%bcs_name%.BCS~ ~%baf_location%%baf_name%.BAF~ USING ~%using_tra%~
+					EXTEND_TOP ~%bcs_name%.BCS~ ~%baf_location%%baf_name%.BAF~ EVAL USING ~%using_tra%~
 				END
 			END
 
 			2 BEGIN	
 				ACTION_IF STRING_LENGTH ~%using_tra%~ == 0 BEGIN
-					EXTEND_BOTTOM ~%bcs_name%.BCS~ ~%baf_location%%baf_name%.BAF~ 
+					EXTEND_BOTTOM ~%bcs_name%.BCS~ ~%baf_location%%baf_name%.BAF~ EVAL
 				END ELSE BEGIN
-					EXTEND_BOTTOM ~%bcs_name%.BCS~ ~%baf_location%%baf_name%.BAF~ USING ~%using_tra%~
+					EXTEND_BOTTOM ~%bcs_name%.BCS~ ~%baf_location%%baf_name%.BAF~ EVAL USING ~%using_tra%~
 				END
 			END
 
@@ -43,7 +43,7 @@ BEGIN
 						END
 					BUT_ONLY_IF_IT_CHANGES
 				END ELSE BEGIN
-					EXTEND_BOTTOM ~%bcs_name%.BCS~ ~%baf_location%%baf_name%.BAF~ USING ~%using_tra%~
+					EXTEND_BOTTOM ~%bcs_name%.BCS~ ~%baf_location%%baf_name%.BAF~ EVAL USING ~%using_tra%~
 				END
 			END
 			DEFAULT // do nothing
