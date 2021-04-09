@@ -110,6 +110,76 @@ END
 ADD_STATE_TRIGGER %GARRICK_BANTER% 0 ~Global("#L_GIRomance","GLOBAL",0)~
 %DIALOGUE_BG1NPC_BANTER_1%
 %DIALOGUE_BG1NPC_BANTER_2%
+%DIALOGUE_BG1NPC_BANTER_3%
+%BEGIN_GARRICK_BANTER%
+%BEGIN_IMOEN_BANTER%
+
+APPEND %IMOEN_BANTER%
+	IF ~IsValidForPartyDialogue("Garrick") IsValidForPartyDialogue("%IMOEN_DV%") InMyArea("GARRICK") Global("#L_GIBanter1","GLOBALS",0)~ BEGIN PLAY_FOR_ME
+		SAY @2670 // ~Play something for me Garrick.~
+		IF ~~ DO ~SetGlobal("#L_GIBanter2","GLOBAL",1)~ EXTERN %GARRICK_BANTER% PLAY_WHAT
+	END
+	
+	IF ~~ BEGIN PLAY_MUSIC
+		SAY @2672	// ~Something romantic.~
+		IF ~~ EXTERN %GARRICK_BANTER% OF_COURSE
+	END
+	
+	IF ~IsValidForPartyDialogue("Garrick") IsValidForPartyDialogue("%IMOEN_DV%") InMyArea("GARRICK") Global("#L_GIBanter2","GLOBAL",0) GlobalGT("#L_GIRomance","GLOBAL",5)~ BEGIN TELL_ME
+		SAY @2675 // ~Garrick, tell me I'm pretty.~
+		IF ~GlobalLT("#L_GIRomance","GLOBAL",36)~ DO ~SetGlobal("#L_GIBanter2","GLOBAL",1)~ EXTERN %GARRICK_BANTER% YOU_PRETTY
+		IF ~GlobalGT("#L_GIRomance","GLOBAL",35)~ DO ~SetGlobal("#L_GIBanter2","GLOBAL",1)~ EXTERN %GARRICK_BANTER% SO_PRETTY
+	END
+	
+	IF ~~ BEGIN THINK_SO
+		SAY @2677 // ~Do you really think so?~
+		IF ~GlobalLT("#L_GIRomance","GLOBAL",21)~ EXTERN %GARRICK_BANTER% NEVER_LIE
+		IF ~GlobalGT("#L_GIRomance","GLOBAL",20)~ EXTERN %GARRICK_BANTER% SO_PRETTY
+	END
+	
+	IF ~~ BEGIN AND_WONDERFUL
+		SAY @2681 // ~And wonderful - tell me I'm wonderful.~
+		IF ~~ EXTERN %GARRICK_BANTER% TOO_WONDERFUL
+	END
+	
+	IF ~~ BEGIN LOVE_YOU
+		SAY @2680 // ~I love you.~
+		IF ~~ EXIT
+	END
+END
+
+APPEND %GARRICK_BANTER%
+	IF ~~ BEGIN PLAY_WHAT
+		SAY @2671 // ~Of course, what you like to hear?~
+		IF ~~ EXTERN %IMOEN_BANTER% PLAY_MUSIC
+	END
+	
+	IF ~~ BEGIN OF_COURSE
+		SAY @2673 // ~Your wish is my command.~ [GARRK18]
+		IF ~~ EXIT
+	END
+	
+	IF ~~ BEGIN YOU_PRETTY
+		SAY @2676 // ~You're pretty.~
+		IF ~~ EXTERN %IMOEN_BANTER% THINK_SO
+	END
+	
+	IF ~~ BEGIN NEVER_LIE
+		SAY @2678 // ~I will never lie to you.  Ever.~
+		IF ~~ EXIT
+	END
+	
+	IF ~~ BEGIN SO_PRETTY
+		SAY @2679 // ~Flowers blush as you walk by, you're so pretty.~
+		IF ~~ EXIT
+		IF ~GlobalGT("#L_GIRomance","GLOBAL",35)~ EXTERN %IMOEN_BANTER% AND_WONDERFUL
+	END	
+	
+	IF ~~ BEGIN TOO_WONDERFUL
+		SAY @2682 // ~*Garrick takes Imoen gently around the waist and gives her a loving kiss.* You are too wonderful for mere words.~
+		IF ~~ EXTERN %IMOEN_BANTER% LOVE_YOU
+	END
+END
 
 ALTER_TRANS %IMOEN_POST%
 	BEGIN 4 END
