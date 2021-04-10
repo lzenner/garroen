@@ -115,7 +115,7 @@ ADD_STATE_TRIGGER %GARRICK_BANTER% 0 ~Global("#L_GIRomance","GLOBAL",0)~
 %BEGIN_IMOEN_BANTER%
 
 APPEND %IMOEN_BANTER%
-	IF ~IsValidForPartyDialogue("Garrick") IsValidForPartyDialogue("%IMOEN_DV%") InMyArea("GARRICK") Global("#L_GIBanter1","GLOBALS",0)~ BEGIN PLAY_FOR_ME
+	IF WEIGHT #-99 ~IsValidForPartyDialogue("Garrick") IsValidForPartyDialogue("%IMOEN_DV%") InMyArea("GARRICK") GlobalLT("#L_GIBanter1","GLOBALS",0)~ BEGIN PLAY_FOR_ME
 		SAY @2670 // ~Play something for me Garrick.~
 		IF ~~ DO ~SetGlobal("#L_GIBanter2","GLOBAL",1)~ EXTERN %GARRICK_BANTER% PLAY_WHAT
 	END
@@ -125,10 +125,10 @@ APPEND %IMOEN_BANTER%
 		IF ~~ EXTERN %GARRICK_BANTER% OF_COURSE
 	END
 	
-	IF ~IsValidForPartyDialogue("Garrick") IsValidForPartyDialogue("%IMOEN_DV%") InMyArea("GARRICK") Global("#L_GIBanter2","GLOBAL",0) GlobalGT("#L_GIRomance","GLOBAL",5)~ BEGIN TELL_ME
+	IF ~IsValidForPartyDialogue("Garrick") IsValidForPartyDialogue("%IMOEN_DV%") InMyArea("GARRICK") GlobalLT("#L_GIBanter2","GLOBAL",4) GlobalGT("#L_GIRomance","GLOBAL",5)~ BEGIN TELL_ME
 		SAY @2675 // ~Garrick, tell me I'm pretty.~
-		IF ~GlobalLT("#L_GIRomance","GLOBAL",36)~ DO ~SetGlobal("#L_GIBanter2","GLOBAL",1)~ EXTERN %GARRICK_BANTER% YOU_PRETTY
-		IF ~GlobalGT("#L_GIRomance","GLOBAL",35)~ DO ~SetGlobal("#L_GIBanter2","GLOBAL",1)~ EXTERN %GARRICK_BANTER% SO_PRETTY
+		IF ~GlobalLT("#L_GIRomance","GLOBAL",36)~ DO ~IncrementGlobal("#L_GIBanter2","GLOBAL",1)~ EXTERN %GARRICK_BANTER% YOU_PRETTY
+		IF ~GlobalGT("#L_GIRomance","GLOBAL",35)~ DO ~IncrementGlobal("#L_GIBanter2","GLOBAL",1)~ EXTERN %GARRICK_BANTER% SO_PRETTY
 	END
 	
 	IF ~~ BEGIN THINK_SO
@@ -144,7 +144,7 @@ APPEND %IMOEN_BANTER%
 	
 	IF ~~ BEGIN LOVE_YOU
 		SAY @2680 // ~I love you.~
-		IF ~~ EXIT
+		IF ~~ DO ~SetGlobal("#L_GIBanter2","GLOBAL",5)~ EXIT
 	END
 END
 

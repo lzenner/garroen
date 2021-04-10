@@ -80,6 +80,32 @@ DEFINE_ACTION_FUNCTION garroen BEGIN
 		OUTER_SPRINT BEGIN_IMOEN_BANTER ~BEGIN %IMOEN_BANTER% END~
 	END
 	
+	// Make sure they're set up for doing banters
+	COPY_EXISTING ~interdia.2da~ ~override~
+		READ_2DA_ENTRIES_NOW curList 2
+		SET garrickSet = 0
+		SET imoenSet = 0
+		SET newRow = 0
+
+		FOR (iRow = 0; iRow < curList; ++iRow) BEGIN
+			READ_2DA_ENTRY_FORMER curList iRow 0 npcDV
+			PATCH_MATCH ~%npcDV%~ WITH 
+				~%IMOEN_DV%~ BEGIN SET imoenSet = 1 END 
+				~Garrick~ BEGIN SET garrickSet = 1 END
+				DEFAULT // do nothing
+			END
+			newRow = iRow + 1
+		END
+
+		PATCH_IF (imoenSet = 0) THEN BEGIN
+			INSERT_2DA_ROW newRow 2 ~%IMOEN_DV% %IMOEN_BANTER%~
+			newRow = newRow + 1
+		END
+		PATCH_IF (garrickSet = 0) THEN BEGIN
+			INSERT_2DA_ROW newRow 2 ~Garrick %GARRICK_BANTER%~
+		END
+	BUT_ONLY
+	
 	ACTION_IF GAME_INCLUDES ~sod~ BEGIN
 		OUTER_SPRINT TRIGGER_RESTING_INN ~OR(20)
 			AreaCheck("%Nashkel_Inn%")
