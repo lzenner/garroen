@@ -82,7 +82,7 @@ DEFINE_ACTION_FUNCTION garroen BEGIN
 	
 	// Make sure they're set up for doing banters
 	COPY_EXISTING ~interdia.2da~ ~override~
-		PATCH_IF (GAME_IS ~bg2ee~) BEGIN
+		PATCH_IF (GAME_IS ~bg2ee eet~) BEGIN
 			READ_2DA_ENTRIES_NOW curList 3
 		END ELSE BEGIN
 			READ_2DA_ENTRIES_NOW curList 2
@@ -102,7 +102,7 @@ DEFINE_ACTION_FUNCTION garroen BEGIN
 		END
 
 		PATCH_IF (imoenSet = 0) THEN BEGIN
-			PATCH_IF (GAME_IS ~bg2ee~) THEN BEGIN
+			PATCH_IF (GAME_IS ~bg2ee eet~) THEN BEGIN
 				INSERT_2DA_ROW newRow 3 ~%IMOEN_DV% %IMOEN_BANTER% BIMOEN25~
 			END ELSE BEGIN
 				INSERT_2DA_ROW newRow 2 ~%IMOEN_DV% %IMOEN_BANTER%~
@@ -110,11 +110,15 @@ DEFINE_ACTION_FUNCTION garroen BEGIN
 			newRow = newRow + 1
 		END
 		PATCH_IF (garrickSet = 0) THEN BEGIN
-			PATCH_IF (GAME_IS ~bg2ee~) THEN BEGIN
+			PATCH_IF (GAME_IS ~bg2ee eet~) THEN BEGIN
 				INSERT_2DA_ROW newRow 3 ~Garrick %GARRICK_BANTER% BGARRI25~
 			END ELSE BEGIN
 				INSERT_2DA_ROW newRow 2 ~Garrick %GARRICK_BANTER%~
 			END
+		END
+
+		PATCH_IF ((garrickSet = 0) OR (imoenSet = 0)) BEGIN
+			PRETTY_PRINT_2DA
 		END
 	BUT_ONLY
 	
