@@ -82,10 +82,14 @@ DEFINE_ACTION_FUNCTION garroen BEGIN
 	
 	// Make sure they're set up for doing banters
 	COPY_EXISTING ~interdia.2da~ ~override~
-		READ_2DA_ENTRIES_NOW curList 2
+		PATCH_IF (GAME_IS ~bg2ee~) BEGIN
+			READ_2DA_ENTRIES_NOW curList 3
+		END ELSE BEGIN
+			READ_2DA_ENTRIES_NOW curList 2
+		END
 		SET garrickSet = 0
 		SET imoenSet = 0
-		SET newRow = 0
+		SET newRow = 1
 
 		FOR (iRow = 0; iRow < curList; ++iRow) BEGIN
 			READ_2DA_ENTRY_FORMER curList iRow 0 npcDV
@@ -98,11 +102,19 @@ DEFINE_ACTION_FUNCTION garroen BEGIN
 		END
 
 		PATCH_IF (imoenSet = 0) THEN BEGIN
-			INSERT_2DA_ROW newRow 2 ~%IMOEN_DV% %IMOEN_BANTER%~
+			PATCH_IF (GAME_IS ~bg2ee~) THEN BEGIN
+				INSERT_2DA_ROW newRow 3 ~%IMOEN_DV% %IMOEN_BANTER% BIMOEN25~
+			END ELSE BEGIN
+				INSERT_2DA_ROW newRow 2 ~%IMOEN_DV% %IMOEN_BANTER%~
+			END
 			newRow = newRow + 1
 		END
 		PATCH_IF (garrickSet = 0) THEN BEGIN
-			INSERT_2DA_ROW newRow 2 ~Garrick %GARRICK_BANTER%~
+			PATCH_IF (GAME_IS ~bg2ee~) THEN BEGIN
+				INSERT_2DA_ROW newRow 3 ~Garrick %GARRICK_BANTER% BGARRI25~
+			END ELSE BEGIN
+				INSERT_2DA_ROW newRow 2 ~Garrick %GARRICK_BANTER%~
+			END
 		END
 	BUT_ONLY
 	
