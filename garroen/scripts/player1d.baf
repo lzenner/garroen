@@ -21,6 +21,7 @@ END
 IF
 	GlobalGT("#L_GIPineTimer","GLOBAL",0)
 	IsValidForPartyDialogue("%IMOEN_DV%")
+	!AreaCheck("%Candlekeep_Library_L5%")
 	OR(2)
 		Global("#L_GIPineCampTimer","GLOBAL",0)
 		GlobalTimerExpired("#L_GIPineCampTimer","GLOBAL")
@@ -42,6 +43,7 @@ END
 IF
 	GlobalGT("#L_GIPineTimer","GLOBAL",0)
 	IsValidForPartyDialogue("GARRICK")
+	!AreaCheck("%Candlekeep_Library_L5%")
 	OR(2)
 		Global("#L_GIPineCampTimer","GLOBAL",0)
 		GlobalTimerExpired("#L_GIPineCampTimer","GLOBAL")
@@ -63,6 +65,7 @@ END
 IF
 	GlobalGT("#L_GIRomance","GLOBAL",0)
 	GlobalLT("#L_GIRomance","GLOBAL",150)
+	!AreaCheck("%Candlekeep_Library_L5%")
 	OR(2)
 		Global("#L_GIRestTimer","GLOBAL",0)
 		GlobalTimerExpired("#L_GIRestTimer","GLOBAL")
@@ -78,6 +81,7 @@ END
 IF
 	GlobalGT("#L_GIRomance","GLOBAL",0)
 	GlobalLT("#L_GIRomance","GLOBAL",150)
+	!AreaCheck("%Candlekeep_Library_L5%")
 	OR(2)
 		Global("#L_GIRestTimer","GLOBAL",0)
 		GlobalTimerExpired("#L_GIRestTimer","GLOBAL")
