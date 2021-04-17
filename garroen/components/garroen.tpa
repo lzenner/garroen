@@ -332,7 +332,7 @@ END~~~~~
 	COPY_EXISTING_REGEXP GLOB ~GARRIC.*.CRE~ ~override~	
 		WRITE_LONG (0x0140) ~-1~
 	
-	ACTION_IF (MOD_IS_INSTALLED ~transitions.tp2~ (ID_OF_LABEL "transitions.tp2" "#L-TRANSITIONS-MAIN")) BEGIN
+	ACTION_IF GAME_INCLUDES ~sod~ AND (MOD_IS_INSTALLED ~transitions.tp2~ (ID_OF_LABEL "transitions.tp2" "#L-TRANSITIONS-MAIN")) BEGIN
 		// Get a couple strrefs from Transitions 
 		// so we can recreate portion of the dialogue I needed to sidestep
 		// Luckily it should be installed first
