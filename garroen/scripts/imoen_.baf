@@ -90,6 +90,7 @@ IF
 	TriggerOverride("GARRICK",ActionListEmpty())
 	CombatCounter(0)
 	ActionListEmpty()
+	LOS("GARRICK",30)
 	OR(2)
 		Global("#L_GIGarrickBetter","GLOBAL",0)
 		GlobalTimerExpired("#L_GIGarrickBetter","GLOBAL")
@@ -112,6 +113,7 @@ IF
 	IsValidForPartyDialogue(MYSELF)
 	HPPercentLT("GARRICK",90)
 	HPPercentGT("GARRICK",50)
+	LOS("GARRICK",30)
 	!CombatCounter(0)
 	OR(2)
 		Global("#L_GIHelpGarrick1","GLOBAL",0)
@@ -131,6 +133,7 @@ IF
 	IsValidForPartyDialogue(MYSELF)
 	!CombatCounter(0)
 	!Dead("GARRICK")
+	LOS("GARRICK",30)
 	OR(2)
 		HPPercent("GARRICK",50)
 		HPPercentLT("GARRICK",50)
@@ -152,6 +155,7 @@ IF
 	IsValidForPartyDialogue(MYSELF)
 	Dead("GARRICK")
 	!CombatCounter(0)
+	LOS("GARRICK",30)
 	Global("#L_GIDeadGarrick1","GLOBAL",0)
 THEN
 	RESPONSE #100
@@ -168,6 +172,7 @@ IF
 	IsValidForPartyDialogue(MYSELF)
 	HPPercentLT("GARRICK",90)
 	!Dead("GARRICK")
+	LOS("GARRICK",30)
 	CombatCounter(0)
 	OR(2)
 		Global("#L_GIHelpGarrick1","GLOBAL",0)
@@ -188,6 +193,7 @@ IF
 	GlobalGT("#L_GIRomance","GLOBAL",10)
 	IsValidForPartyDialogue(MYSELF)
 	Dead("GARRICK")
+	LOS("GARRICK",30)
 	CombatCounter(0)
 	Global("#L_GIDeadGarrick2","GLOBAL",0)
 THEN
@@ -217,6 +223,7 @@ END
 IF
 	GlobalGT("#L_GIRomance","GLOBAL",10)
 	IsValidForPartyDialogue(MYSELF)
+	LOS("GARRICK",30)
 	OR(6)
 		StateCheck("GARRICK",STATE_SLEEPING)
 		StateCheck("GARRICK",STATE_PANIC)
