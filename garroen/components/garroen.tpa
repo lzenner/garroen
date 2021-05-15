@@ -274,7 +274,7 @@ END~~~~~
 	// Kicks off scenes that happen just before rest
 	LAF UPDATE_BCS
 		INT_VAR
-			action_taken = 2		// 0 = APPEND_FILE TEXT, 1 = EXTEND_TOP, 2 = EXTEND_BOTTOM
+			action_taken = 1		// 0 = APPEND_FILE TEXT, 1 = EXTEND_TOP, 2 = EXTEND_BOTTOM
 		STR_VAR
 			baf_location = EVAL ~%mod_root%/scripts/~		// like ~mymod/bafs/~
 			baf_name = "player1d"			// like my_new_BG0146
