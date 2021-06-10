@@ -332,16 +332,19 @@ END~~~~~
 	COPY_EXISTING_REGEXP GLOB ~GARRIC.*.CRE~ ~override~	
 		WRITE_LONG (0x0140) ~-1~
 	
-	ACTION_IF GAME_INCLUDES ~sod~ AND (MOD_IS_INSTALLED ~transitions.tp2~ (ID_OF_LABEL "transitions.tp2" "#L-TRANSITIONS-MAIN")) BEGIN
+	ACTION_IF (MOD_IS_INSTALLED ~transitions.tp2~ (ID_OF_LABEL "transitions.tp2" "#L-TRANSITIONS-MAIN")) BEGIN
 		// Get a couple strrefs from Transitions 
 		// so we can recreate portion of the dialogue I needed to sidestep
 		// Luckily it should be installed first
-		OUTER_SET TRANS_GO_TRAIN = STATE_WHICH_SAYS 2121 IN ~weidu_external/workspace/transitions/languages/%s/dialogues.tra~ FROM ~%IMOEN_POST%~
-		ACTION_IF TRANS_GO_TRAIN > ~-1~ BEGIN
+		OUTER_SET STATE_TRAIN_LEARNED = STATE_WHICH_SAYS 2530 IN ~weidu_external/workspace/transitions/languages/%s/dialogues.tra~ FROM ~%IMOEN_POST%~
+		OUTER_SET STATE_TRAIN_KNEW = STATE_WHICH_SAYS 2121 IN ~weidu_external/workspace/transitions/languages/%s/dialogues.tra~ FROM ~%IMOEN_POST%~
+		ACTION_IF STATE_TRAIN_LEARNED > ~-1~ AND STATE_TRAIN_KNEW > ~-1~ BEGIN
 			WITH_TRA ~weidu_external/workspace/transitions/languages/%s/dialogues.tra~ BEGIN
+				OUTER_SET TRANS_LIIA_WILL_TRAIN = RESOLVE_STR_REF (@2529)
 				OUTER_SET TRANS_WONT_NEED_YOU = RESOLVE_STR_REF (@2322)
 			END
-			OUTER_SPRINT TRANSITIONS_IMOEN_TRAIN ~~~~~IF ~GlobalGT("#L_ImTrainRsp","GLOBAL",0)~ THEN REPLY #%TRANS_WONT_NEED_YOU% GOTO %TRANS_GO_TRAIN%~~~~~
+			OUTER_SPRINT TRANSITIONS_IMOEN_TRAIN ~~~~~IF ~GlobalGT("#L_TalkedToDukes","GLOBAL",2) Global("#L_ImoenAskToTrain","GLOBAL",0)~ THEN REPLY #%TRANS_LIIA_WILL_TRAIN% GOTO %STATE_TRAIN_LEARNED%
+			IF ~GlobalGT("#L_TalkedToDukes","GLOBAL",2) Global("#L_ImoenAskToTrain","GLOBAL",1)~ THEN REPLY #%TRANS_WONT_NEED_YOU% GOTO %STATE_TRAIN_KNEW%~~~~~
 		END
 	END
 
