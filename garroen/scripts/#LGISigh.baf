@@ -4,6 +4,7 @@
 
 IF
 	GlobalLT("#L_GIRomance","GLOBAL",6)
+	Global("#L_ImoenInPalace","GLOBAL",0)
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
@@ -16,6 +17,7 @@ END
 IF
 	GlobalGT("#L_GIRomance","GLOBAL",5)
 	GlobalLT("#L_GIRomance","GLOBAL",11)
+	Global("#L_ImoenInPalace","GLOBAL",0)
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
@@ -28,6 +30,7 @@ END
 IF
 	GlobalGT("#L_GIRomance","GLOBAL",10)
 	GlobalLT("#L_GIRomance","GLOBAL",21)
+	Global("#L_ImoenInPalace","GLOBAL",0)
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
@@ -40,6 +43,7 @@ END
 IF
 	GlobalGT("#L_GIRomance","GLOBAL",20)
 	GlobalLT("#L_GIRomance","GLOBAL",36)
+	Global("#L_ImoenInPalace","GLOBAL",0)
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
@@ -52,6 +56,7 @@ END
 IF
 	GlobalGT("#L_GIRomance","GLOBAL",35)
 	GlobalLT("#L_GIRomance","GLOBAL",51)
+	Global("#L_ImoenInPalace","GLOBAL",0)
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
@@ -64,6 +69,7 @@ END
 IF
 	GlobalGT("#L_GIRomance","GLOBAL",50)
 	GlobalLT("#L_GIRomance","GLOBAL",76)
+	Global("#L_ImoenInPalace","GLOBAL",0)
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
@@ -76,6 +82,7 @@ END
 IF
 	GlobalGT("#L_GIRomance","GLOBAL",75)
 	GlobalLT("#L_GIRomance","GLOBAL",101)
+	Global("#L_ImoenInPalace","GLOBAL",0)
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
@@ -89,6 +96,7 @@ IF
 	GlobalGT("#L_GIRomance","GLOBAL",100)
 	Global("#L_GIMarried","GLOBAL",0)
 	!GlobalGT("#L_GIAtInn","GLOBAL",24)
+	Global("#L_ImoenInPalace","GLOBAL",0)
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
@@ -104,6 +112,7 @@ IF
 	GlobalGT("#L_GIAtInn","GLOBAL",24)
 	Global("Chapter","GLOBAL",7)
 	!Dead("Sarevok")
+	Global("#L_ImoenInPalace","GLOBAL",0)
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
@@ -123,6 +132,7 @@ IF
 	Global("#L_GarrickFeldepost","GLOBAL",0)
 	Global("#L_GarrickTOK_BG1","GLOBAL",1)
 	Global("#L_GarrickTOK_SoD","GLOBAL",0)
+	Global("#L_ImoenInPalace","GLOBAL",0)
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
@@ -139,32 +149,14 @@ IF
 	GlobalGT("#L_GIRomance","GLOBAL",100)
 	GlobalGT("#L_GIAtInn","GLOBAL",24)
 	Global("#L_GIMarried","GLOBAL",0)
+	Global("#L_ImoenInPalace","GLOBAL",0)
 	OR(2)
 		!Global("Chapter","GLOBAL",7)
 		Dead("Sarevok")
-	Global("#L_GarrickFeldepost","GLOBAL",0)
 	Global("#L_GarrickTOK_BG1","GLOBAL",0)
-	Global("#L_GarrickTOK_SoD","GLOBAL",1)
-THEN
-	RESPONSE #100
-		CutSceneId(Player1)
-		SetGlobalTimer("#L_GIAwayForWedding","GLOBAL",TWENTY_HOURS)
-		Wait(2)
-		DisplayStringHead("%IMOEN_DV%",@2082) // ~Imoen blushes and beams with joy.~
-		Wait(2)
-		ActionOverride("%IMOEN_DV%",StartDialogueNoSet(Player1))
-END
-
-IF
-	GlobalGT("#L_GIRomance","GLOBAL",100)
-	GlobalGT("#L_GIAtInn","GLOBAL",24)
-	Global("#L_GIMarried","GLOBAL",0)
 	OR(2)
-		!Global("Chapter","GLOBAL",7)
-		Dead("Sarevok")
-	Global("#L_GarrickFeldepost","GLOBAL",1)
-	Global("#L_GarrickTOK_BG1","GLOBAL",0)
-	Global("#L_GarrickTOK_SoD","GLOBAL",0)
+		Global("#L_GarrickFeldepost","GLOBAL",1)
+		Global("#L_GarrickTOK_SoD","GLOBAL",1)
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
@@ -178,6 +170,7 @@ END
 IF
 	GlobalGT("#L_GIMarried","GLOBAL",0)
 	GlobalLT("#L_GIMarried","GLOBAL",26)
+	Global("#L_ImoenInPalace","GLOBAL",0)
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
@@ -190,6 +183,7 @@ END
 
 IF
 	GlobalGT("#L_GIMarried","GLOBAL",25)
+	Global("#L_ImoenInPalace","GLOBAL",0)
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
@@ -208,7 +202,9 @@ THEN
 END
 
 IF
-	Global("#L_GarrickTOK_BG1","GLOBAL",1)
+	OR(2)
+		Global("#L_GarrickTOK_BG1","GLOBAL",1)
+		Global("#L_GarrickTOK_SoD","GLOBAL",1)
 	Global("#L_ImoenInPalace","GLOBAL",1)
 	// Make sure they're not on their way to their wedding
 	OR(3)
