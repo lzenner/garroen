@@ -213,6 +213,14 @@
 @2305	= ~During Garrick's next break, the three of you find a quiet table to share a drink and chat. Imoen can't wait to show you her engagement ring and the ensuing conversation is all about wedding plans.~
 @2306	= ~During Garrick's next break, the three of you find a quiet table to share a drink and chat. Imoen and Garrick talk excitedly about married life, at times sharing way too much information.~
 @2307	= ~During Garrick's next break, the three of you find a quiet table to share a drink and chat. After catching up on current events, you fondly reminisce about the past.~
+@2308	= ~During Garrick's next break, you and he find a table in the corner. Imoen wanders in just in time to join the two of you for a drink and catch up on what's been happening, though she leaves again for the palace immediately after.~
+@2309	= ~During Garrick's next break, you and he find a quiet table to share a drink and chat. Imoen joins you briefly. You notice Garrick and Imoen holding hands the entire time.~
+@2310	= ~During Garrick's next break, you and he find a quiet table to share a drink and chat. Imoen joins you briefly. Garrick gives Imoen a tender kiss before she rushes back to the palace.~
+@2311	= ~During Garrick's next break, you and he find a quiet table to share a drink and chat. Imoen joins you briefly. Garrick's attention never strays from her during her entire visit.~
+@2312	= ~During Garrick's next break, you and he find a quiet table to share a drink and chat. Imoen joins you briefly. Garrick and Imoen seem to find it impossible to keep their hands to themselves to the point you suggest they get a room.~
+@2313	= ~During Garrick's next break, you and he find a quiet table to share a drink and chat. Imoen joins you briefly. Imoen can't wait to show you her engagement ring and the ensuing conversation is all about wedding plans.~
+@2314	= ~During Garrick's next break, you and he find a quiet table to share a drink and chat. Imoen joins you briefly. Imoen and Garrick talk excitedly about married life, at times sharing way too much information.~
+@2315	= ~During Garrick's next break, you and he find a quiet table to share a drink and chat. Imoen joins you briefly. After catching up on current events, you fondly reminisce about the past.~
 
 ///////////////////////////
 // SITUATIONAL DIALOGUES //
@@ -290,3 +298,4 @@
 @2680	= ~I love you.~
 @2681	= ~And wonderful - tell me I'm wonderful.~
 @2682	= ~*Garrick takes Imoen gently around the waist and gives her a loving kiss.* You are too wonderful for mere words.~
+
