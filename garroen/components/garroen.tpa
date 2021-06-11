@@ -23,6 +23,8 @@ DEFINE_ACTION_FUNCTION garroen BEGIN
 	OUTER_SET IMOEN_SAY_YOURE_BACK = 16412
 	OUTER_SET IMOEN_REPLY_WELCOME = 16413
 	OUTER_SET IMOEN_REPLY_SORRY = 16414
+	OUTER_SET SHOAL_SAY_1 = 1974
+	OUTER_SET SHOAL_SAY_2 = 1976
 
 	ACTION_IF GAME_IS ~eet~ BEGIN
 		// New area for the wedding
@@ -34,6 +36,8 @@ DEFINE_ACTION_FUNCTION garroen BEGIN
 		OUTER_SET IMOEN_SAY_YOURE_BACK = 216412
 		OUTER_SET IMOEN_REPLY_WELCOME = 216413
 		OUTER_SET IMOEN_REPLY_SORRY = 216414
+		OUTER_SET SHOAL_SAY_1 = 201974
+		OUTER_SET SHOAL_SAY_2 = 201976
 		OUTER_SPRINT DIALOGUE_BDSCHAEL_EET ~~~~~REPLACE_SAY BDSCHAEL 277 @2143 // ~The bard Garrick, the witch Dynaheir and her bodyguard Minsc are staying at the Three Old Kegs...~
 			REPLACE_SAY BDSCHAEL 279 @2144 // ~You tell me. We are to acquire equipment and allies for the trip north. There's a bard and a couple of Rashemi adventurers we can talk to at the Three Old Kegs, the thieves at the Elfsong Tavern. Or we could just return to the palace.~
 			REPLACE_SAY BDSCHAEL 280 @2145 // ~You tell me. We are to acquire equipment and allies for the trip north. There's the thieves at the Elfsong Tavern, or a monk at the Iron Throne Building. Or we could just return to the palace.~

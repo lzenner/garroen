@@ -210,21 +210,21 @@ END
 // Rumors for Garrick's stores //
 /////////////////////////////////
 BEGIN ~#LGISto1~	// Days 5-10
-	IF ~True()~ BEGIN RUMOR1
+	IF ~Global("#L_ImoenInPalace","GLOBAL",0)~ BEGIN RUMOR1
 		SAY @2300 // ~During Garrick's next break, you, he, and Imoen find a table in the corner, order a round of drinks, and catch up on what's been happening.~
 		IF ~~ THEN EXIT
 	END
 // End of new #LGISto1
 
 BEGIN ~#LGISto2~	// Days 11-20
-	IF ~True()~ BEGIN RUMOR1
+	IF ~Global("#L_ImoenInPalace","GLOBAL",0)~ BEGIN RUMOR1
 		SAY @2301 // ~During Garrick's next break, the three of you find a quiet table to share a drink and chat. You notice Garrick and Imoen holding hands throughout the entire conversation.~
 		IF ~~ THEN EXIT
 	END
 // End of new #LGISto2
 
 BEGIN ~#LGISto3~	// Days 21-30
-	IF ~True()~ BEGIN RUMOR1
+	IF ~Global("#L_ImoenInPalace","GLOBAL",0)~ BEGIN RUMOR1
 		SAY @2302 // ~During Garrick's next break, the three of you find a quiet table to share a drink and chat. Garrick gives Imoen a tender kiss before returning to the stage.~
 		IF ~~ THEN EXIT
 	END
@@ -243,40 +243,40 @@ BEGIN ~#LGISto4~	// Days 31-40
 // End of new #LGISto4
 
 BEGIN ~#LGISto5~	// Days 41-50
-	IF ~True()~ BEGIN RUMOR1
+	IF ~Global("#L_ImoenInPalace","GLOBAL",0)~ BEGIN RUMOR1
 		SAY @2303 // ~During Garrick's next break, the three of you find a quiet table to share a drink and chat. Through the entire conversation, ...
 		IF ~~ THEN EXIT
 	END
 // End of new #LGISto5
 
 BEGIN ~#LGISto6~	// Days 51-60
-	IF ~True()~ BEGIN RUMOR1
+	IF ~Global("#L_ImoenInPalace","GLOBAL",0)~ BEGIN RUMOR1
 		SAY @2304 // ~During Garrick's next break, the three of you find a quiet table to share a drink and chat. Garrick and Imoen seem to find it impossible to keep their hands to themselves to the point you suggest they get a room.~
 		IF ~~ THEN EXIT
 	END
 // End of new #LGISto6
 
 BEGIN ~#LGISto7~	// Days 61-75
-	IF ~True()~ BEGIN RUMOR1
+	IF ~Global("#L_ImoenInPalace","GLOBAL",0)~ BEGIN RUMOR1
 		SAY @2304 // ~During Garrick's next break, the three of you find a quiet table to share a drink and chat. Garrick and Imoen seem to find it impossible to keep their hands to themselves to the point you suggest they get a room.~
 		IF ~~ THEN EXIT
 	END
 // End of new #LGISto7
 
 BEGIN ~#LGISto8~	// Days 76-100
-	IF ~True()~ BEGIN RUMOR1
+	IF ~Global("#L_ImoenInPalace","GLOBAL",0)~ BEGIN RUMOR1
 		SAY @2305 // ~During Garrick's next break, the three of you find a quiet table to share a drink and chat. Imoen can't wait to show you her engagement ring and the ensuing conversation is all about wedding plans.~
 		IF ~~ THEN EXIT
 	END
 // End of new #LGISto8
 
 BEGIN ~#LGISto9~	// Days 100 ->
-	IF ~GlobalLT("#L_GIRomance","GLOBAL",126)~ BEGIN RUMOR1
+	IF ~Global("#L_ImoenInPalace","GLOBAL",0) GlobalLT("#L_GIRomance","GLOBAL",126)~ BEGIN RUMOR1
 		SAY @2306 // ~During Garrick's next break, the three of you find a quiet table to share a drink and chat. Imoen and Garrick talk excitedly about married life, at times sharing way too much information.~
 		IF ~~ THEN EXIT
 	END
 
-	IF ~GlobalGT("#L_GIRomance","GLOBAL",125)~ BEGIN RUMOR2
+	IF ~Global("#L_ImoenInPalace","GLOBAL",0) GlobalGT("#L_GIRomance","GLOBAL",125)~ BEGIN RUMOR2
 		SAY @2307 // ~After catching up on current events, you fondly reminisce about the past.~
 		IF ~~ THEN EXIT
 	END
@@ -287,12 +287,12 @@ BEGIN ~#LGISto9~	// Days 100 ->
 ////////////////////////////////
 APPEND SHOAL
 	IF WEIGHT #-1 ~NumTimesTalkedTo(0) IsGabber("GARRICK") IsValidForPartyDialogue("GARRICK") IsValidForPartyDialogue("%IMOEN_DV%") GlobalGT("#L_GIRomance","GLOBAL",10)~ BEGIN SHOAL_1
-		SAY #201974 /* ~Please to help me, will you? I am alone on this desolate dry-land and who knows what lurks in these woods.~ */
-		IF ~~ THEN REPLY @2600 /* ~Accompany us and we will make certain you are safe!~ */ GOTO SHOAL_2
+		SAY #%SHOAL_SAY_1% /* ~Please to help me, will you? I am alone on this desolate dry-land and who knows what lurks in these woods.~ */
+		IF ~~ THEN REPLY @2600 /* ~Accompany us and we will make certain you are safe!~ */ GOTO SHOAL_2 // MAKES IT LESS PERSONAL
 	END
 	
 	IF ~~ BEGIN SHOAL_2
-		SAY #201976 /* ~Wonderful! Perhaps a kiss to show my appreciation?~ */
+		SAY #%SHOAL_SAY_2% /* ~Wonderful! Perhaps a kiss to show my appreciation?~ */
 		IF ~~ THEN EXTERN %IMOEN_JOINED% SHOAL_KISS
 	END
 END
