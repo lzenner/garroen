@@ -210,77 +210,133 @@ END
 // Rumors for Garrick's stores //
 /////////////////////////////////
 BEGIN ~#LGISto1~	// Days 5-10
-	IF ~Global("#L_ImoenInPalace","GLOBAL",0)~ BEGIN RUMOR1
+	IF ~Global("#L_ImoenInPalace","GLOBAL",0)~ BEGIN RUMOR1a
 		SAY @2300 // ~During Garrick's next break, you, he, and Imoen find a table in the corner, order a round of drinks, and catch up on what's been happening.~
+		IF ~~ THEN EXIT
+	END
+
+	IF ~Global("#L_ImoenInPalace","GLOBAL",1)~ BEGIN RUMOR1b
+		SAY @2308 // ~During Garrick's next break, you and he find a table in the corner. Imoen wanders in just in time to join the two of you for a drink and catch up on what's been happening, though she leaves again for the palace immediately after.~
 		IF ~~ THEN EXIT
 	END
 // End of new #LGISto1
 
 BEGIN ~#LGISto2~	// Days 11-20
-	IF ~Global("#L_ImoenInPalace","GLOBAL",0)~ BEGIN RUMOR1
+	IF ~Global("#L_ImoenInPalace","GLOBAL",0)~ BEGIN RUMOR1a
 		SAY @2301 // ~During Garrick's next break, the three of you find a quiet table to share a drink and chat. You notice Garrick and Imoen holding hands throughout the entire conversation.~
+		IF ~~ THEN EXIT
+	END
+
+	IF ~Global("#L_ImoenInPalace","GLOBAL",1)~ BEGIN RUMOR1b
+		SAY @2309 // ~During Garrick's next break, you and he find a quiet table to share a drink and chat. Imoen joins you briefly. You notice Garrick and Imoen holding hands the entire time.~
 		IF ~~ THEN EXIT
 	END
 // End of new #LGISto2
 
 BEGIN ~#LGISto3~	// Days 21-30
-	IF ~Global("#L_ImoenInPalace","GLOBAL",0)~ BEGIN RUMOR1
+	IF ~Global("#L_ImoenInPalace","GLOBAL",0)~ BEGIN RUMOR1a
 		SAY @2302 // ~During Garrick's next break, the three of you find a quiet table to share a drink and chat. Garrick gives Imoen a tender kiss before returning to the stage.~
+		IF ~~ THEN EXIT
+	END
+
+	IF ~Global("#L_ImoenInPalace","GLOBAL",1)~ BEGIN RUMOR1b
+		SAY @2310 // ~During Garrick's next break, you and he find a quiet table to share a drink and chat. Imoen joins you briefly. Garrick gives Imoen a tender kiss before she rushes back to the palace.~
 		IF ~~ THEN EXIT
 	END
 // End of new #LGISto3
 
 BEGIN ~#LGISto4~	// Days 31-40
-	IF ~GlobalLT("#L_GIRomance","GLOBAL",36)~ BEGIN RUMOR1
+	IF ~Global("#L_ImoenInPalace","GLOBAL",0) GlobalLT("#L_GIRomance","GLOBAL",36)~ BEGIN RUMOR1a
 		SAY @2302 // ~During Garrick's next break, the three of you find a quiet table to share a drink and chat. Garrick gives Imoen a tender kiss before returning to the stage.~
 		IF ~~ THEN EXIT
 	END
 	
-	IF ~GlobalGT("#L_GIRomance","GLOBAL",35)~ THEN BEGIN RUMOR2
+	IF ~Global("#L_ImoenInPalace","GLOBAL",1) GlobalLT("#L_GIRomance","GLOBAL",36)~ BEGIN RUMOR1b
+		SAY @2310 // ~During Garrick's next break, you and he find a quiet table to share a drink and chat. Imoen joins you briefly. Garrick gives Imoen a tender kiss before she rushes back to the palace.~
+		IF ~~ THEN EXIT
+	END
+
+	IF ~Global("#L_ImoenInPalace","GLOBAL",0) GlobalGT("#L_GIRomance","GLOBAL",35)~ THEN BEGIN RUMOR2a
 		SAY @2303 // ~During Garrick's next break, the three of you find a quiet table to share a drink and chat. Through the entire conversation, ...
+		IF ~~ THEN EXIT
+	END
+
+	IF ~Global("#L_ImoenInPalace","GLOBAL",1) GlobalGT("#L_GIRomance","GLOBAL",35)~ THEN BEGIN RUMOR2b
+		SAY @2311 // ~During Garrick's next break, you and he find a quiet table to share a drink and chat. Imoen joins you briefly. Garrick's attention never strays from her during her entire visit.~
 		IF ~~ THEN EXIT
 	END
 // End of new #LGISto4
 
 BEGIN ~#LGISto5~	// Days 41-50
-	IF ~Global("#L_ImoenInPalace","GLOBAL",0)~ BEGIN RUMOR1
+	IF ~Global("#L_ImoenInPalace","GLOBAL",0)~ BEGIN RUMOR1a
 		SAY @2303 // ~During Garrick's next break, the three of you find a quiet table to share a drink and chat. Through the entire conversation, ...
+		IF ~~ THEN EXIT
+	END
+
+	IF ~Global("#L_ImoenInPalace","GLOBAL",1)~ THEN BEGIN RUMOR1b
+		SAY @2311 // ~During Garrick's next break, you and he find a quiet table to share a drink and chat. Imoen joins you briefly. Garrick's attention never strays from her during her entire visit.~
 		IF ~~ THEN EXIT
 	END
 // End of new #LGISto5
 
 BEGIN ~#LGISto6~	// Days 51-60
-	IF ~Global("#L_ImoenInPalace","GLOBAL",0)~ BEGIN RUMOR1
+	IF ~Global("#L_ImoenInPalace","GLOBAL",0)~ BEGIN RUMOR1a
 		SAY @2304 // ~During Garrick's next break, the three of you find a quiet table to share a drink and chat. Garrick and Imoen seem to find it impossible to keep their hands to themselves to the point you suggest they get a room.~
+		IF ~~ THEN EXIT
+	END
+
+	IF ~Global("#L_ImoenInPalace","GLOBAL",1)~ BEGIN RUMOR1b
+		SAY @2312 // ~During Garrick's next break, you and he find a quiet table to share a drink and chat. Imoen joins you briefly. Garrick and Imoen seem to find it impossible to keep their hands to themselves to the point you suggest they get a room.~
 		IF ~~ THEN EXIT
 	END
 // End of new #LGISto6
 
 BEGIN ~#LGISto7~	// Days 61-75
-	IF ~Global("#L_ImoenInPalace","GLOBAL",0)~ BEGIN RUMOR1
+	IF ~Global("#L_ImoenInPalace","GLOBAL",0)~ BEGIN RUMOR1a
 		SAY @2304 // ~During Garrick's next break, the three of you find a quiet table to share a drink and chat. Garrick and Imoen seem to find it impossible to keep their hands to themselves to the point you suggest they get a room.~
+		IF ~~ THEN EXIT
+	END
+
+	IF ~Global("#L_ImoenInPalace","GLOBAL",1)~ BEGIN RUMOR1b
+		SAY @2312 // ~During Garrick's next break, you and he find a quiet table to share a drink and chat. Imoen joins you briefly. Garrick and Imoen seem to find it impossible to keep their hands to themselves to the point you suggest they get a room.~
 		IF ~~ THEN EXIT
 	END
 // End of new #LGISto7
 
 BEGIN ~#LGISto8~	// Days 76-100
-	IF ~Global("#L_ImoenInPalace","GLOBAL",0)~ BEGIN RUMOR1
+	IF ~Global("#L_ImoenInPalace","GLOBAL",0)~ BEGIN RUMOR1a
 		SAY @2305 // ~During Garrick's next break, the three of you find a quiet table to share a drink and chat. Imoen can't wait to show you her engagement ring and the ensuing conversation is all about wedding plans.~
+		IF ~~ THEN EXIT
+	END
+
+	IF ~Global("#L_ImoenInPalace","GLOBAL",1)~ BEGIN RUMOR1b
+		SAY @2313 // ~During Garrick's next break, you and he find a quiet table to share a drink and chat. Imoen joins you briefly. Imoen can't wait to show you her engagement ring and the ensuing conversation is all about wedding plans.~
 		IF ~~ THEN EXIT
 	END
 // End of new #LGISto8
 
 BEGIN ~#LGISto9~	// Days 100 ->
-	IF ~Global("#L_ImoenInPalace","GLOBAL",0) GlobalLT("#L_GIRomance","GLOBAL",126)~ BEGIN RUMOR1
+	IF ~Global("#L_ImoenInPalace","GLOBAL",0) GlobalLT("#L_GIRomance","GLOBAL",126)~ BEGIN RUMOR1a
 		SAY @2306 // ~During Garrick's next break, the three of you find a quiet table to share a drink and chat. Imoen and Garrick talk excitedly about married life, at times sharing way too much information.~
 		IF ~~ THEN EXIT
 	END
 
-	IF ~Global("#L_ImoenInPalace","GLOBAL",0) GlobalGT("#L_GIRomance","GLOBAL",125)~ BEGIN RUMOR2
+	IF ~Global("#L_ImoenInPalace","GLOBAL",1) GlobalLT("#L_GIRomance","GLOBAL",126)~ BEGIN RUMOR1b
+		SAY @2314 // ~During Garrick's next break, you and he find a quiet table to share a drink and chat. Imoen joins you briefly. Imoen and Garrick talk excitedly about married life, at times sharing way too much information.~
+		IF ~~ THEN EXIT
+	END
+
+	IF ~Global("#L_ImoenInPalace","GLOBAL",0) GlobalGT("#L_GIRomance","GLOBAL",125)~ BEGIN RUMOR2a
 		SAY @2307 // ~After catching up on current events, you fondly reminisce about the past.~
 		IF ~~ THEN EXIT
 	END
+
+	IF ~Global("#L_ImoenInPalace","GLOBAL",1) GlobalGT("#L_GIRomance","GLOBAL",125)~ BEGIN RUMOR2b
+		SAY @2315 // ~During Garrick's next break, you and he find a quiet table to share a drink and chat. Imoen joins you briefly. After catching up on current events, you fondly reminisce about the past.~
+		IF ~~ THEN EXIT
+	END
 // End of new #LGISto9
+
 
 ////////////////////////////////
 // SHOAL THE NEREID ENCOUNTER //
